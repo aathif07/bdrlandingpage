@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import InteractiveBackground from '../components/effects/InteractiveBackground';
-import { FiArrowRight, FiCheck, FiDownload, FiPlay, FiBarChart2, FiShield, FiTrendingDown } from 'react-icons/fi';
+import { 
+  FiArrowRight, 
+  FiCheck, 
+  FiDownload, 
+  FiPlay, 
+  FiBarChart2, 
+  FiShield, 
+  FiTrendingDown,
+  FiDatabase,
+  FiGlobe
+} from 'react-icons/fi';
 import { FaSatellite, FaChartLine, FaClipboardCheck } from 'react-icons/fa';
 import phoneIcon from '../../public/phone icon.png';
 import { toast } from 'sonner';
@@ -30,7 +40,8 @@ const MethaneMitigation = () => {
     videoThumbnail: 'https://images.unsplash.com/photo-1574717024453-354a7d62faf0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
     monitoring: 'https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80',
     reduction: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80',
-    compliance: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+    compliance: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    workflow: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80'
   };
 
   const services = [
@@ -117,8 +128,7 @@ const MethaneMitigation = () => {
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
       <InteractiveBackground />
-     <Navbar />
-
+      <Navbar />
 
       {/* Hero Banner */}
       <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
@@ -132,11 +142,17 @@ const MethaneMitigation = () => {
                 Cutting-edge monitoring and reduction technologies to minimize emissions and ensure compliance.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link to="/contact" className="btn-primary">
-                  Get Started <FiArrowRight className="ml-2"/>
+                <Link 
+                  to="/contact" 
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors shadow-md hover:shadow-lg"
+                >
+                  Get Started <FiArrowRight className="text-lg" />
                 </Link>
-                <button onClick={handleOpenPopup} className="btn-secondary">
-                  <img src={phoneIcon} alt="Phone" className="w-5 h-5 mr-2"/>
+                <button 
+                  onClick={handleOpenPopup}
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 font-medium rounded-lg transition-colors shadow-md hover:shadow-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
+                >
+                  <img src={phoneIcon} alt="Phone" className="w-5 h-5" />
                   Request Demo
                 </button>
               </div>
@@ -148,8 +164,8 @@ const MethaneMitigation = () => {
         </div>
       </section>
 
-      {/* Services Tabs - Enhanced UI */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      {/* Services Tabs - Removed blue background */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Comprehensive Methane Solutions</h2>
@@ -200,7 +216,10 @@ const MethaneMitigation = () => {
               </ul>
               
               <div className="pt-4 flex flex-col sm:flex-row gap-4">
-                <button onClick={handleOpenPopup} className="btn-primary">
+                <button 
+                  onClick={handleOpenPopup} 
+                  className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors"
+                >
                   Learn More
                 </button>
                 <button 
@@ -208,7 +227,7 @@ const MethaneMitigation = () => {
                     setFormData({...formData, service: services[activeTab].title});
                     handleOpenPopup();
                   }} 
-                  className="btn-secondary"
+                  className="px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 font-medium rounded-lg transition-colors shadow border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
                 >
                   Request Consultation
                 </button>
@@ -283,7 +302,7 @@ const MethaneMitigation = () => {
                 <iframe 
                   width="100%" 
                   height="100%" 
-                  src="https://www.youtube.com/watch?v=paSLSzoha4E" 
+                  src="https://www.youtube.com/embed/paSLSzoha4E" 
                   title="Methane Monitoring Technology" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -313,23 +332,9 @@ const MethaneMitigation = () => {
             )}
           </div>
           
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div className="mt-8">
             {[
-              {
-                title: "Field Deployment",
-                time: "2:15 min",
-                onClick: () => setShowVideo(true)
-              },
-              {
-                title: "Data Analytics",
-                time: "4:30 min",
-                onClick: () => setShowVideo(true)
-              },
-              {
-                title: "Case Study",
-                time: "5:42 min",
-                onClick: () => setShowVideo(true)
-              }
+              
             ].map((video, index) => (
               <div 
                 key={index} 
@@ -459,7 +464,7 @@ const MethaneMitigation = () => {
                 
                 <button 
                   type="submit" 
-                  className="w-full btn-primary py-4 text-lg"
+                  className="w-full px-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-lg transition-colors"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Processing..." : "Get Expert Consultation"}
@@ -470,8 +475,169 @@ const MethaneMitigation = () => {
         </div>
       </section>
 
-      <Footer 
-      />
+      {/* About Big Data Rhino Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold">About Big Data Rhino</h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mt-4`}>
+              Precision Data Solutions for Strategic Decision-Making
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                Founded in February 2022 by Patrick Parks, a proud Reconnaissance Marine veteran, Big Data Rhino is driven by a mission to bring clarity and actionable insights to complex data challenges. We combine military precision with cutting-edge data science to empower smarter business decisions.
+              </p>
+              <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                Our Story: Born from military discipline and technological innovation, Big Data Rhino brings strategic thinking and relentless execution to data solutions. From veteran-owned startup to trusted industry partner, we help organizations navigate data complexity with confidence.
+              </p>
+            </div>
+            <div className="relative">
+              <div className={`rounded-xl overflow-hidden shadow-lg ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} border aspect-video`}>
+                <img 
+                  src={imageUrls.workflow} 
+                  alt="Big Data Rhino Workflow" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Our Approach</h3>
+              <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                <li className="flex items-start">
+                  <FiShield className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+                  <span>Military-grade precision in data handling</span>
+                </li>
+                <li className="flex items-start">
+                  <FiDatabase className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+                  <span>Cutting-edge AI and machine learning</span>
+                </li>
+                <li className="flex items-start">
+                  <FiGlobe className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+                  <span>Industry-specific expertise</span>
+                </li>
+                <li className="flex items-start">
+                  <FiBarChart2 className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+                  <span>Actionable business insights</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-bold mb-4">Our Capabilities</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { icon: "🤖", text: "AI Solutions" },
+                  { icon: "🔮", text: "Predictive Analytics" },
+                  { icon: "📊", text: "Data Visualization" },
+                  { icon: "☁️", text: "Cloud Integration" },
+                  { icon: "🔌", text: "API Development" },
+                  { icon: "🛡️", text: "Security Compliance" }
+                ].map((item, index) => (
+                  <div key={index} className={`flex items-center p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
+                    <span className="text-2xl mr-3">{item.icon}</span>
+                    <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-bold mb-4">Industry Impact</h3>
+              <div className="space-y-4">
+                {[
+                  { 
+                    industry: "Energy Sector", 
+                    description: "Optimizing operations and reducing emissions through analytics",
+                    stat: "30% efficiency gains" 
+                  },
+                  { 
+                    industry: "Healthcare", 
+                    description: "Transforming patient outcomes with predictive analytics",
+                    stat: "Improved diagnostics" 
+                  },
+                  { 
+                    industry: "Government", 
+                    description: "Secure, actionable intelligence for public agencies",
+                    stat: "DVBE-certified" 
+                  }
+                ].map((item, index) => (
+                  <div key={index} className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
+                    <h4 className="font-semibold mb-2">{item.industry}</h4>
+                    <p className={`text-sm mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
+                    <p className="text-gray-800 dark:text-gray-300 font-medium">{item.stat}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg mb-16`}>
+            <h3 className="text-xl font-bold mb-4">Our Team Culture</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                  We combine technical excellence with unique perspectives to deliver innovative solutions:
+                </p>
+                <ul className={`space-y-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <li className="flex items-start">
+                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>PhD-level data scientists</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Veterans with military discipline</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Industry domain experts</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Creative problem-solvers</span>
+                  </li>
+                </ul>
+              </div>
+              <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} italic border-l-4 border-gray-500`}>
+                <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                  "The best solutions emerge when unique perspectives meet deep technical expertise."
+                </p>
+                <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
+                  Our culture emphasizes continuous learning, collaboration, and shared success.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold mb-6 text-center">Our Commitment to Clients</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { icon: "🔍", title: "Transparency", description: "Clear communication throughout" },
+                { icon: "📈", title: "Results", description: "Measurable business outcomes" },
+                { icon: "🛡️", title: "Security", description: "Enterprise-grade protection" },
+                { icon: "🤝", title: "Partnership", description: "Long-term collaboration" }
+              ].map((item, index) => (
+                <div 
+                  key={index} 
+                  className={`p-6 rounded-xl text-center ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-shadow`}
+                >
+                  <div className="text-3xl mb-4">{item.icon}</div>
+                  <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
+                  <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
 
       {/* Demo Request Popup */}
       {showPopup && (
@@ -546,7 +712,7 @@ const MethaneMitigation = () => {
               
               <button 
                 type="submit" 
-                className="w-full btn-primary py-3 text-lg mt-4"
+                className="w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-lg mt-4 transition-colors"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Scheduling..." : "Schedule Now"}
