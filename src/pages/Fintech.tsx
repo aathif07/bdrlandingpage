@@ -4,7 +4,20 @@ import { useTheme } from '../context/ThemeContext';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import InteractiveBackground from '../components/effects/InteractiveBackground';
-import { FiArrowRight, FiCheck, FiDollarSign, FiShield, FiCreditCard, FiPieChart, FiTrendingUp, FiDownload, FiPlay } from 'react-icons/fi';
+import { 
+  FiArrowRight, 
+  FiCheck, 
+  FiDollarSign, 
+  FiShield, 
+  FiCreditCard, 
+  FiPieChart, 
+  FiTrendingUp, 
+  FiDownload, 
+  FiPlay,
+  FiDatabase,
+  FiGlobe,
+  FiBarChart2
+} from 'react-icons/fi';
 import phoneIcon from '../../public/phone icon.png';
 
 const Fintech = () => {
@@ -16,17 +29,19 @@ const Fintech = () => {
     name: '',
     email: '',
     phone: '',
-    datetime: ''
+    datetime: '',
+    message: '' // Added missing message property
   });
 
-  // Image URLs using public links
+  // Image URLs using public links - Added workflow property
   const imageUrls = {
     logo: 'https://via.placeholder.com/150x50?text=BigDataRhino',
     fintechDashboard: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80',
     mobilePayments: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
     analytics: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
     howItWorks: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    team: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80'
+    team: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80',
+    workflow: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' // Added workflow image
   };
 
   useEffect(() => {
@@ -43,19 +58,19 @@ const Fintech = () => {
     setShowPopup(false);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
     setIsSubmitting(true);
     
     // Simulate API call
     setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', datetime: '' });
+      setFormData({ name: '', email: '', phone: '', datetime: '', message: '' });
       setShowPopup(false);
       setIsCallbackActive(false);
       setIsSubmitting(false);
@@ -64,7 +79,6 @@ const Fintech = () => {
   };
 
   const downloadBrochure = () => {
-    // In a real app, this would link to your actual brochure PDF
     alert('Downloading brochure...');
     // window.open('/brochures/fintech-brochure.pdf', '_blank');
   };
@@ -72,52 +86,49 @@ const Fintech = () => {
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
       <InteractiveBackground />
-       <Navbar />
+      <Navbar />
       
-      {/* Hero Banner Section - Updated with no background color */}
-<section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-  <div className="max-w-7xl mx-auto">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div className="space-y-8">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-          Revolutionize Your Financial Services
-        </h1>
-        <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-          Big Data Rhino's fintech solutions leverage AI, blockchain, and big data analytics to transform financial operations, reduce risks, and enhance customer experiences.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link 
-            to="/contact" 
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-center flex items-center justify-center"
-          >
-            Get Started <FiArrowRight className="ml-2" />
-          </Link>
-          <button 
-            onClick={downloadBrochure}
-            className={`border-2 border-indigo-600 ${theme === 'dark' ? 'text-indigo-400 border-indigo-400 hover:bg-indigo-900/20' : 'text-indigo-600 hover:bg-indigo-50'} px-8 py-4 rounded-lg font-semibold flex items-center justify-center`}
-          >
-            <FiDownload className="mr-2" />
-            Download Brochure
-          </button>
-        </div>
-      </div>
-      <div className="relative">
-        <div className={`relative rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-video`}>
-          <img 
-            src={imageUrls.fintechDashboard} 
-            alt="Fintech Dashboard" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <button className="bg-white/90 hover:bg-white text-indigo-600 rounded-full p-4 shadow-lg transform transition hover:scale-110">
-              <FiPlay className="text-2xl" />
-            </button>
+      {/* Hero Banner Section */}
+      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Revolutionize Your Financial Services
+              </h1>
+              <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                Big Data Rhino's fintech solutions leverage AI, blockchain, and big data analytics to transform financial operations, reduce risks, and enhance customer experiences.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link 
+                  to="/contact" 
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-center flex items-center justify-center"
+                >
+                  Get Started <FiArrowRight className="ml-2" />
+                </Link>
+                <button 
+                  onClick={downloadBrochure}
+                  className={`border-2 border-indigo-600 ${theme === 'dark' ? 'text-indigo-400 border-indigo-400 hover:bg-indigo-900/20' : 'text-indigo-600 hover:bg-indigo-50'} px-8 py-4 rounded-lg font-semibold flex items-center justify-center`}
+                >
+                  <FiDownload className="mr-2" />
+                  Download Brochure
+                </button>
+              </div>
+            </div>
+            <div className="relative">
+              <div className={`relative rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-video`}>
+                <img 
+                  src={imageUrls.fintechDashboard} 
+                  alt="Fintech Dashboard" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Introduction Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -189,41 +200,42 @@ const Fintech = () => {
           </div>
         </div>
       </section>
-{/* YouTube Video Section */}
-<section className="py-20 px-4 sm:px-6 lg:px-8">
-  <div className="max-w-7xl mx-auto">
-    <div className="text-center mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">See Our Data Migration in Action</h2>
-      <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
-        Watch how we helped a Fortune 500 company migrate 10TB of data with zero downtime
-      </p>
-    </div>
-    
-    {/* YouTube Video Embed */}
-    <div className="relative rounded-lg overflow-hidden shadow-2xl aspect-video max-w-4xl mx-auto">
-      <iframe
-        width="100%"
-        height="100%"
-        src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=0&rel=0"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        className="absolute top-0 left-0 w-full h-full"
-      ></iframe>
-    </div>
-    
-    {/* Video info section */}
-    <div className="max-w-4xl mx-auto mt-4">
-      <h3 className="text-xl font-bold">How We Migrated 10TB with Zero Downtime</h3>
-      <div className="flex items-center mt-2 text-sm text-gray-500 dark:text-gray-400">
-        <span>1,234 views</span>
-        <span className="mx-2">•</span>
-        <span>2 weeks ago</span>
-      </div>
-    </div>
-  </div>
-</section>
+
+      {/* YouTube Video Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">See Our Fintech Solutions in Action</h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
+              Watch how we transformed payment processing for a leading financial institution
+            </p>
+          </div>
+          
+          {/* YouTube Video Embed */}
+          <div className="relative rounded-lg overflow-hidden shadow-2xl aspect-video max-w-4xl mx-auto">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+          </div>
+          
+          {/* Video info section */}
+          <div className="max-w-4xl mx-auto mt-4">
+            <h3 className="text-xl font-bold">Payment Processing Transformation Case Study</h3>
+            <div className="flex items-center mt-2 text-sm text-gray-500 dark:text-gray-400">
+              <span>1,234 views</span>
+              <span className="mx-2">•</span>
+              <span>2 weeks ago</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Our Solutions Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
@@ -323,7 +335,7 @@ const Fintech = () => {
                 </select>
                 <textarea 
                   placeholder="Tell us about your needs" 
-                 rows={4}
+                  rows={4}
                   className="w-full p-3 rounded border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
                 ></textarea>
                 <button 
@@ -337,7 +349,168 @@ const Fintech = () => {
           </div>
         </div>
       </section>
+{/* About Big Data Rhino Section - Theme-based */}
+<section className="py-20 px-4 sm:px-6 lg:px-8">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold">About Big Data Rhino</h2>
+      <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mt-4`}>
+        Precision Data Solutions for Strategic Decision-Making
+      </p>
+    </div>
 
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+      <div>
+        <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+          Founded in February 2022 by Patrick Parks, a proud Reconnaissance Marine veteran, Big Data Rhino is driven by a mission to bring clarity and actionable insights to complex data challenges. We combine military precision with cutting-edge data science to empower smarter business decisions.
+        </p>
+        <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+          Our Story: Born from military discipline and technological innovation, Big Data Rhino brings strategic thinking and relentless execution to data solutions. From veteran-owned startup to trusted industry partner, we help organizations navigate data complexity with confidence.
+        </p>
+      </div>
+      <div className="relative">
+        <div className={`rounded-xl overflow-hidden shadow-lg ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} border aspect-video`}>
+          <img 
+            src={imageUrls.workflow} 
+            alt="Big Data Rhino Team" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div>
+        <h3 className="text-xl font-bold mb-4">Our Approach</h3>
+        <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+          <li className="flex items-start">
+            <FiShield className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+            <span>Military-grade precision in data handling</span>
+          </li>
+          <li className="flex items-start">
+            <FiDatabase className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+            <span>Cutting-edge AI and machine learning</span>
+          </li>
+          <li className="flex items-start">
+            <FiGlobe className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+            <span>Industry-specific expertise</span>
+          </li>
+          <li className="flex items-start">
+            <FiBarChart2 className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+            <span>Actionable business insights</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 className="text-xl font-bold mb-4">Our Capabilities</h3>
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            { icon: "🤖", text: "AI Solutions" },
+            { icon: "🔮", text: "Predictive Analytics" },
+            { icon: "📊", text: "Data Visualization" },
+            { icon: "☁️", text: "Cloud Integration" },
+            { icon: "🔌", text: "API Development" },
+            { icon: "🛡️", text: "Security Compliance" }
+          ].map((item, index) => (
+            <div key={index} className={`flex items-center p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
+              <span className="text-2xl mr-3">{item.icon}</span>
+              <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>{item.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div>
+        <h3 className="text-xl font-bold mb-4">Industry Impact</h3>
+        <div className="space-y-4">
+          {[
+            { 
+              industry: "Energy Sector", 
+              description: "Optimizing operations and reducing emissions through analytics",
+              stat: "30% efficiency gains" 
+            },
+            { 
+              industry: "Healthcare", 
+              description: "Transforming patient outcomes with predictive analytics",
+              stat: "Improved diagnostics" 
+            },
+            { 
+              industry: "Government", 
+              description: "Secure, actionable intelligence for public agencies",
+              stat: "DVBE-certified" 
+            }
+          ].map((item, index) => (
+            <div key={index} className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
+              <h4 className="font-semibold mb-2">{item.industry}</h4>
+              <p className={`text-sm mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
+              <p className="text-gray-800 dark:text-gray-300 font-medium">{item.stat}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg mb-16`}>
+      <h3 className="text-xl font-bold mb-4">Our Team Culture</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+            We combine technical excellence with unique perspectives to deliver innovative solutions:
+          </p>
+          <ul className={`space-y-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+            <li className="flex items-start">
+              <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+              <span>PhD-level data scientists</span>
+            </li>
+            <li className="flex items-start">
+              <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+              <span>Veterans with military discipline</span>
+            </li>
+            <li className="flex items-start">
+              <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+              <span>Industry domain experts</span>
+            </li>
+            <li className="flex items-start">
+              <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+              <span>Creative problem-solvers</span>
+            </li>
+          </ul>
+        </div>
+        <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} italic border-l-4 border-gray-500`}>
+          <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+            "The best solutions emerge when unique perspectives meet deep technical expertise."
+          </p>
+          <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
+            Our culture emphasizes continuous learning, collaboration, and shared success.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 className="text-xl font-bold mb-6 text-center">Our Commitment to Clients</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {[
+          { icon: "🔍", title: "Transparency", description: "Clear communication throughout" },
+          { icon: "📈", title: "Results", description: "Measurable business outcomes" },
+          { icon: "🛡️", title: "Security", description: "Enterprise-grade protection" },
+          { icon: "🤝", title: "Partnership", description: "Long-term collaboration" }
+        ].map((item, index) => (
+          <div 
+            key={index} 
+            className={`p-6 rounded-xl text-center ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-shadow`}
+          >
+            <div className="text-3xl mb-4">{item.icon}</div>
+            <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
+            <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+    
       <Footer />
 
       {/* Callback Form Popup */}
@@ -391,6 +564,14 @@ const Fintech = () => {
                 className="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 text-black dark:text-white focus:outline-none" 
                 required 
               />
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="How can we help you?"
+                rows={3}
+                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 text-black dark:text-white focus:outline-none"
+              ></textarea>
               <button 
                 type="submit" 
                 className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold disabled:opacity-50"
