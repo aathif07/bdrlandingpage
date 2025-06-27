@@ -17,10 +17,10 @@
             import DataMitigation1 from "./pages/DataMitigation";
             import MethaneMitigation1 from "./pages/MethaneMitigation";
             import Fintech1 from "./pages/Fintech";
+            
 
             import Solutions from "./pages/Solutions";
             import Blog from "./pages/Blog";
-            import BlogArticle from "./pages/BlogArticle";
             import BlogDetail from './pages/BlogDetail';
 
             import Careers from "./pages/Careers";
@@ -45,12 +45,6 @@
             import AiMl from "./pages/solutions/AiMl";
             import Cybersecurity from "./pages/solutions/Cybersecurity";
             import Cloud from "./pages/solutions/Cloud";
-
-            // Case Studies subsections
-            import Problem from "./pages/case-studies/Problem";
-            import Solution from "./pages/case-studies/Solution";
-            import Results from "./pages/case-studies/Results";
-            import Insights from "./pages/case-studies/Insights";
 
             // Blog subsections
             import Articles from "./pages/blog/Articles";
