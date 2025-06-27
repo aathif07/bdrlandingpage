@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import InteractiveBackground from '../components/effects/InteractiveBackground';
 import { FiArrowRight, FiCheck, FiDollarSign, FiShield, FiCreditCard, FiPieChart, FiTrendingUp, FiDownload, FiPlay } from 'react-icons/fi';
@@ -71,6 +72,7 @@ const Fintech = () => {
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
       <InteractiveBackground />
+       <Navbar />
       
       {/* Hero Banner Section - Updated with no background color */}
 <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
