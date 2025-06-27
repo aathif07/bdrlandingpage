@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import InteractiveBackground from '../components/effects/InteractiveBackground';
 import { FiArrowRight, FiCheck, FiDatabase, FiShield, FiClock, FiBarChart2, FiServer, FiGlobe, FiDownload } from 'react-icons/fi';
@@ -67,7 +68,7 @@ const DataMigration = () => {
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
       <InteractiveBackground />
-
+       <Navbar />
       
       {/* Banner Section - Removed blue background */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
@@ -289,7 +290,7 @@ const DataMigration = () => {
                   value={formData.message} 
                   onChange={handleChange} 
                   placeholder="Tell us about your migration needs" 
-                  rows={4}
+                 rows={4}
                   className="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
                 ></textarea>
                 <button 
@@ -305,6 +306,8 @@ const DataMigration = () => {
         </div>
       </section>
 
+      <Footer 
+      />
 
       {/* Consultation Popup */}
       {showPopup && (
@@ -351,7 +354,7 @@ const DataMigration = () => {
                 value={formData.message} 
                 onChange={handleChange} 
                 placeholder="Tell us about your project" 
-                rows={3}
+             rows={3}
                 className="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
               ></textarea>
               <button 
