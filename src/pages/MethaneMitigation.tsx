@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import InteractiveBackground from '../components/effects/InteractiveBackground';
 import { FiArrowRight, FiCheck, FiDownload, FiPlay, FiBarChart2, FiShield, FiTrendingDown } from 'react-icons/fi';
@@ -116,7 +117,9 @@ const MethaneMitigation = () => {
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
       <InteractiveBackground />
-      
+     <Navbar />
+
+
       {/* Hero Banner */}
       <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -466,6 +469,9 @@ const MethaneMitigation = () => {
           </div>
         </div>
       </section>
+
+      <Footer 
+      />
 
       {/* Demo Request Popup */}
       {showPopup && (
