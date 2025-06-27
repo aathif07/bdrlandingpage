@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import InteractiveBackground from '../components/effects/InteractiveBackground';
 import { FiArrowRight, FiCheck, FiDownload, FiPlay, FiBarChart2, FiShield, FiTrendingDown } from 'react-icons/fi';
@@ -117,14 +116,12 @@ const MethaneMitigation = () => {
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
       <InteractiveBackground />
-      <Header />
       
       {/* Hero Banner */}
       <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <img src={imageUrls.logo} alt="Company Logo" className="h-12 mb-6"/>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Advanced <span className="text-indigo-600">Methane Solutions</span> for Sustainable Operations
               </h1>
@@ -469,14 +466,6 @@ const MethaneMitigation = () => {
           </div>
         </div>
       </section>
-
-      <Footer 
-        additionalLinks={[
-          { text: 'Privacy Policy', url: '/privacy-policy' },
-          { text: 'Data Policy', url: '/data-policy' },
-          { text: 'Terms & Conditions', url: '/terms' }
-        ]}
-      />
 
       {/* Demo Request Popup */}
       {showPopup && (
