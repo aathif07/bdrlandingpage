@@ -25,15 +25,16 @@ const Fintech = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [isCallbackActive, setIsCallbackActive] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [downloadText, setDownloadText] = useState('Download Brochure');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     datetime: '',
-    message: '' // Added missing message property
+    message: ''
   });
 
-  // Image URLs using public links - Added workflow property
+  // Image URLs using public links - Added fintechBrochure PDF
   const imageUrls = {
     logo: 'https://via.placeholder.com/150x50?text=BigDataRhino',
     fintechDashboard: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80',
@@ -41,9 +42,9 @@ const Fintech = () => {
     analytics: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
     howItWorks: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
     team: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80',
-    workflow: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' // Added workflow image
+    workflow: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    fintechBrochure: '/pdf/Mainframe Application Modernization (6).pdf' 
   };
-
   useEffect(() => {
     document.title = "Fintech Solutions | Big Data Rhino";
     document.documentElement.classList.toggle('dark', theme === 'dark');
@@ -79,8 +80,27 @@ const Fintech = () => {
   };
 
   const downloadBrochure = () => {
-    alert('Downloading brochure...');
-    // window.open('/brochures/fintech-brochure.pdf', '_blank');
+    // Change button text to show downloading state
+    setDownloadText('Downloading...');
+    
+    try {
+      // Create an invisible anchor element to trigger download
+      const link = document.createElement('a');
+      link.href = imageUrls.fintechBrochure;
+      link.download = '/pdf/Mainframe Application Modernization (6).pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Optional: Track download event
+      console.log('Fintech brochure download initiated');
+    } catch (error) {
+      console.error('Download failed:', error);
+      alert('Download failed. Please try again or contact support@bigdatarhino.com');
+    } finally {
+      // Reset button text after 2 seconds
+      setTimeout(() => setDownloadText('Download Brochure'), 2000);
+    }
   };
 
   return (
@@ -109,9 +129,10 @@ const Fintech = () => {
                 <button 
                   onClick={downloadBrochure}
                   className={`border-2 border-indigo-600 ${theme === 'dark' ? 'text-indigo-400 border-indigo-400 hover:bg-indigo-900/20' : 'text-indigo-600 hover:bg-indigo-50'} px-8 py-4 rounded-lg font-semibold flex items-center justify-center`}
+                  aria-label="Download Fintech Solutions Brochure"
                 >
                   <FiDownload className="mr-2" />
-                  Download Brochure
+                  {downloadText}
                 </button>
               </div>
             </div>
@@ -201,86 +222,50 @@ const Fintech = () => {
         </div>
       </section>
 
-      {/* YouTube Video Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">See Our Fintech Solutions in Action</h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
-              Watch how we transformed payment processing for a leading financial institution
-            </p>
-          </div>
-          
-          {/* YouTube Video Embed */}
-          <div className="relative rounded-lg overflow-hidden shadow-2xl aspect-video max-w-4xl mx-auto">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute top-0 left-0 w-full h-full"
-            ></iframe>
-          </div>
-          
-          {/* Video info section */}
-          <div className="max-w-4xl mx-auto mt-4">
-            <h3 className="text-xl font-bold">Payment Processing Transformation Case Study</h3>
-            <div className="flex items-center mt-2 text-sm text-gray-500 dark:text-gray-400">
-              <span>1,234 views</span>
-              <span className="mx-2">•</span>
-              <span>2 weeks ago</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Our Solutions Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Fintech Solutions</h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
-              Comprehensive solutions designed to address every aspect of modern financial services
-            </p>
-          </div>
+<section className="py-20 px-4 sm:px-6 lg:px-8">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Fintech Solutions</h2>
+      <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
+        Comprehensive solutions designed to address every aspect of modern financial services
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: "Digital Payments",
-                description: "Secure and scalable digital payment solutions for any business",
-                icon: <FiCreditCard className="text-3xl text-indigo-600" />
-              },
-              {
-                title: "Risk Analytics",
-                description: "Advanced analytics for fraud detection and risk assessment",
-                icon: <FiShield className="text-3xl text-indigo-600" />
-              },
-              {
-                title: "Wealth Management",
-                description: "AI-driven investment and wealth management platforms",
-                icon: <FiTrendingUp className="text-3xl text-indigo-600" />
-              },
-              {
-                title: "RegTech",
-                description: "Compliance solutions for financial regulations",
-                icon: <FiCheck className="text-3xl text-indigo-600" />
-              }
-            ].map((item, index) => (
-              <div key={index} className={`p-8 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'}`}>
-                <div className="w-14 h-14 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mb-6">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
-              </div>
-            ))}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        {
+          title: "Digital Payments",
+          description: "Secure and scalable digital payment solutions for any business",
+          icon: <FiCreditCard className="text-3xl text-indigo-600" />
+        },
+        {
+          title: "Risk Analytics",
+          description: "Advanced analytics for fraud detection and risk assessment",
+          icon: <FiShield className="text-3xl text-indigo-600" />
+        },
+        {
+          title: "Wealth Management",
+          description: "AI-driven investment and wealth management platforms",
+          icon: <FiTrendingUp className="text-3xl text-indigo-600" />
+        },
+        {
+          title: "RegTech",
+          description: "Compliance solutions for financial regulations",
+          icon: <FiCheck className="text-3xl text-indigo-600" />
+        }
+      ].map((item, index) => (
+        <div key={index} className={`p-8 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'}`}>
+          <div className="w-14 h-14 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mb-6">
+            {item.icon}
           </div>
+          <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+          <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Contact Form Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
