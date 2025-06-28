@@ -60,8 +60,19 @@ const DataMigration = () => {
   };
 
   const downloadBrochure = () => {
-    // In a real app, this would download a PDF file
-    alert('Downloading brochure...');
+    // Public PDF link for the brochure
+    const brochureUrl = '/pdf/Big Data Rhino-Data Migration Solutions.pdf';
+    
+    // Create a temporary anchor element to trigger download
+    const link = document.createElement('a');
+    link.href = brochureUrl;
+    link.download = '/pdf/Big Data Rhino-Data Migration Solutions.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Optional: Track download event
+    console.log('Brochure download initiated');
   };
 
   return (
@@ -205,28 +216,7 @@ const DataMigration = () => {
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">See Our Data Migration in Action</h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
-              Watch how we helped a Fortune 500 company migrate 10TB of data with zero downtime
-            </p>
-          </div>
-          
-          <div className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 aspect-video max-w-4xl mx-auto">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/cw5K2O4AHJc"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </section>
+    
 
       {/* Contact Form Section - Without blue background */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
