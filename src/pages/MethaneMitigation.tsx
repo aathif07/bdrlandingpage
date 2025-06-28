@@ -16,7 +16,6 @@ import {
   FiGlobe
 } from 'react-icons/fi';
 import { FaSatellite, FaChartLine, FaClipboardCheck } from 'react-icons/fa';
-import phoneIcon from '../../public/phone icon.png';
 import { toast } from 'sonner';
 
 const MethaneMitigation = () => {
@@ -125,23 +124,40 @@ const MethaneMitigation = () => {
     }
   };
 
+  // Brochure download handler
+  const handleDownloadBrochure = () => {
+    // Simulate PDF download
+    const brochureUrl = '/pdf/Leveraging AI_ML for Smarter, Faster Government.pdf';
+    
+    // Create a temporary link to trigger download
+    const link = document.createElement('a');
+    link.href = brochureUrl;
+    link.download = '/pdf/Leveraging AI_ML for Smarter, Faster Government.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    toast.success('Brochure download started!');
+  };
+
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
+    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'dark' : ''}`}>
       <InteractiveBackground />
       <Navbar />
 
-      {/* Hero Banner */}
-      <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      {/* Fixed Hero Banner Alignment */}
+      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <div className="space-y-8 text-center md:text-left">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Advanced <span className="text-indigo-600">Methane Solutions</span> for Sustainable Operations
+                Advanced Methane Solutions
+                <span className="text-indigo-600 block mt-2">for Sustainable Operations</span>
               </h1>
-              <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+              <p className={`text-xl max-w-2xl mx-auto md:mx-0 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                 Cutting-edge monitoring and reduction technologies to minimize emissions and ensure compliance.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
                 <Link 
                   to="/contact" 
                   className="flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors shadow-md hover:shadow-lg"
@@ -149,23 +165,23 @@ const MethaneMitigation = () => {
                   Get Started <FiArrowRight className="text-lg" />
                 </Link>
                 <button 
-                  onClick={handleOpenPopup}
+                  onClick={handleDownloadBrochure}
                   className="flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 font-medium rounded-lg transition-colors shadow-md hover:shadow-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
                 >
-                  <img src={phoneIcon} alt="Phone" className="w-5 h-5" />
-                  Request Demo
+                  <FiDownload className="text-lg" />
+                  Download Brochure
                 </button>
               </div>
             </div>
-            <div className="relative rounded-xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700 aspect-video">
+            <div className="relative rounded-xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700 aspect-video max-w-2xl mx-auto">
               <img src={imageUrls.banner} alt="Methane Monitoring" className="w-full h-full object-cover"/>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Tabs - Removed blue background */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      {/* Services Tabs - Buttons Removed */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Comprehensive Methane Solutions</h2>
@@ -215,29 +231,13 @@ const MethaneMitigation = () => {
                 ))}
               </ul>
               
-              <div className="pt-4 flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={handleOpenPopup} 
-                  className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors"
-                >
-                  Learn More
-                </button>
-                <button 
-                  onClick={() => {
-                    setFormData({...formData, service: services[activeTab].title});
-                    handleOpenPopup();
-                  }} 
-                  className="px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 font-medium rounded-lg transition-colors shadow border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-                >
-                  Request Consultation
-                </button>
-              </div>
+              {/* Buttons Removed from this Section */}
             </div>
           </div>
         </div>
       </section>
 
-      {/* How It Works - Enhanced Section */}
+      {/* How It Works */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -272,7 +272,7 @@ const MethaneMitigation = () => {
                     </div>
                   </div>
                   
-                  {/* Step Number (for desktop) */}
+                  {/* Step Number */}
                   <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 w-16 h-16 rounded-full bg-indigo-600 text-white items-center justify-center text-2xl font-bold z-10">
                     {index + 1}
                   </div>
@@ -286,78 +286,8 @@ const MethaneMitigation = () => {
         </div>
       </section>
 
-      {/* Video Section - Enhanced */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800/40">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">See Our Technology in Action</h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
-              Watch how our advanced methane detection systems work in real-world applications
-            </p>
-          </div>
-          
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700 aspect-video max-w-5xl mx-auto bg-black">
-            {showVideo ? (
-              <div className="w-full h-full flex items-center justify-center">
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  src="https://www.youtube.com/embed/paSLSzoha4E" 
-                  title="Methane Monitoring Technology" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ) : (
-              <>
-                <img 
-                  src={imageUrls.videoThumbnail} 
-                  alt="Video Thumbnail" 
-                  className="w-full h-full object-cover opacity-80"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <button 
-                    onClick={handleVideoOpen}
-                    className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-indigo-600 hover:bg-indigo-700 flex items-center justify-center transition-transform hover:scale-105"
-                  >
-                    <FiPlay className="text-white text-3xl ml-1" />
-                  </button>
-                </div>
-                <div className="absolute bottom-8 left-8 text-white">
-                  <h3 className="text-xl md:text-2xl font-bold">Methane Detection Technology</h3>
-                  <p className="text-sm md:text-base">3:24 min</p>
-                </div>
-              </>
-            )}
-          </div>
-          
-<div className="mt-8">
-            {[
-              
-            ].map((video, index) => (
-              <div 
-                key={index} 
-                className={`p-4 rounded-xl border ${theme === 'dark' ? 'border-gray-700 hover:bg-gray-800' : 'border-gray-200 hover:bg-gray-50'} cursor-pointer transition-colors`}
-                onClick={video.onClick}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-indigo-600 flex items-center justify-center flex-shrink-0">
-                    <FiPlay className="text-white ml-1" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium">{video.title}</h4>
-                    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{video.time}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Form Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -386,7 +316,7 @@ const MethaneMitigation = () => {
               
               <button 
                 className="flex items-center text-indigo-600 dark:text-indigo-400 font-medium mt-6"
-                onClick={() => toast.success('Brochure download started')}
+                onClick={handleDownloadBrochure}
               >
                 <FiDownload className="mr-2"/>
                 Download Full Solution Brochure (PDF)
@@ -653,7 +583,7 @@ const MethaneMitigation = () => {
             
             <div className="flex items-center gap-4 mb-6">
               <div className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900/50">
-                <img src={phoneIcon} alt="Phone" className="w-6 h-6"/>
+                <FiDownload className="w-6 h-6 text-indigo-600 dark:text-indigo-400"/>
               </div>
               <h3 className="text-2xl font-bold">Schedule a Consultation</h3>
             </div>
