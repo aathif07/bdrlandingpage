@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { useApolloTracking } from '../hooks/useApolloTracking';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import InteractiveBackground from '../components/effects/InteractiveBackground';
@@ -22,6 +23,10 @@ import phoneIcon from '../../public/phone icon.png';
 
 const Fintech = () => {
   const { theme } = useTheme();
+  
+  // Initialize Apollo tracking
+  useApolloTracking();
+  
   const [showPopup, setShowPopup] = useState(false);
   const [isCallbackActive, setIsCallbackActive] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
