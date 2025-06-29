@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { useApolloTracking } from '../hooks/useApolloTracking';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import InteractiveBackground from '../components/effects/InteractiveBackground';
@@ -8,6 +9,10 @@ import { FiArrowRight, FiCheck, FiDatabase, FiShield, FiClock, FiBarChart2, FiSe
 
 const DataMigration = () => {
   const { theme } = useTheme();
+  
+  // Initialize Apollo tracking
+  useApolloTracking();
+  
   const [showPopup, setShowPopup] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -215,8 +220,6 @@ const DataMigration = () => {
           </div>
         </div>
       </section>
-
-    
 
       {/* Contact Form Section - Without blue background */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
