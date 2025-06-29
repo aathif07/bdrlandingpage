@@ -114,6 +114,14 @@
 
             const queryClient = new QueryClient();
 
+            declare global {
+              interface Window {
+                trackingFunctions?: {
+                  onLoad: (config: { appId: string }) => void;
+                };
+              }
+            }
+
             const App = () => (
               <QueryClientProvider client={queryClient}>
                 <ThemeProvider>
