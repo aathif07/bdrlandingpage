@@ -23,13 +23,13 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'py-4 bg-white shadow dark:bg-gray-900' : 'py-6 bg-transparent'
+      className={`fixed top 5 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'py-7 bg-white shadow dark:bg-gray-900' : 'py-12 bg-transparent'
       }`}
     >
-      <div className="max-w-10xl mx-auto px-11 flex justify-between items-center">
-        {/* Logo */}
-        <div className="flex items-center gap-9">
+      <div className="max-w-10xl mx-auto px-11 flex justify-between items-center relative">
+        {/* Logo - Centered absolutely on desktop */}
+        <div className="absolute left-1/2 transform -translate-x-1/2">
           <motion.img 
             src={logoSrc}
             className="h-24 w-18" 
@@ -39,13 +39,15 @@ const Navbar = () => {
           />
         </div>
 
-        {/* Theme Toggle */}
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <ThemeToggle />
-        </motion.div>
+        {/* Theme Toggle - Right aligned */}
+        <div className="ml-auto">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ThemeToggle />
+          </motion.div>
+        </div>
       </div>
     </header>
   );

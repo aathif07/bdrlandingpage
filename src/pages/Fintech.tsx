@@ -1,580 +1,387 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext';
-import { useApolloTracking } from '../hooks/useApolloTracking';
-import Navbar from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer';
-import InteractiveBackground from '../components/effects/InteractiveBackground';
-import { 
-  FiArrowRight, 
-  FiCheck, 
-  FiDollarSign, 
-  FiShield, 
-  FiCreditCard, 
-  FiPieChart, 
-  FiTrendingUp, 
-  FiDownload, 
-  FiPlay,
-  FiDatabase,
-  FiGlobe,
-  FiBarChart2
-} from 'react-icons/fi';
-import phoneIcon from '../../public/phone icon.png';
+import React, { useState } from 'react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
-const Fintech = () => {
-  const { theme } = useTheme();
-  
-  // Initialize Apollo tracking
-  useApolloTracking();
-  
-  const [showPopup, setShowPopup] = useState(false);
-  const [isCallbackActive, setIsCallbackActive] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [downloadText, setDownloadText] = useState('Download Brochure');
+const Sarvice = () => {
+  const [activeTab, setActiveTab] = useState('dataMigration');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    datetime: '',
-    message: ''
+    message: '',
+    service: 'Data Mitigation'
   });
 
-  // Image URLs using public links - Added fintechBrochure PDF
-  const imageUrls = {
-    logo: 'https://via.placeholder.com/150x50?text=BigDataRhino',
-    fintechDashboard: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80',
-    mobilePayments: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    analytics: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    howItWorks: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    team: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80',
-    workflow: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    fintechBrochure: '/pdf/Mainframe Application Modernization (6).pdf' 
-  };
-  useEffect(() => {
-    document.title = "Fintech Solutions | Big Data Rhino";
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-  }, [theme]);
-
-  const handleOpenPopup = () => {
-    setShowPopup(true);
-    setIsCallbackActive(true);
-  };
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSubmitting) return;
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', datetime: '', message: '' });
-      setShowPopup(false);
-      setIsCallbackActive(false);
-      setIsSubmitting(false);
-      alert('Your request has been submitted successfully!');
-    }, 1500);
+    // Form submission logic here
+    console.log('Form submitted:', formData);
+    alert('Thank you for your inquiry! We will contact you shortly.');
   };
 
   const downloadBrochure = () => {
-    // Change button text to show downloading state
-    setDownloadText('Downloading...');
-    
-    try {
-      // Create an invisible anchor element to trigger download
-      const link = document.createElement('a');
-      link.href = imageUrls.fintechBrochure;
-      link.download = '/pdf/Mainframe Application Modernization (6).pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      // Optional: Track download event
-      console.log('Fintech brochure download initiated');
-    } catch (error) {
-      console.error('Download failed:', error);
-      alert('Download failed. Please try again or contact support@bigdatarhino.com');
-    } finally {
-      // Reset button text after 2 seconds
-      setTimeout(() => setDownloadText('Download Brochure'), 2000);
-    }
+    // Brochure download logic
+    alert('Brochure download started!');
   };
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
-      <InteractiveBackground />
-      <Navbar />
-      
-      {/* Hero Banner Section */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Revolutionize Your Financial Services
-              </h1>
-              <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-                Big Data Rhino's fintech solutions leverage AI, blockchain, and big data analytics to transform financial operations, reduce risks, and enhance customer experiences.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link 
-                  to="/contact" 
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-center flex items-center justify-center"
-                >
-                  Get Started <FiArrowRight className="ml-2" />
-                </Link>
-                <button 
-                  onClick={downloadBrochure}
-                  className={`border-2 border-indigo-600 ${theme === 'dark' ? 'text-indigo-400 border-indigo-400 hover:bg-indigo-900/20' : 'text-indigo-600 hover:bg-indigo-50'} px-8 py-4 rounded-lg font-semibold flex items-center justify-center`}
-                  aria-label="Download Fintech Solutions Brochure"
-                >
-                  <FiDownload className="mr-2" />
-                  {downloadText}
-                </button>
-              </div>
-            </div>
-            <div className="relative">
-              <div className={`relative rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-video`}>
-                <img 
-                  src={imageUrls.fintechDashboard} 
-                  alt="Fintech Dashboard" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      {/* Header */}
+      <header className="bg-white shadow-sm">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+            <h1 className="text-2xl font-bold text-gray-800">BigData Solutions</h1>
+          </div>
+          <Button variant="outline">Contact Sales</Button>
+        </div>
+      </header>
+
+      {/* Banner */}
+      <div className="relative bg-blue-900 text-white py-20">
+        <div className="absolute inset-0 bg-black opacity-40"></div>
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Transform Your Data into Actionable Insights</h1>
+          <p className="text-xl max-w-3xl mx-auto">
+            Cutting-edge solutions for data management, financial technology, and environmental sustainability
+          </p>
+          <div className="mt-10">
+            <Button className="mr-4 bg-blue-500 hover:bg-blue-600">Get Started</Button>
+            <Button variant="outline" className="text-white border-white">
+              View Demo
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Introduction */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl font-bold text-center mb-8">Our Comprehensive Data Solutions</h2>
+          <p className="text-lg text-gray-700 mb-6">
+            At BigData Solutions, we specialize in transforming complex data challenges into strategic advantages. 
+            Our innovative approaches help organizations harness the full potential of their data assets while ensuring 
+            compliance, security, and sustainability.
+          </p>
+          <p className="text-lg text-gray-700">
+            With expertise across multiple industries and domains, we deliver tailored solutions that drive measurable 
+            results and create long-term value for your business.
+          </p>
+        </div>
+      </section>
+
+      {/* Services Tabs */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+          
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-6xl mx-auto">
+            <TabsList className="grid grid-cols-3 gap-4 mb-8">
+              <TabsTrigger 
+                value="dataMigration" 
+                className="data-[state=active]:bg-blue-500 data-[state=active]:text-white"
+              >
+                Data Migration
+              </TabsTrigger>
+              <TabsTrigger 
+                value="fintech" 
+                className="data-[state=active]:bg-green-500 data-[state=active]:text-white"
+              >
+                Fintech Solutions
+              </TabsTrigger>
+              <TabsTrigger 
+                value="methaneMitigation" 
+                className="data-[state=active]:bg-teal-500 data-[state=active]:text-white"
+              >
+                Methane Mitigation
+              </TabsTrigger>
+            </TabsList>
+
+            {/* Data Migration Tab */}
+            <TabsContent value="dataMigration" className="bg-white p-8 rounded-xl shadow-md">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Data Migration Services</h3>
+                  <p className="text-gray-700 mb-6">
+                    Seamlessly transition your data infrastructure with our comprehensive migration solutions. 
+                    We ensure zero downtime, complete data integrity, and optimized performance for your new environment.
+                  </p>
+                  <ul className="space-y-3 mb-6">
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Automated schema conversion and validation</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Real-time data synchronization</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Compliance with global data regulations</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Post-migration optimization and support</span>
+                    </li>
+                  </ul>
+                  <Button onClick={downloadBrochure} className="bg-blue-600 hover:bg-blue-700">
+                    Download Brochure
+                  </Button>
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold mb-4">Request Data Migration Consultation</h4>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <Input 
+                      name="name"
+                      placeholder="Full Name" 
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Input 
+                      type="email" 
+                      name="email"
+                      placeholder="Email Address" 
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Textarea 
+                      name="message"
+                      placeholder="Describe your migration needs" 
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <input type="hidden" name="service" value="Data Migration" />
+                    <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+                      Get Expert Consultation
+                    </Button>
+                  </form>
                 </div>
               </div>
-            </div>
-          </div>
+            </TabsContent>
+
+            {/* Fintech Tab */}
+            <TabsContent value="fintech" className="bg-white p-8 rounded-xl shadow-md">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Fintech Solutions</h3>
+                  <p className="text-gray-700 mb-6">
+                    Transform your financial operations with our cutting-edge technology solutions. 
+                    From real-time analytics to fraud detection, we provide the tools for financial innovation.
+                  </p>
+                  <ul className="space-y-3 mb-6">
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>AI-powered risk assessment models</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Blockchain integration for secure transactions</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Real-time financial dashboards</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Regulatory compliance automation</span>
+                    </li>
+                  </ul>
+                  <Button onClick={downloadBrochure} className="bg-green-600 hover:bg-green-700">
+                    Download Brochure
+                  </Button>
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold mb-4">Fintech Solution Inquiry</h4>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <Input 
+                      name="name"
+                      placeholder="Full Name" 
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Input 
+                      type="email" 
+                      name="email"
+                      placeholder="Work Email" 
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Textarea 
+                      name="message"
+                      placeholder="Describe your financial technology needs" 
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <input type="hidden" name="service" value="Fintech" />
+                    <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
+                      Request Solution Demo
+                    </Button>
+                  </form>
+                </div>
+              </div>
+            </TabsContent>
+
+            {/* Methane Mitigation Tab */}
+            <TabsContent value="methaneMitigation" className="bg-white p-8 rounded-xl shadow-md">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Methane Mitigation</h3>
+                  <p className="text-gray-700 mb-6">
+                    Reduce your environmental impact with our data-driven methane reduction solutions. 
+                    Our technology helps energy companies monitor, measure, and minimize methane emissions.
+                  </p>
+                  <ul className="space-y-3 mb-6">
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Satellite-based emission detection</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Predictive leak prevention systems</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Regulatory compliance reporting</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Sustainability impact analytics</span>
+                    </li>
+                  </ul>
+                  <Button onClick={downloadBrochure} className="bg-teal-600 hover:bg-teal-700">
+                    Download Brochure
+                  </Button>
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold mb-4">Methane Reduction Consultation</h4>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <Input 
+                      name="name"
+                      placeholder="Full Name" 
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Input 
+                      type="email" 
+                      name="email"
+                      placeholder="Email Address" 
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Textarea 
+                      name="message"
+                      placeholder="Tell us about your sustainability goals" 
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <input type="hidden" name="service" value="Methane Mitigation" />
+                    <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700">
+                      Schedule Assessment
+                    </Button>
+                  </form>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
-      {/* Introduction Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Transform Your Financial Operations</h2>
-              <div className="space-y-4 text-lg">
-                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Our fintech solutions are designed to help financial institutions navigate the digital transformation landscape with confidence. We combine cutting-edge technology with deep financial expertise to deliver solutions that drive growth and efficiency.
-                </p>
-                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-                  From digital banking platforms to risk management systems, our solutions are scalable, secure, and tailored to meet the unique needs of your organization.
-                </p>
-                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-                  With over a decade of experience in financial technology, we've helped hundreds of institutions modernize their operations and stay competitive in an increasingly digital world.
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className={`rounded-xl overflow-hidden shadow-lg border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
-                <img 
-                  src={imageUrls.team} 
-                  alt="Financial Team" 
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How Our Fintech Solutions Work</h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
-              A simple three-step process to transform your financial services
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* How It Works */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">How Our Solutions Work</h2>
+          <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {[
-              {
-                title: "Assessment & Planning",
-                description: "We analyze your current systems and identify areas for improvement and digital transformation.",
-                icon: "1"
-              },
-              {
-                title: "Solution Implementation",
-                description: "Our team deploys customized fintech solutions tailored to your specific needs.",
-                icon: "2"
-              },
-              {
-                title: "Ongoing Support",
-                description: "We provide continuous support and updates to ensure your systems remain cutting-edge.",
-                icon: "3"
-              }
-            ].map((item, index) => (
-              <div key={index} className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} shadow-lg`}>
-                <div className="w-14 h-14 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mb-6 text-indigo-600 dark:text-indigo-300 text-xl font-bold">
-                  {item.icon}
+              {title: 'Assessment', desc: 'We analyze your current systems and requirements'},
+              {title: 'Solution Design', desc: 'Custom architecture tailored to your needs'},
+              {title: 'Implementation', desc: 'Seamless integration with minimal disruption'},
+              {title: 'Optimization', desc: 'Continuous monitoring and improvement'}
+            ].map((step, index) => (
+              <div key={index} className="text-center p-6 bg-gray-50 rounded-lg">
+                <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-blue-600">{index + 1}</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
+                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                <p className="text-gray-600">{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Solutions Section */}
-<section className="py-20 px-4 sm:px-6 lg:px-8">
-  <div className="max-w-7xl mx-auto">
-    <div className="text-center mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Fintech Solutions</h2>
-      <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
-        Comprehensive solutions designed to address every aspect of modern financial services
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {[
-        {
-          title: "Digital Payments",
-          description: "Secure and scalable digital payment solutions for any business",
-          icon: <FiCreditCard className="text-3xl text-indigo-600" />
-        },
-        {
-          title: "Risk Analytics",
-          description: "Advanced analytics for fraud detection and risk assessment",
-          icon: <FiShield className="text-3xl text-indigo-600" />
-        },
-        {
-          title: "Wealth Management",
-          description: "AI-driven investment and wealth management platforms",
-          icon: <FiTrendingUp className="text-3xl text-indigo-600" />
-        },
-        {
-          title: "RegTech",
-          description: "Compliance solutions for financial regulations",
-          icon: <FiCheck className="text-3xl text-indigo-600" />
-        }
-      ].map((item, index) => (
-        <div key={index} className={`p-8 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'}`}>
-          <div className="w-14 h-14 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mb-6">
-            {item.icon}
-          </div>
-          <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-          <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-      {/* Contact Form Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white pt-16 pb-8">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Financial Services?</h2>
-              <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-                Fill out the form to schedule a consultation with our fintech experts. We'll discuss your needs and show you how our solutions can help your business grow.
+              <h4 className="text-lg font-bold mb-4">BigData Solutions</h4>
+              <p className="text-gray-400">
+                Transforming data into sustainable value through innovative technology solutions.
               </p>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <FiCheck className="text-green-500 mr-2 text-xl" />
-                  <span className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>No obligation consultation</span>
-                </div>
-                <div className="flex items-center">
-                  <FiCheck className="text-green-500 mr-2 text-xl" />
-                  <span className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Customized solutions</span>
-                </div>
-                <div className="flex items-center">
-                  <FiCheck className="text-green-500 mr-2 text-xl" />
-                  <span className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>24/7 support</span>
-                </div>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold mb-4">Services</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>Data Migration</li>
+                <li>Fintech Solutions</li>
+                <li>Methane Mitigation</li>
+                <li>Data Analytics</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold mb-4">Resources</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>Case Studies</li>
+                <li>Whitepapers</li>
+                <li>Industry Reports</li>
+                <li>Blog</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold mb-4">Connect</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>Contact Us</li>
+                <li>Careers</li>
+                <li>Newsletter</li>
+                <li>LinkedIn</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-gray-500 text-sm mb-4 md:mb-0">
+                © 2025 BigData Solutions. All rights reserved.
+              </p>
+              <div className="flex space-x-6">
+                <a href="/privacy" className="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                <a href="/data-policy" className="text-gray-400 hover:text-white text-sm">Data Policy</a>
+                <a href="/terms" className="text-gray-400 hover:text-white text-sm">Terms & Conditions</a>
               </div>
             </div>
-            <div className={`p-8 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
-              <h3 className="text-2xl font-semibold mb-6">Request Information</h3>
-              <form className="space-y-4">
-                <input 
-                  type="text" 
-                  placeholder="Your Name" 
-                  className="w-full p-3 rounded border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                />
-                <input 
-                  type="email" 
-                  placeholder="Email Address" 
-                  className="w-full p-3 rounded border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                />
-                <input 
-                  type="tel" 
-                  placeholder="Phone Number" 
-                  className="w-full p-3 rounded border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                />
-                <select 
-                  className="w-full p-3 rounded border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-                  <option value="">Select Service of Interest</option>
-                  <option value="payments">Digital Payments</option>
-                  <option value="risk">Risk Analytics</option>
-                  <option value="wealth">Wealth Management</option>
-                  <option value="regtech">RegTech Solutions</option>
-                </select>
-                <textarea 
-                  placeholder="Tell us about your needs" 
-                  rows={4}
-                  className="w-full p-3 rounded border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                ></textarea>
-                <button 
-                  type="submit" 
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold"
-                >
-                  Request Consultation
-                </button>
-              </form>
-            </div>
           </div>
         </div>
-      </section>
-{/* About Big Data Rhino Section - Theme-based */}
-<section className="py-20 px-4 sm:px-6 lg:px-8">
-  <div className="max-w-7xl mx-auto">
-    <div className="text-center mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold">About Big Data Rhino</h2>
-      <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mt-4`}>
-        Precision Data Solutions for Strategic Decision-Making
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-      <div>
-        <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-          Founded in February 2022 by Patrick Parks, a proud Reconnaissance Marine veteran, Big Data Rhino is driven by a mission to bring clarity and actionable insights to complex data challenges. We combine military precision with cutting-edge data science to empower smarter business decisions.
-        </p>
-        <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-          Our Story: Born from military discipline and technological innovation, Big Data Rhino brings strategic thinking and relentless execution to data solutions. From veteran-owned startup to trusted industry partner, we help organizations navigate data complexity with confidence.
-        </p>
-      </div>
-      <div className="relative">
-        <div className={`rounded-xl overflow-hidden shadow-lg ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} border aspect-video`}>
-          <img 
-            src={imageUrls.workflow} 
-            alt="Big Data Rhino Team" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-      <div>
-        <h3 className="text-xl font-bold mb-4">Our Approach</h3>
-        <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-          <li className="flex items-start">
-            <FiShield className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
-            <span>Military-grade precision in data handling</span>
-          </li>
-          <li className="flex items-start">
-            <FiDatabase className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
-            <span>Cutting-edge AI and machine learning</span>
-          </li>
-          <li className="flex items-start">
-            <FiGlobe className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
-            <span>Industry-specific expertise</span>
-          </li>
-          <li className="flex items-start">
-            <FiBarChart2 className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
-            <span>Actionable business insights</span>
-          </li>
-        </ul>
-      </div>
-      
-      <div>
-        <h3 className="text-xl font-bold mb-4">Our Capabilities</h3>
-        <div className="grid grid-cols-2 gap-3">
-          {[
-            { icon: "🤖", text: "AI Solutions" },
-            { icon: "🔮", text: "Predictive Analytics" },
-            { icon: "📊", text: "Data Visualization" },
-            { icon: "☁️", text: "Cloud Integration" },
-            { icon: "🔌", text: "API Development" },
-            { icon: "🛡️", text: "Security Compliance" }
-          ].map((item, index) => (
-            <div key={index} className={`flex items-center p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
-              <span className="text-2xl mr-3">{item.icon}</span>
-              <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>{item.text}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      <div>
-        <h3 className="text-xl font-bold mb-4">Industry Impact</h3>
-        <div className="space-y-4">
-          {[
-            { 
-              industry: "Energy Sector", 
-              description: "Optimizing operations and reducing emissions through analytics",
-              stat: "30% efficiency gains" 
-            },
-            { 
-              industry: "Healthcare", 
-              description: "Transforming patient outcomes with predictive analytics",
-              stat: "Improved diagnostics" 
-            },
-            { 
-              industry: "Government", 
-              description: "Secure, actionable intelligence for public agencies",
-              stat: "DVBE-certified" 
-            }
-          ].map((item, index) => (
-            <div key={index} className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
-              <h4 className="font-semibold mb-2">{item.industry}</h4>
-              <p className={`text-sm mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
-              <p className="text-gray-800 dark:text-gray-300 font-medium">{item.stat}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    <div className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg mb-16`}>
-      <h3 className="text-xl font-bold mb-4">Our Team Culture</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-            We combine technical excellence with unique perspectives to deliver innovative solutions:
-          </p>
-          <ul className={`space-y-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-            <li className="flex items-start">
-              <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
-              <span>PhD-level data scientists</span>
-            </li>
-            <li className="flex items-start">
-              <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
-              <span>Veterans with military discipline</span>
-            </li>
-            <li className="flex items-start">
-              <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
-              <span>Industry domain experts</span>
-            </li>
-            <li className="flex items-start">
-              <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
-              <span>Creative problem-solvers</span>
-            </li>
-          </ul>
-        </div>
-        <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} italic border-l-4 border-gray-500`}>
-          <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-            "The best solutions emerge when unique perspectives meet deep technical expertise."
-          </p>
-          <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-            Our culture emphasizes continuous learning, collaboration, and shared success.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <h3 className="text-xl font-bold mb-6 text-center">Our Commitment to Clients</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {[
-          { icon: "🔍", title: "Transparency", description: "Clear communication throughout" },
-          { icon: "📈", title: "Results", description: "Measurable business outcomes" },
-          { icon: "🛡️", title: "Security", description: "Enterprise-grade protection" },
-          { icon: "🤝", title: "Partnership", description: "Long-term collaboration" }
-        ].map((item, index) => (
-          <div 
-            key={index} 
-            className={`p-6 rounded-xl text-center ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-shadow`}
-          >
-            <div className="text-3xl mb-4">{item.icon}</div>
-            <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
-            <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>{item.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-    
-      <Footer />
-
-      {/* Callback Form Popup */}
-      {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 p-4">
-          <div className={`relative w-full max-w-lg p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} max-h-[90vh] overflow-y-auto`}>
-            <button 
-              onClick={handleClosePopup} 
-              className="absolute top-3 right-4 text-xl font-bold hover:opacity-70"
-              type="button"
-            >
-              &times;
-            </button>
-            <div className="flex items-center mb-6">
-              <img src={phoneIcon} alt="Phone" className="w-10 h-10 mr-3" />
-              <h3 className="text-2xl font-semibold">Set Up Callback</h3>
-            </div>
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              <input 
-                type="text" 
-                name="name" 
-                value={formData.name} 
-                onChange={handleChange} 
-                placeholder="Name" 
-                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 text-black dark:text-white focus:outline-none" 
-                required 
-              />
-              <input 
-                type="email" 
-                name="email" 
-                value={formData.email} 
-                onChange={handleChange} 
-                placeholder="Email" 
-                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 text-black dark:text-white focus:outline-none" 
-                required 
-              />
-              <input 
-                type="tel" 
-                name="phone" 
-                value={formData.phone} 
-                onChange={handleChange} 
-                placeholder="Phone Number" 
-                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 text-black dark:text-white focus:outline-none" 
-                required 
-              />
-              <input 
-                type="datetime-local" 
-                name="datetime" 
-                value={formData.datetime} 
-                onChange={handleChange} 
-                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 text-black dark:text-white focus:outline-none" 
-                required 
-              />
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="How can we help you?"
-                rows={3}
-                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 text-black dark:text-white focus:outline-none"
-              ></textarea>
-              <button 
-                type="submit" 
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold disabled:opacity-50"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Submitting..." : "Submit"}
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
+      </footer>
     </div>
   );
 };
 
-export default Fintech;
+export default Sarvice;
