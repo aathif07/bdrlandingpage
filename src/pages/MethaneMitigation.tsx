@@ -233,7 +233,8 @@ const MethaneMitigation = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+<section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
+
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Proven Process</h2>
@@ -308,14 +309,6 @@ const MethaneMitigation = () => {
                   </div>
                 ))}
               </div>
-              
-              <button 
-                className="flex items-center text-indigo-600 dark:text-indigo-400 font-medium mt-6"
-                onClick={handleDownloadBrochure}
-              >
-                <FiDownload className="mr-2"/>
-                Download Full Solution Brochure (PDF)
-              </button>
             </div>
             
             <div className={`p-8 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-100 dark:border-gray-700`}>

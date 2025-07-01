@@ -55,7 +55,7 @@ const ServicesPage = () => {
         "Data integrity assurance",
         "Minimal business disruption"
       ],
-      link: "/services/data-migration",
+      link: "/methanemitigation",
       image: imageUrls.dataMigration
     },
     {
@@ -69,7 +69,7 @@ const ServicesPage = () => {
         "Regulatory compliance",
         "API banking integration"
       ],
-      link: "/services/fintech",
+      link: "/fintech",
       image: imageUrls.fintech
     },
     {
@@ -83,7 +83,7 @@ const ServicesPage = () => {
         "Regulatory compliance",
         "Reduction strategies"
       ],
-      link: "/services/methane-mitigation",
+      link: "/methanemitigation",
       image: imageUrls.methane
     }
   ];
@@ -139,20 +139,17 @@ const ServicesPage = () => {
     }
   };
 
-  // Brochure download handler
-  const handleDownloadBrochure = () => {
-    // Simulate PDF download
-    const brochureUrl = '/pdf/BigDataRhino_Services_Overview.pdf';
-    
+  // Brochure download handler with parameters
+  const downloadBrochure = (filePath: string, fileName: string) => {
     // Create a temporary link to trigger download
     const link = document.createElement('a');
-    link.href = brochureUrl;
-    link.download = 'BigDataRhino_Services_Overview.pdf';
+    link.href = filePath;
+    link.download = fileName;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     
-    toast.success('Brochure download started!');
+    toast.success(`Downloading ${fileName}`);
   };
 
   return (
@@ -160,38 +157,27 @@ const ServicesPage = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center ${theme === 'dark' ? 'bg-gray-900' : 'bg-gradient-to-r from-indigo-50 to-blue-50'}`}>
-        <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2 space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Enterprise <span className="text-indigo-600">Technology Solutions</span> 
-            </h1>
-            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-              Transform your business with our specialized services designed for complex industry challenges and digital transformation.
-            </p>
-            <div className="flex flex-wrap gap-4 mt-8">
-              <button 
-                onClick={handleDownloadBrochure}
-                className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
-              >
-                <FiDownload className="text-lg" />
-                Download Brochure
-              </button>
-              <Link 
-                to="/contact" 
-                className="px-6 py-3 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
-              >
-                Contact Sales
-              </Link>
+      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
+        <div className="max-w-[95%] mx-auto w-full flex flex-col items-center">
+          <div className="relative mb-10 w-full max-w-5xl flex justify-center">
+            <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-300' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
+              <img 
+  src="" 
+  alt="Methane Solutions Dashboard" 
+  className="w-full h-full object-cover object-center"
+/>
+
             </div>
           </div>
-          <div className="md:w-1/2">
-            <div className={`rounded-xl overflow-hidden shadow-2xl ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} border aspect-video`}>
-              <img 
-                src={imageUrls.banner} 
-                alt="Enterprise Solutions" 
-                className="w-full h-full object-cover"
-              />
+          <div className="space-y-6 text-center max-w-7xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              Enterprise <span className="text-indigo-600"> Technology Solutions</span> 
+            </h1>
+            <p className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'} mx-auto`}>
+            Transform your business with our specialized services designed for complex industry challenges and digital transformation.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {/* Add buttons or other content here if needed */}
             </div>
           </div>
         </div>
@@ -304,6 +290,74 @@ const ServicesPage = () => {
         </div>
       </section>
 
+      {/* Brochure Downloads Section */}
+      <section className={`py-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Download Our Brochures</h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
+              Explore detailed information about our specialized solutions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Brochure 1 */}
+            <div className={`p-6 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-indigo-50'} border border-indigo-100 dark:border-gray-700 flex flex-col`}>
+              <div className="flex items-center gap-3 mb-4">
+                <FiDatabase className="text-2xl text-indigo-600" />
+                <h3 className="text-xl font-bold">Data Migration Solutions</h3>
+              </div>
+              <p className={`mb-6 flex-grow ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                Comprehensive guide to our legacy system modernization and cloud migration services
+              </p>
+              <button 
+                onClick={() => downloadBrochure('/pdf/Big Data Rhino-Data Migration Solutions.pdf', 'Big Data Rhino-Data Migration Solutions')}
+                className="flex items-center justifycenter gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+              >
+                <FiDownload className="text-lg" />
+                Download PDF
+              </button>
+            </div>
+
+            {/* Brochure 2 */}
+            <div className={`p-6 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-indigo-50'} border border-indigo-100 dark:border-gray-700 flex flex-col`}>
+              <div className="flex items-center gap-3 mb-4">
+                <FaServer className="text-2xl text-indigo-600" />
+                <h3 className="text-xl font-bold">Mainframe Modernization</h3>
+              </div>
+              <p className={`mb-6 flex-grow ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                Strategies for transforming legacy mainframe applications to modern architectures
+              </p>
+              <button 
+                onClick={() => downloadBrochure('/pdf/Mainframe Application Modernization (6).pdf', 'Mainframe_Application_Modernization.pdf')}
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+              >
+                <FiDownload className="text-lg" />
+                Download PDF
+              </button>
+            </div>
+
+            {/* Brochure 3 */}
+            <div className={`p-6 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-indigo-50'} border border-indigo-100 dark:border-gray-700 flex flex-col`}>
+              <div className="flex items-center gap-3 mb-4">
+                <FiGlobe className="text-2xl text-indigo-600" />
+                <h3 className="text-xl font-bold">AI/ML for Government</h3>
+              </div>
+              <p className={`mb-6 flex-grow ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                How AI and machine learning can create smarter, faster government operations
+              </p>
+              <button 
+                onClick={() => downloadBrochure('/pdf/Leveraging AI_ML for Smarter, Faster Government.pdf', 'AI_ML_for_Government.pdf')}
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+              >
+                <FiDownload className="text-lg" />
+                Download PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Form Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto">
@@ -331,14 +385,7 @@ const ServicesPage = () => {
                   </div>
                 ))}
               </div>
-              
-              <button 
-                className="flex items-center text-indigo-600 dark:text-indigo-400 font-medium mt-6"
-                onClick={handleDownloadBrochure}
-              >
-                <FiDownload className="mr-2"/>
-                Download Full Services Brochure (PDF)
-              </button>
+
             </div>
             
             <div className={`p-8 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'} border border-gray-100 dark:border-gray-700`}>
