@@ -109,7 +109,7 @@ const Fintech = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
+      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-[95%] mx-auto w-full flex flex-col items-center">
           <div className="relative mb-10 w-full max-w-5xl flex justify-center">
             <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
@@ -121,20 +121,20 @@ const Fintech = () => {
             </div>
           </div>
           <div className="collection space-y-6 text-center max-w-7xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Data <span className="text-yellow-500">Migration</span> Services
-            </h1>
-            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mx-auto`}>
-              Seamlessly transfer your data between systems with minimal downtime and maximum security. Our certified experts ensure your migration is smooth, efficient, and risk-free.
-            </p>
+           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+  Fintech <span className="text-yellow-500">Services</span>
+</h1>
+<p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mx-auto`}>
+  Unlock the future of finance with secure, scalable, and AI-powered fintech solutions. From digital banking to blockchain integration, we deliver innovation with trust.
+</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
             </div>
           </div>
         </div>
       </section>
 
-    {/* About Big Data Rhino Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      {/* About Big Data Rhino Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">About Big Data Rhino</h2>
@@ -256,9 +256,9 @@ const Fintech = () => {
                   </li>
                 </ul>
               </div>
-              <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} italic border-l-4 border-gray-700 dark:border-gray-700`}>
+              <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'} italic border-l-4 border-gray-700 dark:border-gray-700`}>
                 <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                  "The best solutions emerge when unique perspectives meet deep technical expertise."
+                  "The best solutions emerge when unique perspectives combine with deep technical expertise."
                 </p>
                 <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
                   Our culture emphasizes continuous learning, collaboration, and shared success.
@@ -290,7 +290,7 @@ const Fintech = () => {
       </section>
       
       {/* Introduction Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -360,7 +360,7 @@ const Fintech = () => {
       </section>
 
       {/* Our Solutions Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Fintech Solutions</h2>
@@ -404,7 +404,7 @@ const Fintech = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+     <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -476,7 +476,7 @@ const Fintech = () => {
       {/* Callback Form Popup */}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 p-4">
-          <div className={`relative w-full max-w-lg p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-900 text-gray-300' : 'bg-white text-gray-900'} max-h-[90vh] overflow-y-auto border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+          <div className={`relative w-full max-w-lg p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} text-gray-900 max-h-[90vh] overflow-y-auto border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
             <button 
               onClick={handleClosePopup} 
               className="absolute top-3 right-4 text-xl font-bold hover:opacity-70 text-yellow-500 dark:text-yellow-500"
