@@ -70,14 +70,14 @@ const DataMigration = () => {
   };
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
+    <div className={`min-h-screen ${theme === 'dark' ? 'dark bg-gray-800' : 'bg-white'}`}>
       <Navbar />
       
-      {/* Hero Section (unchanged) */}
-      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
+      {/* Hero Section */}
+      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-[95%] mx-auto w-full flex flex-col items-center">
           <div className="relative mb-10 w-full max-w-5xl flex justify-center">
-            <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-300' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
+            <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
               <img 
                 src={imageUrls.dashboard} 
                 alt="Data Migration Dashboard" 
@@ -87,9 +87,9 @@ const DataMigration = () => {
           </div>
           <div className="collection space-y-6 text-center max-w-7xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Data <span className="text-indigo-600">Migration</span> Services
+              Data <span className="text-yellow-500">Migration</span> Services
             </h1>
-            <p className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'} mx-auto`}>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mx-auto`}>
               Seamlessly transfer your data between systems with minimal downtime and maximum security. Our certified experts ensure your migration is smooth, efficient, and risk-free.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -99,189 +99,27 @@ const DataMigration = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Data Migration Solutions</h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'} max-w-3xl mx-auto`}>
-              Comprehensive services to meet all your data migration needs
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <FiDatabase className="text-3xl text-indigo-600" />,
-                title: "Database Migration",
-                description: "Seamless transfer of databases between platforms with zero downtime and complete data integrity."
-              },
-              {
-                icon: <FiGlobe className="text-3xl text-indigo-600" />,
-                title: "Cloud Migration",
-                description: "Secure movement of data and applications to cloud platforms with optimized architectures."
-              },
-              {
-                icon: <FiServer className="text-3xl text-indigo-600" />,
-                title: "Application Migration",
-                description: "Modernization of applications while ensuring data compatibility during platform transitions."
-              }
-            ].map((service, index) => (
-              <div key={index} className={`p-8 rounded-xl bg-gray-800 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2`}>
-                <div className="w-14 h-14 rounded-full bg-indigo-100 dark:bg-indigo-800 flex items-center justify-center mb-6 mx-auto">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-center text-white">{service.title}</h3>
-                <p className="text-white text-center">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Data Migration Process</h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'} max-w-3xl mx-auto`}>
-              A proven methodology for successful data migration projects
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <FiBarChart2 className="text-3xl text-indigo-600" />,
-                title: "Assessment",
-                description: "We analyze your current data landscape and requirements"
-              },
-              {
-                icon: <FiServer className="text-3xl text-indigo-600" />,
-                title: "Planning",
-                description: "Detailed migration strategy and risk mitigation plan"
-              },
-              {
-                icon: <FiDatabase className="text-3xl text-indigo-600" />,
-                title: "Execution",
-                description: "Phased migration with continuous validation"
-              },
-              {
-                icon: <FiCheck className="text-3xl text-indigo-600" />,
-                title: "Validation",
-                description: "Comprehensive testing and performance tuning"
-              }
-            ].map((step, index) => (
-              <div key={index} className="group">
-                <div className={`p-8 rounded-xl bg-gray-800 shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2`}>
-                  <div className="w-14 h-14 rounded-full bg-indigo-100 dark:bg-indigo-800 flex items-center justify-center mb-6 mx-auto">
-                    {step.icon}
-                  </div>
-                  <div className="text-center">
-                    <div className="w-12 h-1 bg-indigo-600 mx-auto mb-4"></div>
-                    <h3 className="text-xl font-semibold mb-3 text-white">{step.title}</h3>
-                    <p className="text-white">{step.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Data Migration?</h2>
-              <p className={`text-xl mb-8 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}>
-                Fill out the form and our migration specialist will contact you within 24 hours to discuss your project requirements.
-              </p>
-              <div className="space-y-6">
-                {[
-                  "Free initial consultation",
-                  "No obligation quote",
-                  "GDPR & HIPAA compliant processes"
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="flex-shrink-0 mt-1">
-                      <FiCheck className="text-green-500 text-xl" />
-                    </div>
-                    <p className={`ml-3 text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className={`p-8 rounded-xl bg-gray-800 shadow-lg`}>
-              <h3 className="text-2xl font-bold mb-6 text-white">Contact Us</h3>
-              <form className="space-y-4" onSubmit={handleSubmit}>
-                <input 
-                  type="text" 
-                  name="name" 
-                  value={formData.name} 
-                  onChange={handleChange} 
-                  placeholder="Full Name" 
-                  className="w-full p-3 rounded bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                  required 
-                />
-                <input 
-                  type="email" 
-                  name="email" 
-                  value={formData.email} 
-                  onChange={handleChange} 
-                  placeholder="Email Address" 
-                  className="w-full p-3 rounded bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                  required 
-                />
-                <input 
-                  type="tel" 
-                  name="phone" 
-                  value={formData.phone} 
-                  onChange={handleChange} 
-                  placeholder="Phone Number" 
-                  className="w-full p-3 rounded bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                  required 
-                />
-                <textarea 
-                  name="message" 
-                  value={formData.message} 
-                  onChange={handleChange} 
-                  placeholder="Tell us about your migration needs" 
-                  rows={4}
-                  className="w-full p-3 rounded bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                ></textarea>
-                <button 
-                  type="submit" 
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold disabled:opacity-50"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Submitting..." : "Send Message"}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       {/* About Big Data Rhino Section */}
-      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">About Big Data Rhino</h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'} mt-4`}>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mt-4`}>
               Precision Data Solutions for Strategic Decision-Making
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+              <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                 Founded in February 2022 by Patrick Parks, a proud Reconnaissance Marine veteran, Big Data Rhino is driven by a mission to bring clarity and actionable insights to complex data challenges. We combine military precision with cutting-edge data science to empower smarter business decisions.
               </p>
-              <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+              <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                 Our Story: Born from military discipline and technological innovation, Big Data Rhino brings strategic thinking and relentless execution to data solutions. From veteran-owned startup to trusted industry partner, we help organizations navigate data complexity with confidence.
               </p>
             </div>
             <div className="relative">
-              <div className={`rounded-xl overflow-hidden shadow-lg ${theme === 'dark' ? 'border-gray-300' : 'border-gray-200'} border aspect-video`}>
+              <div className={`rounded-xl overflow-hidden shadow-lg ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} border aspect-video`}>
                 <img 
                   src={imageUrls.workflow} 
                   alt="Big Data Rhino Team" 
@@ -292,28 +130,28 @@ const DataMigration = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div>
-              <h3 className="text-xl font-bold mb-4">Our Approach</h3>
-              <ul className={`space-y-3 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+              <h3 className="text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Our Approach</h3>
+              <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                 <li className="flex items-start">
-                  <FiShield className="text-gray-700 dark:text-white mr-2 mt-1 flex-shrink-0" />
+                  <FiShield className="text-gray-700 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
                   <span>Military-grade precision in data handling</span>
                 </li>
                 <li className="flex items-start">
-                  <FiDatabase className="text-gray-700 dark:text-white mr-2 mt-1 flex-shrink-0" />
+                  <FiDatabase className="text-gray-700 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
                   <span>Cutting-edge AI and machine learning</span>
                 </li>
                 <li className="flex items-start">
-                  <FiGlobe className="text-gray-700 dark:text-white mr-2 mt-1 flex-shrink-0" />
+                  <FiGlobe className="text-gray-700 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
                   <span>Industry-specific expertise</span>
                 </li>
                 <li className="flex items-start">
-                  <FiBarChart2 className="text-gray-700 dark:text-white mr-2 mt-1 flex-shrink-0" />
+                  <FiBarChart2 className="text-gray-700 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
                   <span>Actionable business insights</span>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Our Capabilities</h3>
+              <h3 className="text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Our Capabilities</h3>
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { icon: "🤖", text: "AI Solutions" },
@@ -323,15 +161,15 @@ const DataMigration = () => {
                   { icon: "🔌", text: "API Development" },
                   { icon: "🛡️", text: "Security Compliance" }
                 ].map((item, index) => (
-                  <div key={index} className={`flex items-center p-3 rounded-lg bg-gray-800 shadow-sm`}>
+                  <div key={index} className={`flex items-center p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-sm`}>
                     <span className="text-2xl mr-3">{item.icon}</span>
-                    <span className="text-white">{item.text}</span>
+                    <span className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>{item.text}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Industry Impact</h3>
+              <h3 className="text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Industry Impact</h3>
               <div className="space-y-4">
                 {[
                   { 
@@ -350,53 +188,53 @@ const DataMigration = () => {
                     stat: "DVBE-certified" 
                   }
                 ].map((item, index) => (
-                  <div key={index} className={`p-4 rounded-lg bg-gray-800 shadow-sm`}>
-                    <h4 className="font-semibold mb-2 text-white">{item.industry}</h4>
-                    <p className="text-sm mb-2 text-white">{item.description}</p>
-                    <p className="text-white font-medium">{item.stat}</p>
+                  <div key={index} className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-sm`}>
+                    <h4 className="font-semibold mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">{item.industry}</h4>
+                    <p className={`text-sm mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
+                    <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'} font-medium`}>{item.stat}</p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          <div className={`p-8 rounded-xl bg-gray-800 shadow-lg mb-16`}>
-            <h3 className="text-xl font-bold mb-4 text-white">Our Team Culture</h3>
+          <div className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-lg mb-16`}>
+            <h3 className="text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Our Team Culture</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <p className="mb-4 text-white">
+                <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                   We combine technical excellence with unique perspectives to deliver innovative solutions:
                 </p>
-                <ul className="space-y-2 text-white">
+                <ul className={`space-y-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                   <li className="flex items-start">
-                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <FiCheck className="text-yellow-500 mr-2 mt-1 flex-shrink-0" />
                     <span>PhD-level data scientists</span>
                   </li>
                   <li className="flex items-start">
-                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <FiCheck className="text-yellow-500 mr-2 mt-1 flex-shrink-0" />
                     <span>Veterans with military discipline</span>
                   </li>
                   <li className="flex items-start">
-                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <FiCheck className="text-yellow-500 mr-2 mt-1 flex-shrink-0" />
                     <span>Industry domain experts</span>
                   </li>
                   <li className="flex items-start">
-                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <FiCheck className="text-yellow-500 mr-2 mt-1 flex-shrink-0" />
                     <span>Creative problem-solvers</span>
                   </li>
                 </ul>
               </div>
-              <div className={`p-6 rounded-lg bg-gray-900 italic border-l-4 border-gray-300`}>
-                <p className="mb-4 text-white">
+              <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'} italic border-l-4`}>
+                <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                   "The best solutions emerge when unique perspectives meet deep technical expertise."
                 </p>
-                <p className="text-white">
+                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                   Our culture emphasizes continuous learning, collaboration, and shared success.
                 </p>
               </div>
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-bold mb-6 text-center">Our Commitment to Clients</h3>
+            <h3 className="text-xl font-bold mb-6 text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Our Commitment to Clients</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {[
                 { icon: "🔍", title: "Transparency", description: "Clear communication throughout" },
@@ -406,11 +244,11 @@ const DataMigration = () => {
               ].map((item, index) => (
                 <div 
                   key={index} 
-                  className={`p-6 rounded-xl text-center bg-gray-800 shadow-lg hover:shadow-xl transition-shadow`}
+                  className={`p-6 rounded-xl text-center ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-lg hover:shadow-xl transition-shadow`}
                 >
                   <div className="text-3xl mb-4">{item.icon}</div>
-                  <h4 className="text-lg font-semibold mb-2 text-white">{item.title}</h4>
-                  <p className="text-white">{item.description}</p>
+                  <h4 className="text-lg font-semibold mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">{item.title}</h4>
+                  <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
                 </div>
               ))}
             </div>
@@ -418,20 +256,184 @@ const DataMigration = () => {
         </div>
       </section>
 
+      {/* Services Section */}
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Data Migration Solutions</h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
+              Comprehensive services to meet all your data migration needs
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <FiDatabase className="text-3xl text-yellow-500" />,
+                title: "Database Migration",
+                description: "Seamless transfer of databases between platforms with zero downtime and complete data integrity."
+              },
+              {
+                icon: <FiGlobe className="text-3xl text-yellow-500" />,
+                title: "Cloud Migration",
+                description: "Secure movement of data and applications to cloud platforms with optimized architectures."
+              },
+              {
+                icon: <FiServer className="text-3xl text-yellow-500" />,
+                title: "Application Migration",
+                description: "Modernization of applications while ensuring data compatibility during platform transitions."
+              }
+            ].map((service, index) => (
+              <div key={index} className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2`}>
+                <div className="w-14 h-14 rounded-full bg-yellow-500/10 flex items-center justify-center mb-6 mx-auto">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">{service.title}</h3>
+                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} text-center`}>{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Data Migration Process</h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
+              A proven methodology for successful data migration projects
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              {
+                icon: <FiBarChart2 className="text-3xl text-yellow-500" />,
+                title: "Assessment",
+                description: "We analyze your current data landscape and requirements"
+              },
+              {
+                icon: <FiServer className="text-3xl text-yellow-500" />,
+                title: "Planning",
+                description: "Detailed migration strategy and risk mitigation plan"
+              },
+              {
+                icon: <FiDatabase className="text-3xl text-yellow-500" />,
+                title: "Execution",
+                description: "Phased migration with continuous validation"
+              },
+              {
+                icon: <FiCheck className="text-3xl text-yellow-500" />,
+                title: "Validation",
+                description: "Comprehensive testing and performance tuning"
+              }
+            ].map((step, index) => (
+              <div key={index} className="group">
+                <div className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2`}>
+                  <div className="w-14 h-14 rounded-full bg-yellow-500/10 flex items-center justify-center mb-6 mx-auto">
+                    {step.icon}
+                  </div>
+                  <div className="text-center">
+                    <div className="w-12 h-1 bg-yellow-500 mx-auto mb-4"></div>
+                    <h3 className="text-xl font-semibold mb-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">{step.title}</h3>
+                    <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{step.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Data Migration?</h2>
+              <p className={`text-xl mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                Fill out the form and our migration specialist will contact you within 24 hours to discuss your project requirements.
+              </p>
+              <div className="space-y-6">
+                {[
+                  "Free initial consultation",
+                  "No obligation quote",
+                  "GDPR & HIPAA compliant processes"
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start">
+                    <div className="flex-shrink-0 mt-1">
+                      <FiCheck className="text-yellow-500 text-xl" />
+                    </div>
+                    <p className={`ml-3 text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-lg`}>
+              <h3 className="text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Contact Us</h3>
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <input 
+                  type="text" 
+                  name="name" 
+                  value={formData.name} 
+                  onChange={handleChange} 
+                  placeholder="Full Name" 
+                  className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+                  required 
+                />
+                <input 
+                  type="email" 
+                  name="email" 
+                  value={formData.email} 
+                  onChange={handleChange} 
+                  placeholder="Email Address" 
+                  className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+                  required 
+                />
+                <input 
+                  type="tel" 
+                  name="phone" 
+                  value={formData.phone} 
+                  onChange={handleChange} 
+                  placeholder="Phone Number" 
+                  className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+                  required 
+                />
+                <textarea 
+                  name="message" 
+                  value={formData.message} 
+                  onChange={handleChange} 
+                  placeholder="Tell us about your migration needs" 
+                  rows={4}
+                  className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+                ></textarea>
+                <button 
+                  type="submit" 
+                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg font-semibold disabled:opacity-50"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Send Message"}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       <Footer />
 
       {/* Consultation Popup */}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50 p-4">
-          <div className={`relative w-full max-w-lg p-8 rounded-2xl shadow-lg bg-gray-800 max-h-[90vh] overflow-y-auto`}>
+          <div className={`relative w-full max-w-lg p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border max-h-[90vh] overflow-y-auto`}>
             <button 
               onClick={handleClosePopup} 
-              className="absolute top-3 right-4 text-xl font-bold hover:opacity-70 text-white"
+              className={`absolute top-3 right-4 text-xl font-bold hover:opacity-70 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}
               type="button"
             >
               ×
             </button>
-            <h3 className="text-2xl font-semibold mb-6 text-white">Request Consultation</h3>
+            <h3 className={`text-2xl font-semibold mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>Request Consultation</h3>
             <form className="space-y-4" onSubmit={handleSubmit}>
               <input 
                 type="text" 
@@ -439,7 +441,7 @@ const DataMigration = () => {
                 value={formData.name} 
                 onChange={handleChange} 
                 placeholder="Full Name" 
-                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                 required 
               />
               <input 
@@ -448,7 +450,7 @@ const DataMigration = () => {
                 value={formData.email} 
                 onChange={handleChange} 
                 placeholder="Email" 
-                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                 required 
               />
               <input 
@@ -457,7 +459,7 @@ const DataMigration = () => {
                 value={formData.phone} 
                 onChange={handleChange} 
                 placeholder="Phone Number" 
-                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                 required 
               />
               <textarea 
@@ -466,11 +468,11 @@ const DataMigration = () => {
                 onChange={handleChange} 
                 placeholder="Tell us about your project" 
                 rows={3}
-                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
               ></textarea>
               <button 
                 type="submit" 
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold disabled:opacity-50"
+                className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg font-semibold disabled:opacity-50"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "Send Message"}

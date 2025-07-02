@@ -25,7 +25,6 @@ const MethaneMitigation = () => {
   useApolloTracking();
   
   const [showPopup, setShowPopup] = useState(false);
-  const [activeTab, setActiveTab] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [formData, setFormData] = useState({
@@ -33,7 +32,7 @@ const MethaneMitigation = () => {
     email: '',
     phone: '',
     company: '',
-    service: 'Methane Monitoring'
+    service: 'Methane Mitigation'
   });
 
   // Image URLs
@@ -41,63 +40,42 @@ const MethaneMitigation = () => {
     logo: 'https://via.placeholder.com/150x50?text=Your+Logo',
     banner: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
     videoThumbnail: 'https://images.unsplash.com/photo-1574717024453-354a7d62faf0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    monitoring: 'https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80',
-    reduction: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80',
-    compliance: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    mitigation: 'https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80',
     workflow: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80'
   };
 
-  const services = [
-    {
-      title: "Methane Monitoring",
-      icon: <FaSatellite className="text-4xl text-indigo-600" />,
-      highlights: [
-        "Real-time emission tracking",
-        "Automated leak detection",
-        "Advanced sensor networks",
-        "Satellite data integration"
-      ],
-      image: imageUrls.monitoring
-    },
-    {
-      title: "Emission Reduction",
-      icon: <FiTrendingDown className="text-4xl text-indigo-600" />,
-      highlights: [
-        "Leak repair prioritization",
-        "Operational optimization",
-        "Waste-to-value solutions",
-        "Carbon credit guidance"
-      ],
-      image: imageUrls.reduction
-    },
-    {
-      title: "Regulatory Compliance",
-      icon: <FaClipboardCheck className="text-4xl text-indigo-600" />,
-      highlights: [
-        "Automated reporting",
-        "Audit preparation",
-        "Policy change alerts",
-        "Documentation management"
-      ],
-      image: imageUrls.compliance
-    }
-  ];
+  // Define methaneMitigation object
+  const methaneMitigation = {
+    title: "Methane Mitigation",
+    icon: <FaSatellite className="text-4xl text-yellow-500" />,
+    highlights: [
+      "Real-time emission tracking",
+      "Automated leak detection",
+      "Advanced sensor networks",
+      "Satellite data integration",
+      "Leak repair prioritization",
+      "Operational optimization"
+    ],
+    image: imageUrls.mitigation
+  };
 
   const processSteps = [
     {
       title: "Initial Assessment",
       description: "We conduct a comprehensive analysis of your current methane emissions using advanced detection technologies.",
-      icon: <FaChartLine className="text-3xl text-indigo-600" />
+      icon: <FaChartLine className="text-3xl text-yellow-500" />
     },
     {
       title: "Solution Deployment",
       description: "Our team implements tailored monitoring systems and reduction strategies specific to your operations.",
-      icon: <FiBarChart2 className="text-3xl text-indigo-600" />
+      icon: <FiBarChart2 className="textאות
+
+System: text-3xl text-yellow-500" />
     },
     {
       title: "Continuous Optimization",
       description: "Ongoing data analysis and system adjustments ensure maximum efficiency and compliance.",
-      icon: <FiShield className="text-3xl text-indigo-600" />
+      icon: <FiShield className="text-3xl text-yellow-500" />
     }
   ];
 
@@ -153,9 +131,9 @@ const MethaneMitigation = () => {
       <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
         <div className="max-w-[95%] mx-auto w-full flex flex-col items-center">
           <div className="relative mb-10 w-full max-w-5xl flex justify-center">
-            <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-300' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
+            <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
               <img 
-                src={imageUrls.fintechDashboard} 
+                src="/image.png" 
                 alt="Methane Solutions Dashboard" 
                 className="w-full h-full object-cover object-center"
               />
@@ -163,62 +141,201 @@ const MethaneMitigation = () => {
           </div>
           <div className="space-y-6 text-center max-w-7xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Advanced Methane Solutions  for <span className="text-indigo-600"> Sustainable Operations</span> 
+              Advanced Methane Solutions for <span className="text-yellow-500">Sustainable Operations</span> 
             </h1>
-            <p className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'} mx-auto`}>
-             Cutting-edge monitoring and reduction technologies to minimize emissions and ensure compliance.
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mx-auto`}>
+              Cutting-edge monitoring and reduction technologies to minimize emissions and ensure compliance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* Add buttons or other content here if needed */}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Tabs - Buttons Removed */}
+      {/* About Big Data Rhino Section */}
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold">About Big Data Rhino</h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mt-4`}>
+              Precision Data Solutions for Strategic Decision-Making
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                Founded in February 2022 by Patrick Parks, a proud Reconnaissance Marine veteran, Big Data Rhino is driven by a mission to bring clarity and actionable insights to complex data challenges. We combine military precision with cutting-edge data science to empower smarter business decisions.
+              </p>
+              <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                Our Story: Born from military discipline and technological innovation, Big Data Rhino brings strategic thinking and relentless execution to data solutions. From veteran-owned startup to trusted industry partner, we help organizations navigate data complexity with confidence.
+              </p>
+            </div>
+            <div className="relative">
+              <div className={`rounded-xl overflow-hidden shadow-lg ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} border aspect-video`}>
+                <img 
+                  src={imageUrls.workflow} 
+                  alt="Big Data Rhino Team" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Our Approach</h3>
+              <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                <li className="flex items-start">
+                  <FiShield className="text-yellow-500 dark:text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                  <span>Military-grade precision in data handling</span>
+                </li>
+                <li className="flex items-start">
+                  <FiDatabase className="text-yellow-500 dark:text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                  <span>Cutting-edge AI and machine learning</span>
+                </li>
+                <li className="flex items-start">
+                  <FiGlobe className="text-yellow-500 dark:text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                  <span>Industry-specific expertise</span>
+                </li>
+                <li className="flex items-start">
+                  <FiBarChart2 className="text-yellow-500 dark:text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                  <span>Actionable business insights</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Our Capabilities</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { icon: "🤖", text: "AI Solutions" },
+                  { icon: "🔮", text: "Predictive Analytics" },
+                  { icon: "📊", text: "Data Visualization" },
+                  { icon: "☁️", text: "Cloud Integration" },
+                  { icon: "🔌", text: "API Development" },
+                  { icon: "🛡️", text: "Security Compliance" }
+                ].map((item, index) => (
+                  <div key={index} className={`flex items-center p-3 rounded-lg bg-white dark:bg-gray-800 shadow-sm border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+                    <span className="text-2xl mr-3">{item.icon}</span>
+                    <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Industry Impact</h3>
+              <div className="space-y-4">
+                {[
+                  { 
+                    industry: "Energy Sector", 
+                    description: "Optimizing operations and reducing emissions through analytics",
+                    stat: "30% efficiency gains" 
+                  },
+                  { 
+                    industry: "Healthcare", 
+                    description: "Transforming patient outcomes with predictive analytics",
+                    stat: "Improved diagnostics" 
+                  },
+                  { 
+                    industry: "Government", 
+                    description: "Secure, actionable intelligence for public agencies",
+                    stat: "DVBE-certified" 
+                  }
+                ].map((item, index) => (
+                  <div key={index} className={`p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+                    <h4 className="font-semibold mb-2">{item.industry}</h4>
+                    <p className={`text-sm mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
+                    <p className="text-yellow-500 dark:text-yellow-500 font-medium">{item.stat}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className={`p-8 rounded-xl bg-white dark:bg-gray-800 shadow-lg mb-16 border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+            <h3 className="text-xl font-bold mb-4">Our Team Culture</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                  We combine technical excellence with unique perspectives to deliver innovative solutions:
+                </p>
+                <ul className={`space-y-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <li className="flex items-start">
+                    <FiCheck className="text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>PhD-level data scientists</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FiCheck className="text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Veterans with military discipline</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FiCheck className="text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Industry domain experts</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FiCheck className="text-yellow-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Creative problem-solvers</span>
+                  </li>
+                </ul>
+              </div>
+              <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} italic border-l-4 border-gray-300 dark:border-gray-700`}>
+                <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                  "The best solutions emerge when unique perspectives meet deep technical expertise."
+                </p>
+                <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
+                  Our culture emphasizes continuous learning, collaboration, and shared success.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-6 text-center">Our Commitment to Clients</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { icon: "🔍", title: "Transparency", description: "Clear communication throughout" },
+                { icon: "📈", title: "Results", description: "Measurable business outcomes" },
+                { icon: "🛡️", title: "Security", description: "Enterprise-grade protection" },
+                { icon: "🤝", title: "Partnership", description: "Long-term collaboration" }
+              ].map((item, index) => (
+                <div 
+                  key={index} 
+                  className={`p-6 rounded-xl text-center bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}
+                >
+                  <div className="text-3xl mb-4">{item.icon}</div>
+                  <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
+                  <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Methane Mitigation Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Comprehensive Methane Solutions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Methane Mitigation Solutions</h2>
             <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
-              End-to-end services to detect, measure, and reduce methane emissions
+              Comprehensive services to detect, measure, and mitigate methane emissions
             </p>
-          </div>
-
-          <div className="flex justify-center mb-12">
-            <div className="inline-flex rounded-lg bg-gray-200 dark:bg-gray-700 p-1">
-              {services.map((service, index) => (
-                <button
-                  key={index}
-                  className={`px-6 py-3 rounded-md font-medium transition-all ${activeTab === index 
-                    ? 'bg-white dark:bg-gray-800 shadow-md text-indigo-600 dark:text-indigo-400' 
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'}`}
-                  onClick={() => setActiveTab(index)}
-                >
-                  {service.title}
-                </button>
-              ))}
-            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className={`rounded-xl overflow-hidden shadow-xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-video`}>
-              <img src={services[activeTab].image} alt={services[activeTab].title} className="w-full h-full object-cover"/>
+              <img src={methaneMitigation.image} alt="Methane Mitigation" className="w-full h-full object-cover"/>
             </div>
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900/50">
-                  {services[activeTab].icon}
+                <div className="p-3 rounded-full bg-yellow-500/10 dark:bg-yellow-500/10">
+                  {methaneMitigation.icon}
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold">{services[activeTab].title}</h3>
+                <h3 className="text-2xl md:text-3xl font-bold">Methane Mitigation</h3>
               </div>
               
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {services[activeTab].highlights.map((highlight, index) => (
+                {methaneMitigation.highlights.map((highlight, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
-                      <div className="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
-                        <FiCheck className="text-indigo-600 dark:text-indigo-400 text-xs"/>
+                      <div className="w-5 h-5 rounded-full bg-yellow-500/10 dark:bg-yellow-500/10 flex items-center justify-center">
+                        <FiCheck className="text-yellow-500 dark:text-yellow-500 text-xs"/>
                       </div>
                     </div>
                     <span>{highlight}</span>
@@ -226,15 +343,15 @@ const MethaneMitigation = () => {
                 ))}
               </ul>
               
-              {/* Buttons Removed from this Section */}
+              <div className="flex gap-4">
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-<section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
-
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Proven Process</h2>
@@ -255,9 +372,9 @@ const MethaneMitigation = () => {
                 >
                   {/* Step Content */}
                   <div className={`lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
-                    <div className={`p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-100 dark:border-gray-700`}>
+                    <div className={`p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900/50">
+                        <div className="p-3 rounded-full bg-yellow-500/10 dark:bg-yellow-500/10">
                           {step.icon}
                         </div>
                         <h3 className="text-xl font-bold">{step.title}</h3>
@@ -269,7 +386,7 @@ const MethaneMitigation = () => {
                   </div>
                   
                   {/* Step Number */}
-                  <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 w-16 h-16 rounded-full bg-indigo-600 text-white items-center justify-center text-2xl font-bold z-10">
+                  <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 w-16 h-16 rounded-full bg-yellow-500 text-white items-center justify-center text-2xl font-bold z-10">
                     {index + 1}
                   </div>
                   
@@ -301,8 +418,8 @@ const MethaneMitigation = () => {
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
-                      <div className="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
-                        <FiCheck className="text-indigo-600 dark:text-indigo-400 text-xs"/>
+                      <div className="w-5 h-5 rounded-full bg-yellow-500/10 dark:bg-yellow-500/10 flex items-center justify-center">
+                        <FiCheck className="text-yellow-500 dark:text-yellow-500 text-xs"/>
                       </div>
                     </div>
                     <span>{item}</span>
@@ -311,7 +428,7 @@ const MethaneMitigation = () => {
               </div>
             </div>
             
-            <div className={`p-8 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-100 dark:border-gray-700`}>
+            <div className={`p-8 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
               <h3 className="text-2xl font-bold mb-6">Request Information</h3>
               <form className="space-y-5" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -322,7 +439,7 @@ const MethaneMitigation = () => {
                       name="name" 
                       value={formData.name} 
                       onChange={handleChange} 
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                       required 
                     />
                   </div>
@@ -333,7 +450,7 @@ const MethaneMitigation = () => {
                       name="email" 
                       value={formData.email} 
                       onChange={handleChange} 
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                       required 
                     />
                   </div>
@@ -347,7 +464,7 @@ const MethaneMitigation = () => {
                       name="phone" 
                       value={formData.phone} 
                       onChange={handleChange} 
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                       required 
                     />
                   </div>
@@ -358,7 +475,7 @@ const MethaneMitigation = () => {
                       name="company" 
                       value={formData.company} 
                       onChange={handleChange} 
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                       required 
                     />
                   </div>
@@ -370,19 +487,16 @@ const MethaneMitigation = () => {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                     required
                   >
-                    <option value="Methane Monitoring">Methane Monitoring</option>
-                    <option value="Emission Reduction">Emission Reduction</option>
-                    <option value="Regulatory Compliance">Regulatory Compliance</option>
-                    <option value="All Services">All Services</option>
+                    <option value="Methane Mitigation">Methane Mitigation</option>
                   </select>
                 </div>
                 
                 <button 
                   type="submit" 
-                  className="w-full px-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-lg transition-colors"
+                  className="w-full px-6 py-4 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-lg text-lg transition-colors"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Processing..." : "Get Expert Consultation"}
@@ -393,180 +507,23 @@ const MethaneMitigation = () => {
         </div>
       </section>
 
-       {/* About Big Data Rhino Section */}
-            <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
-              <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-4xl font-bold">About Big Data Rhino</h2>
-                  <p className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'} mt-4`}>
-                    Precision Data Solutions for Strategic Decision-Making
-                  </p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-                  <div>
-                    <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
-                      Founded in February 2022 by Patrick Parks, a proud Reconnaissance Marine veteran, Big Data Rhino is driven by a mission to bring clarity and actionable insights to complex data challenges. We combine military precision with cutting-edge data science to empower smarter business decisions.
-                    </p>
-                    <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
-                      Our Story: Born from military discipline and technological innovation, Big Data Rhino brings strategic thinking and relentless execution to data solutions. From veteran-owned startup to trusted industry partner, we help organizations navigate data complexity with confidence.
-                    </p>
-                  </div>
-                  <div className="relative">
-                    <div className={`rounded-xl overflow-hidden shadow-lg ${theme === 'dark' ? 'border-gray-300' : 'border-gray-200'} border aspect-video`}>
-                      <img 
-                        src={imageUrls.workflow} 
-                        alt="Big Data Rhino Team" 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                  <div>
-                    <h3 className="text-xl font-bold mb-4">Our Approach</h3>
-                    <ul className={`space-y-3 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
-                      <li className="flex items-start">
-                        <FiShield className="text-gray-700 dark:text-white mr-2 mt-1 flex-shrink-0" />
-                        <span>Military-grade precision in data handling</span>
-                      </li>
-                      <li className="flex items-start">
-                        <FiDatabase className="text-gray-700 dark:text-white mr-2 mt-1 flex-shrink-0" />
-                        <span>Cutting-edge AI and machine learning</span>
-                      </li>
-                      <li className="flex items-start">
-                        <FiGlobe className="text-gray-700 dark:text-white mr-2 mt-1 flex-shrink-0" />
-                        <span>Industry-specific expertise</span>
-                      </li>
-                      <li className="flex items-start">
-                        <FiBarChart2 className="text-gray-700 dark:text-white mr-2 mt-1 flex-shrink-0" />
-                        <span>Actionable business insights</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-4">Our Capabilities</h3>
-                    <div className="grid grid-cols-2 gap-3">
-                      {[
-                        { icon: "🤖", text: "AI Solutions" },
-                        { icon: "🔮", text: "Predictive Analytics" },
-                        { icon: "📊", text: "Data Visualization" },
-                        { icon: "☁️", text: "Cloud Integration" },
-                        { icon: "🔌", text: "API Development" },
-                        { icon: "🛡️", text: "Security Compliance" }
-                      ].map((item, index) => (
-                        <div key={index} className={`flex items-center p-3 rounded-lg bg-white dark:bg-gray-800 shadow-sm`}>
-                          <span className="text-2xl mr-3">{item.icon}</span>
-                          <span className={theme === 'dark' ? 'text-white' : 'text-gray-700'}>{item.text}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-4">Industry Impact</h3>
-                    <div className="space-y-4">
-                      {[
-                        { 
-                          industry: "Energy Sector", 
-                          description: "Optimizing operations and reducing emissions through analytics",
-                          stat: "30% efficiency gains" 
-                        },
-                        { 
-                          industry: "Healthcare", 
-                          description: "Transforming patient outcomes with predictive analytics",
-                          stat: "Improved diagnostics" 
-                        },
-                        { 
-                          industry: "Government", 
-                          description: "Secure, actionable intelligence for public agencies",
-                          stat: "DVBE-certified" 
-                        }
-                      ].map((item, index) => (
-                        <div key={index} className={`p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm`}>
-                          <h4 className="font-semibold mb-2">{item.industry}</h4>
-                          <p className={`text-sm mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}>{item.description}</p>
-                          <p className="text-gray-700 dark:text-white font-medium">{item.stat}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className={`p-8 rounded-xl bg-white dark:bg-gray-800 shadow-lg mb-16`}>
-                  <h3 className="text-xl font-bold mb-4">Our Team Culture</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <p className={`mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
-                        We combine technical excellence with unique perspectives to deliver innovative solutions:
-                      </p>
-                      <ul className={`space-y-2 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
-                        <li className="flex items-start">
-                          <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
-                          <span>PhD-level data scientists</span>
-                        </li>
-                        <li className="flex items-start">
-                          <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
-                          <span>Veterans with military discipline</span>
-                        </li>
-                        <li className="flex items-start">
-                          <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
-                          <span>Industry domain experts</span>
-                        </li>
-                        <li className="flex items-start">
-                          <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
-                          <span>Creative problem-solvers</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} italic border-l-4 border-gray-300`}>
-                      <p className={`mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
-                        "The best solutions emerge when unique perspectives meet deep technical expertise."
-                      </p>
-                      <p className={theme === 'dark' ? 'text-white' : 'text-gray-600'}>
-                        Our culture emphasizes continuous learning, collaboration, and shared success.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-6 text-center">Our Commitment to Clients</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                    {[
-                      { icon: "🔍", title: "Transparency", description: "Clear communication throughout" },
-                      { icon: "📈", title: "Results", description: "Measurable business outcomes" },
-                      { icon: "🛡️", title: "Security", description: "Enterprise-grade protection" },
-                      { icon: "🤝", title: "Partnership", description: "Long-term collaboration" }
-                    ].map((item, index) => (
-                      <div 
-                        key={index} 
-                        className={`p-6 rounded-xl text-center bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow`}
-                      >
-                        <div className="text-3xl mb-4">{item.icon}</div>
-                        <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
-                        <p className={theme === 'dark' ? 'text-white' : 'text-gray-600'}>{item.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
-      
-
       <Footer />
 
       {/* Demo Request Popup */}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 p-4">
-          <div className={`relative w-full max-w-md p-8 rounded-2xl shadow-2xl ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+          <div className={`relative w-full max-w-md p-8 rounded-2xl shadow-2xl ${theme === 'dark' ? 'bg-gray-900 text-gray-300' : 'bg-white text-gray-900'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
             <button 
               onClick={handleClosePopup} 
               className="absolute top-4 right-4 text-2xl font-bold hover:opacity-70 transition-opacity"
               type="button"
             >
-              &times;
+              ×
             </button>
             
             <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900/50">
-                <FiDownload className="w-6 h-6 text-indigo-600 dark:text-indigo-400"/>
+              <div className="p-3 rounded-full bg-yellow-500/10 dark:bg-yellow-500/10">
+                <FiDownload className="w-6 h-6 text-yellow-500 dark:text-yellow-500"/>
               </div>
               <h3 className="text-2xl font-bold">Schedule a Consultation</h3>
             </div>
@@ -579,7 +536,7 @@ const MethaneMitigation = () => {
                   name="name" 
                   value={formData.name} 
                   onChange={handleChange} 
-                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                   required 
                 />
               </div>
@@ -591,7 +548,7 @@ const MethaneMitigation = () => {
                   name="email" 
                   value={formData.email} 
                   onChange={handleChange} 
-                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                   required 
                 />
               </div>
@@ -603,7 +560,7 @@ const MethaneMitigation = () => {
                   name="phone" 
                   value={formData.phone} 
                   onChange={handleChange} 
-                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                   required 
                 />
               </div>
@@ -614,18 +571,16 @@ const MethaneMitigation = () => {
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   required
                 >
-                  <option value="Methane Monitoring">Methane Monitoring</option>
-                  <option value="Emission Reduction">Emission Reduction</option>
-                  <option value="Regulatory Compliance">Regulatory Compliance</option>
+                  <option value="Methane Mitigation">Methane Mitigation</option>
                 </select>
               </div>
               
               <button 
                 type="submit" 
-                className="w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-lg mt-4 transition-colors"
+                className="w-full px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-lg text-lg transition-colors"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Scheduling..." : "Schedule Now"}

@@ -9,13 +9,12 @@ import {
   FiCheck, 
   FiDownload, 
   FiBarChart2, 
-  FiShield,
   FiDatabase,
   FiGlobe,
   FiCloud,
   FiLock
 } from 'react-icons/fi';
-import { FaSatellite, FaClipboardCheck, FaMoneyBillWave, FaServer } from 'react-icons/fa';
+import { FaSatellite, FaMoneyBillWave, FaServer } from 'react-icons/fa';
 import { toast } from 'sonner';
 
 const ServicesPage = () => {
@@ -47,7 +46,7 @@ const ServicesPage = () => {
     {
       id: 'data-migration',
       title: "Data Migration",
-      icon: <FiDatabase className="text-4xl text-indigo-600" />,
+      icon: <FiDatabase className="text-4xl text-yellow-500" />,
       description: "Seamless transition of your critical business data to modern platforms with zero downtime",
       highlights: [
         "Legacy system modernization",
@@ -61,7 +60,7 @@ const ServicesPage = () => {
     {
       id: 'fintech',
       title: "Fintech Solutions",
-      icon: <FaMoneyBillWave className="text-4xl text-indigo-600" />,
+      icon: <FaMoneyBillWave className="text-4xl text-yellow-500" />,
       description: "Advanced financial technology solutions for modern banking and payment systems",
       highlights: [
         "Fraud detection systems",
@@ -75,7 +74,7 @@ const ServicesPage = () => {
     {
       id: 'methane',
       title: "Methane Mitigation",
-      icon: <FaSatellite className="text-4xl text-indigo-600" />,
+      icon: <FaSatellite className="text-4xl text-yellow-500" />,
       description: "Comprehensive methane monitoring and reduction solutions for energy sector",
       highlights: [
         "Emission tracking",
@@ -92,22 +91,22 @@ const ServicesPage = () => {
     {
       title: "Consultation & Planning",
       description: "We begin with a thorough analysis of your requirements and develop a customized migration strategy.",
-      icon: <FiCloud className="text-3xl text-indigo-600" />
+      icon: <FiCloud className="text-3xl text-yellow-500" />
     },
     {
       title: "Execution & Migration",
       description: "Our experts implement the solution with minimal disruption to your operations.",
-      icon: <FaServer className="text-3xl text-indigo-600" />
+      icon: <FaServer className="text-3xl text-yellow-500" />
     },
     {
       title: "Optimization & Support",
       description: "Continuous monitoring and refinement to ensure peak performance and value.",
-      icon: <FiBarChart2 className="text-3xl text-indigo-600" />
+      icon: <FiBarChart2 className="text-3xl text-yellow-500" />
     },
     {
       title: "Compliance & Security",
       description: "Ensure ongoing regulatory compliance and data protection with our managed services.",
-      icon: <FiLock className="text-3xl text-indigo-600" />
+      icon: <FiLock className="text-3xl text-yellow-500" />
     }
   ];
 
@@ -139,7 +138,7 @@ const ServicesPage = () => {
     }
   };
 
-  // Brochure download handler with parameters
+  // Brochure download handler
   const downloadBrochure = (filePath: string, fileName: string) => {
     // Create a temporary link to trigger download
     const link = document.createElement('a');
@@ -153,28 +152,27 @@ const ServicesPage = () => {
   };
 
   return (
-    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'dark' : ''}`}>
+    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'dark bg-gray-900 text-gray-100' : 'bg-white'}`}>
       <Navbar />
 
       {/* Hero Section */}
-      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
+      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-[95%] mx-auto w-full flex flex-col items-center">
           <div className="relative mb-10 w-full max-w-5xl flex justify-center">
-            <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-300' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
+            <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
               <img 
-  src="" 
-  alt="Methane Solutions Dashboard" 
-  className="w-full h-full object-cover object-center"
-/>
-
+                src="/image.png" 
+                alt="Methane Solutions Dashboard" 
+                className="w-full h-full object-cover object-center"
+              />
             </div>
           </div>
           <div className="space-y-6 text-center max-w-7xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Enterprise <span className="text-indigo-600"> Technology Solutions</span> 
+              Enterprise <span className="text-yellow-500"> Technology Services </span> 
             </h1>
-            <p className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'} mx-auto`}>
-            Transform your business with our specialized services designed for complex industry challenges and digital transformation.
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mx-auto`}>
+              Transform your business with our specialized services designed for complex industry challenges and digital transformation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {/* Add buttons or other content here if needed */}
@@ -184,7 +182,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Services Tabs Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+      <section className={`py-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Services</h2>
@@ -199,8 +197,7 @@ const ServicesPage = () => {
                 <button
                   key={index}
                   className={`px-6 py-3 rounded-lg font-medium transition-all ${activeTab === index 
-                    ? 'bg-indigo-600 text-white shadow-md' 
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'}`}
+                    ? 'text-white shadow-md bg-yellow-500' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
                   onClick={() => setActiveTab(index)}
                 >
                   {service.title}
@@ -219,7 +216,7 @@ const ServicesPage = () => {
             </div>
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900/50">
+                <div className="p-3 rounded-full bg-yellow-500/10">
                   {services[activeTab].icon}
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold">{services[activeTab].title}</h3>
@@ -232,10 +229,8 @@ const ServicesPage = () => {
               <ul className="space-y-3">
                 {services[activeTab].highlights.map((highlight, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="mt-1 flex-shrink-0">
-                      <div className="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
-                        <FiCheck className="text-indigo-600 dark:text-indigo-400 text-xs"/>
-                      </div>
+                    <div className="mt-1 flex-shrink-0 bg-yellow-500/10 w-5 h-5 rounded-full flex items-center justify-center">
+                      <FiCheck className="text-xs text-yellow-500"/>
                     </div>
                     <span className="text-lg">{highlight}</span>
                   </li>
@@ -245,7 +240,7 @@ const ServicesPage = () => {
               <div className="pt-4">
                 <Link 
                   to={services[activeTab].link}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 text-white rounded-lg transition-colors bg-yellow-500 hover:bg-yellow-600"
                 >
                   Explore {services[activeTab].title}
                   <FiArrowRight className="text-lg" />
@@ -257,7 +252,7 @@ const ServicesPage = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Service Delivery Process</h2>
@@ -270,13 +265,13 @@ const ServicesPage = () => {
             {processSteps.map((step, index) => (
               <div 
                 key={index} 
-                className={`p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-100 dark:border-gray-700 transition-transform hover:scale-[1.02]`}
+                className={`p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} border border-gray-200 dark:border-gray-600 transition-transform hover:scale-[1.02]`}
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900/50">
+                  <div className="p-3 rounded-full bg-yellow-500/10">
                     {step.icon}
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center text-lg font-bold">
+                  <div className="w-10 h-10 rounded-full text-white flex items-center justify-center text-lg font-bold bg-yellow-500">
                     {index + 1}
                   </div>
                 </div>
@@ -291,7 +286,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Brochure Downloads Section */}
-      <section className={`py-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
+      <section className={`py-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Download Our Brochures</h2>
@@ -302,9 +297,9 @@ const ServicesPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Brochure 1 */}
-            <div className={`p-6 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-indigo-50'} border border-indigo-100 dark:border-gray-700 flex flex-col`}>
+            <div className={`p-6 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} border border-yellow-100 dark:border-gray-600 flex flex-col`}>
               <div className="flex items-center gap-3 mb-4">
-                <FiDatabase className="text-2xl text-indigo-600" />
+                <FiDatabase className="text-2xl text-yellow-500" />
                 <h3 className="text-xl font-bold">Data Migration Solutions</h3>
               </div>
               <p className={`mb-6 flex-grow ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
@@ -312,7 +307,7 @@ const ServicesPage = () => {
               </p>
               <button 
                 onClick={() => downloadBrochure('/pdf/Big Data Rhino-Data Migration Solutions.pdf', 'Big Data Rhino-Data Migration Solutions')}
-                className="flex items-center justifycenter gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+                className="flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg transition-colors bg-yellow-500 hover:bg-yellow-600"
               >
                 <FiDownload className="text-lg" />
                 Download PDF
@@ -320,9 +315,9 @@ const ServicesPage = () => {
             </div>
 
             {/* Brochure 2 */}
-            <div className={`p-6 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-indigo-50'} border border-indigo-100 dark:border-gray-700 flex flex-col`}>
+            <div className={`p-6 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} border border-yellow-100 dark:border-gray-600 flex flex-col`}>
               <div className="flex items-center gap-3 mb-4">
-                <FaServer className="text-2xl text-indigo-600" />
+                <FaServer className="text-2xl text-yellow-500" />
                 <h3 className="text-xl font-bold">Mainframe Modernization</h3>
               </div>
               <p className={`mb-6 flex-grow ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
@@ -330,7 +325,7 @@ const ServicesPage = () => {
               </p>
               <button 
                 onClick={() => downloadBrochure('/pdf/Mainframe Application Modernization (6).pdf', 'Mainframe_Application_Modernization.pdf')}
-                className="flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+                className="flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg transition-colors bg-yellow-500 hover:bg-yellow-600"
               >
                 <FiDownload className="text-lg" />
                 Download PDF
@@ -338,17 +333,17 @@ const ServicesPage = () => {
             </div>
 
             {/* Brochure 3 */}
-            <div className={`p-6 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-indigo-50'} border border-indigo-100 dark:border-gray-700 flex flex-col`}>
+            <div className={`p-6 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} border border-yellow-100 dark:border-gray-600 flex flex-col`}>
               <div className="flex items-center gap-3 mb-4">
-                <FiGlobe className="text-2xl text-indigo-600" />
+                <FiGlobe className="text-2xl text-yellow-500" />
                 <h3 className="text-xl font-bold">AI/ML for Government</h3>
               </div>
               <p className={`mb-6 flex-grow ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                 How AI and machine learning can create smarter, faster government operations
               </p>
               <button 
-                onClick={() => downloadBrochure('/pdf/Leveraging AI_ML for Smarter, Faster Government.pdf', 'AI_ML_for_Government.pdf')}
-                className="flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+                onClick={() => downloadBrochure('/pdf/Lleveraging AI_ML for Smarter, Faster Government.pdf', 'AI_ML_for_Government.pdf')}
+                className="flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg transition-colors bg-yellow-500 hover:bg-yellow-600"
               >
                 <FiDownload className="text-lg" />
                 Download PDF
@@ -359,7 +354,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -376,19 +371,16 @@ const ServicesPage = () => {
                   "Compliance and security focused"
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <div className="mt-1 flex-shrink-0">
-                      <div className="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
-                        <FiCheck className="text-indigo-600 dark:text-indigo-400 text-xs"/>
-                      </div>
+                    <div className="mt-1 flex-shrink-0 bg-yellow-500/10 w-5 h-5 rounded-full flex items-center justify-center">
+                      <FiCheck className="text-xs text-yellow-500"/>
                     </div>
                     <span className="text-lg">{item}</span>
                   </div>
                 ))}
               </div>
-
             </div>
             
-            <div className={`p-8 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'} border border-gray-100 dark:border-gray-700`}>
+            <div className={`p-8 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} border border-gray-200 dark:border-gray-600`}>
               <h3 className="text-2xl font-bold mb-6">Request Service Information</h3>
               <form className="space-y-5" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -399,7 +391,7 @@ const ServicesPage = () => {
                       name="name" 
                       value={formData.name} 
                       onChange={handleChange} 
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                       required 
                     />
                   </div>
@@ -410,7 +402,7 @@ const ServicesPage = () => {
                       name="email" 
                       value={formData.email} 
                       onChange={handleChange} 
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                       required 
                     />
                   </div>
@@ -424,7 +416,7 @@ const ServicesPage = () => {
                       name="phone" 
                       value={formData.phone} 
                       onChange={handleChange} 
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                       required 
                     />
                   </div>
@@ -435,7 +427,7 @@ const ServicesPage = () => {
                       name="company" 
                       value={formData.company} 
                       onChange={handleChange} 
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                       required 
                     />
                   </div>
@@ -447,7 +439,7 @@ const ServicesPage = () => {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                     required
                   >
                     <option value="Data Migration">Data Migration</option>
@@ -459,7 +451,7 @@ const ServicesPage = () => {
                 
                 <button 
                   type="submit" 
-                  className="w-full px-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-lg transition-colors"
+                  className="w-full px-6 py-4 text-white font-medium rounded-lg transition-colors bg-yellow-500 hover:bg-yellow-600"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Processing..." : "Get Expert Consultation"}
