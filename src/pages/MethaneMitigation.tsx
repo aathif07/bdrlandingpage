@@ -68,9 +68,7 @@ const MethaneMitigation = () => {
     {
       title: "Solution Deployment",
       description: "Our team implements tailored monitoring systems and reduction strategies specific to your operations.",
-      icon: <FiBarChart2 className="textאות
-
-System: text-3xl text-yellow-500" />
+      icon: <FiBarChart2 className="text-3xl text-yellow-500" />
     },
     {
       title: "Continuous Optimization",
@@ -128,7 +126,7 @@ System: text-3xl text-yellow-500" />
       <Navbar />
 
       {/* Hero Section */}
-      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
+      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-[95%] mx-auto w-full flex flex-col items-center">
           <div className="relative mb-10 w-full max-w-5xl flex justify-center">
             <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
@@ -153,7 +151,7 @@ System: text-3xl text-yellow-500" />
       </section>
 
       {/* About Big Data Rhino Section */}
-      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : ''}`}>
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : ''}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">About Big Data Rhino</h2>
@@ -275,7 +273,7 @@ System: text-3xl text-yellow-500" />
                   </li>
                 </ul>
               </div>
-              <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} italic border-l-4 border-gray-300 dark:border-gray-700`}>
+              <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'} italic border-l-4 border-gray-300 dark:border-gray-700`}>
                 <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                   "The best solutions emerge when unique perspectives meet deep technical expertise."
                 </p>
@@ -309,7 +307,7 @@ System: text-3xl text-yellow-500" />
       </section>
 
       {/* Methane Mitigation Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Methane Mitigation Solutions</h2>
@@ -351,7 +349,7 @@ System: text-3xl text-yellow-500" />
       </section>
 
       {/* How It Works */}
-      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Proven Process</h2>
@@ -400,7 +398,7 @@ System: text-3xl text-yellow-500" />
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -512,7 +510,7 @@ System: text-3xl text-yellow-500" />
       {/* Demo Request Popup */}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 p-4">
-          <div className={`relative w-full max-w-md p-8 rounded-2xl shadow-2xl ${theme === 'dark' ? 'bg-gray-900 text-gray-300' : 'bg-white text-gray-900'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+          <div className={`relative w-full max-w-md p-8 rounded-2xl shadow-2xl ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
             <button 
               onClick={handleClosePopup} 
               className="absolute top-4 right-4 text-2xl font-bold hover:opacity-70 transition-opacity"
