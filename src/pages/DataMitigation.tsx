@@ -1,10 +1,20 @@
+
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useApolloTracking } from '../hooks/useApolloTracking';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
-import { FiArrowRight, FiCheck, FiDatabase, FiShield, FiClock, FiBarChart2, FiServer, FiGlobe, FiDownload } from 'react-icons/fi';
+import { FiCheck, FiDatabase, FiShield, FiBarChart2, FiServer, FiGlobe } from 'react-icons/fi';
+
+// Define TypeScript interface for form data
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  service: string;
+  message: string;
+}
 
 const DataMigration = () => {
   const { theme } = useTheme();
@@ -14,7 +24,7 @@ const DataMigration = () => {
   
   const [showPopup, setShowPopup] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
@@ -23,7 +33,7 @@ const DataMigration = () => {
     message: ''
   });
 
-  // Image URLs (unchanged)
+  // Image URLs
   const imageUrls = {
     dashboard: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
     dataFlow: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80',
@@ -44,33 +54,48 @@ const DataMigration = () => {
     setShowPopup(false);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSubmitting) return;
-    setFormData({ name: '', email: '', phone: '', company: '', service: 'Data Migration', message: '' });
-    setShowPopup(false);
-    setIsSubmitting(false);
-    alert('Thank you for your submission! We will contact you shortly.');
+    setIsSubmitting(true);
+    try {
+      // Placeholder for API call
+      // await fetch('/api/submit', { method: 'POST', body: JSON.stringify(formData) });
+      console.log('Form submitted:', formData);
+      setFormData({ name: '', email: '', phone: '', company: '', service: 'Data Migration', message: '' });
+      setShowPopup(false);
+      alert('Thank you for your submission! We will contact you shortly.');
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const downloadBrochure = () => {
     const brochureUrl = '/pdf/Big Data Rhino-Data Migration Solutions.pdf';
-    const link = document.createElement('a');
-    link.href = brochureUrl;
-    link.download = '/pdf/Big Data Rhino-Data Migration Solutions.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    console.log('Brochure download initiated');
+    try {
+      const link = document.createElement('a');
+      link.href = brochureUrl;
+      link.download = 'Big Data Rhino-Data Migration Solutions.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      console.log('Brochure download initiated');
+    } catch (error) {
+      console.error('Download error:', error);
+      alert('Failed to download brochure. Please check the file path or try again later.');
+    }
   };
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'dark bg-gray-800' : 'bg-white'}`}>
+    <div className={`min-h-screen ${theme === 'dark' ? 'dark bg-gray-700' : 'bg-white'}`}>
       <Navbar />
       
       {/* Hero Section */}
@@ -78,28 +103,24 @@ const DataMigration = () => {
         <div className="max-w-[95%] mx-auto w-full flex flex-col items-center">
           <div className="relative mb-10 w-full max-w-5xl flex justify-center">
             <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
-              <img 
-                src={imageUrls.dashboard} 
-                alt="Data Migration Dashboard" 
+               <img 
+                src="/datamitigation.png" 
+                alt="Methane Solutions Dashboard" 
                 className="w-full h-full object-cover object-center"
               />
             </div>
           </div>
-          <div className="collection space-y-6 text-center max-w-7xl">
+          <div className="space-y-6 text-center max-w-7xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Data <span className="text-yellow-500">Migration</span> Services
             </h1>
             <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mx-auto`}>
               Seamlessly transfer your data between systems with minimal downtime and maximum security. Our certified experts ensure your migration is smooth, efficient, and risk-free.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* Add buttons or other content here if needed */}
-            </div>
           </div>
         </div>
       </section>
 
-      
       {/* About Big Data Rhino Section */}
       <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
@@ -130,7 +151,7 @@ const DataMigration = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div>
-              <h3 className="text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Our Approach</h3>
+              <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>Our Approach</h3>
               <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                 <li className="flex items-start">
                   <FiShield className="text-gray-700 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
@@ -151,7 +172,7 @@ const DataMigration = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Our Capabilities</h3>
+              <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>Our Capabilities</h3>
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { icon: "🤖", text: "AI Solutions" },
@@ -169,7 +190,7 @@ const DataMigration = () => {
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Industry Impact</h3>
+              <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>Industry Impact</h3>
               <div className="space-y-4">
                 {[
                   { 
@@ -189,16 +210,16 @@ const DataMigration = () => {
                   }
                 ].map((item, index) => (
                   <div key={index} className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-sm`}>
-                    <h4 className="font-semibold mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">{item.industry}</h4>
+                    <h4 className={`font-semibold mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>{item.industry}</h4>
                     <p className={`text-sm mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
-                    <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'} font-medium`}>{item.stat}</p>
+                    <p className={`font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>{item.stat}</p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
           <div className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-lg mb-16`}>
-            <h3 className="text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Our Team Culture</h3>
+            <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>Our Team Culture</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -223,18 +244,18 @@ const DataMigration = () => {
                   </li>
                 </ul>
               </div>
-              <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'} italic border-l-4`}>
+              <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-100 border-gray-200'} italic border-l-4`}>
                 <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                   "The best solutions emerge when unique perspectives meet deep technical expertise."
                 </p>
-                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p className={` ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                   Our culture emphasizes continuous learning, collaboration, and shared success.
                 </p>
               </div>
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-bold mb-6 text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Our Commitment to Clients</h3>
+            <h3 className={`text-xl font-bold mb-6 text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>Our Commitment to Clients</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {[
                 { icon: "🔍", title: "Transparency", description: "Clear communication throughout" },
@@ -247,7 +268,7 @@ const DataMigration = () => {
                   className={`p-6 rounded-xl text-center ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-lg hover:shadow-xl transition-shadow`}
                 >
                   <div className="text-3xl mb-4">{item.icon}</div>
-                  <h4 className="text-lg font-semibold mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">{item.title}</h4>
+                  <h4 className={`text-lg font-semibold mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>{item.title}</h4>
                   <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
                 </div>
               ))}
@@ -287,8 +308,8 @@ const DataMigration = () => {
                 <div className="w-14 h-14 rounded-full bg-yellow-500/10 flex items-center justify-center mb-6 mx-auto">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">{service.title}</h3>
-                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} text-center`}>{service.description}</p>
+                <h3 className={`text-xl font-semibold mb-3 text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>{service.title}</h3>
+                <p className={`text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{service.description}</p>
               </div>
             ))}
           </div>
@@ -297,7 +318,7 @@ const DataMigration = () => {
 
       {/* How It Works Section */}
       <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
-        <div className="max-w-7xl mx-auto">
+        <div  className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Data Migration Process</h2>
             <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
@@ -334,7 +355,7 @@ const DataMigration = () => {
                   </div>
                   <div className="text-center">
                     <div className="w-12 h-1 bg-yellow-500 mx-auto mb-4"></div>
-                    <h3 className="text-xl font-semibold mb-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">{step.title}</h3>
+                    <h3 className={`text-xl font-semibold mb-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>{step.title}</h3>
                     <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{step.description}</p>
                   </div>
                 </div>
@@ -369,7 +390,7 @@ const DataMigration = () => {
               </div>
             </div>
             <div className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border shadow-lg`}>
-              <h3 className="text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}">Contact Us</h3>
+              <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-900'}`}>Contact Us</h3>
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <input 
                   type="text" 
@@ -398,6 +419,14 @@ const DataMigration = () => {
                   className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                   required 
                 />
+                <input 
+                  type="text" 
+                  name="company" 
+                  value={formData.company} 
+                  onChange={handleChange} 
+                  placeholder="Company Name" 
+                  className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+                />
                 <textarea 
                   name="message" 
                   value={formData.message} 
@@ -405,7 +434,7 @@ const DataMigration = () => {
                   placeholder="Tell us about your migration needs" 
                   rows={4}
                   className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-                ></textarea>
+                />
                 <button 
                   type="submit" 
                   className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg font-semibold disabled:opacity-50"
@@ -419,12 +448,11 @@ const DataMigration = () => {
         </div>
       </section>
 
-
       <Footer />
 
       {/* Consultation Popup */}
       {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50 p-4">
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-700 bg-opacity-50 p-4">
           <div className={`relative w-full max-w-lg p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-200'} border max-h-[90vh] overflow-y-auto`}>
             <button 
               onClick={handleClosePopup} 
@@ -462,6 +490,14 @@ const DataMigration = () => {
                 className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
                 required 
               />
+              <input 
+                type="text" 
+                name="company" 
+                value={formData.company} 
+                onChange={handleChange} 
+                placeholder="Company Name" 
+                className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+              />
               <textarea 
                 name="message" 
                 value={formData.message} 
@@ -469,7 +505,7 @@ const DataMigration = () => {
                 placeholder="Tell us about your project" 
                 rows={3}
                 className="w-full p-3 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-              ></textarea>
+              />
               <button 
                 type="submit" 
                 className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg font-semibold disabled:opacity-50"
