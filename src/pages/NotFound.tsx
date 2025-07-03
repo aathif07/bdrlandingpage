@@ -1,7 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
-import InteractiveBackground from '../components/effects/InteractiveBackground';
 
 const NotFound = () => {
   const location = useLocation();
@@ -20,9 +19,8 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <InteractiveBackground />
       <div className="text-center py-12 px-4 sm:px-6 lg:px-8">
-        <h1 className="text-6xl font-extrabold text-indigo-600 mb-6">404</h1>
+        <h1 className="text-6xl font-extrabold text-yellow-500 mb-6">404</h1>
         <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
           Hi 👋
           <br />
@@ -31,14 +29,14 @@ const NotFound = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={handleGoBack}
-            className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
           >
             <ArrowLeft size={16} />
             Go Back
           </button>
           <a
             href="/"
-            className="inline-block bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-6 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 py-2 px-6 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
           >
             Back to Home
           </a>

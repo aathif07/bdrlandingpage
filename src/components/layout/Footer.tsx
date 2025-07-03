@@ -35,17 +35,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
-          {/* Navigation */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
-              <li><Link to="/DataMitigation" className="text-gray-300 hover:text-rhino-yellow transition-colors">DataMigration</Link></li>
-              <li><Link to="/fintech" className="text-gray-300 hover:text-rhino-yellow transition-colors">Fintech</Link></li>
-              <li><Link to="/methanemitigation" className="text-gray-300 hover:text-rhino-yellow transition-colors">MethaneMitigation</Link></li>
-            </ul>
-          </div>
-          {/* Legal */}
+           {/* Legal */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Legal</h4>
             <ul className="space-y-2">

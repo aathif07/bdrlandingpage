@@ -54,7 +54,7 @@ const ServicesPage = () => {
         "Data integrity assurance",
         "Minimal business disruption"
       ],
-      link: "/methanemitigation",
+      link: "/data-migration",
       image: imageUrls.dataMigration
     },
     {
@@ -77,12 +77,12 @@ const ServicesPage = () => {
       icon: <FaSatellite className="text-4xl text-yellow-500" />,
       description: "Comprehensive methane monitoring and reduction solutions for energy sector",
       highlights: [
-        "Emission tracking",
-        "Leak detection",
-        "Regulatory compliance",
-        "Reduction strategies"
+        "Satellite-based emission tracking",
+        "AI-powered leak detection",
+        "Regulatory compliance reporting",
+        "Reduction strategy implementation"
       ],
-      link: "/methanemitigation",
+      link: "/methane-mitigation",
       image: imageUrls.methane
     }
   ];
@@ -156,33 +156,33 @@ const ServicesPage = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className={`relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[500px] ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
+      <section className={`relative pt-24 px-4 sm:px-0 lg:px-8 flex items-center justify-center ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-[95%] mx-auto w-full flex flex-col items-center">
-          <div className="relative mb-10 w-full max-w-5xl flex justify-center">
+          <div className="relative w-full max-w-5xl flex justify-center">
             <div className={`rounded-xl overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} aspect-[21/9] max-h-[400px] w-full`}>
               <img 
-                src="/image.png" 
-                alt="Methane Solutions Dashboard" 
+                src={imageUrls.banner} 
+                alt="Enterprise Technology Services" 
                 className="w-full h-full object-cover object-center"
               />
             </div>
           </div>
-          <div className="space-y-6 text-center max-w-7xl">
+          <div className="space-y-6 text-center max-w-7xl mt-10 mb-16">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Enterprise <span className="text-yellow-500"> Technology Services </span> 
+              Enterprise <span className="text-yellow-500">Technology Services</span> 
             </h1>
             <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mx-auto`}>
-              Transform your business with our specialized services designed for complex industry challenges and digital transformation.
+              Transform your business with our specialized services designed for complex industry challenges and digital transformation
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* Add buttons or other content here if needed */}
+            <div className="flex justify-center">
+             
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Tabs Section */}
-      <section className={`py-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+      <section className={`pb-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Services</h2>
@@ -252,7 +252,7 @@ const ServicesPage = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
+      <section className={`pb-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Service Delivery Process</h2>
@@ -286,7 +286,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Brochure Downloads Section */}
-      <section className={`py-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+      <section className={`pb-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Download Our Brochures</h2>
@@ -306,7 +306,7 @@ const ServicesPage = () => {
                 Comprehensive guide to our legacy system modernization and cloud migration services
               </p>
               <button 
-                onClick={() => downloadBrochure('/pdf/Big Data Rhino-Data Migration Solutions.pdf', 'Big Data Rhino-Data Migration Solutions')}
+                onClick={() => downloadBrochure('/brochures/data-migration.pdf', 'Data_Migration_Solutions.pdf')}
                 className="flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg transition-colors bg-yellow-500 hover:bg-yellow-600"
               >
                 <FiDownload className="text-lg" />
@@ -324,7 +324,7 @@ const ServicesPage = () => {
                 Strategies for transforming legacy mainframe applications to modern architectures
               </p>
               <button 
-                onClick={() => downloadBrochure('/pdf/Mainframe Application Modernization (6).pdf', 'Mainframe_Application_Modernization.pdf')}
+                onClick={() => downloadBrochure('/brochures/mainframe-modernization.pdf', 'Mainframe_Modernization.pdf')}
                 className="flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg transition-colors bg-yellow-500 hover:bg-yellow-600"
               >
                 <FiDownload className="text-lg" />
@@ -342,7 +342,7 @@ const ServicesPage = () => {
                 How AI and machine learning can create smarter, faster government operations
               </p>
               <button 
-                onClick={() => downloadBrochure('/pdf/Lleveraging AI_ML for Smarter, Faster Government.pdf', 'AI_ML_for_Government.pdf')}
+                onClick={() => downloadBrochure('/brochures/ai-ml-government.pdf', 'AI_ML_for_Government.pdf')}
                 className="flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg transition-colors bg-yellow-500 hover:bg-yellow-600"
               >
                 <FiDownload className="text-lg" />
@@ -354,7 +354,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+      <section className={`pb-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">

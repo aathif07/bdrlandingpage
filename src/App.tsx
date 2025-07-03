@@ -9,8 +9,8 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Sarvice from "./pages/Sarvice"; // Fixed: Use default import
 import NotFound from "./pages/NotFound";
-import DataMitigation1 from "./pages/DataMitigation";
-import MethaneMitigation1 from "./pages/MethaneMitigation";
+import DataMitigation1 from "./pages/DataMigration";
+import DataMigration1 from "./pages/DataMigration";
 import Fintech1 from "./pages/Fintech";
 
 // Scroll to top on route change
@@ -46,7 +46,7 @@ const App = () => (
             {/* Main pages */}
             <Route path="/" element={<Sarvice/>} />
             <Route path="/DataMitigation" element={<DataMitigation1 />} />
-            <Route path="/methanemitigation" element={<MethaneMitigation1 />} />
+            <Route path="/DataMigration" element={<DataMigration1 />} />
             <Route path="/fintech" element={<Fintech1 />} />
 
             {/* Fallback */}
