@@ -39,15 +39,7 @@ const Navbar = () => {
           />
         </div>
 
-        {/* Theme Toggle - Right aligned */}
-        <div className="ml-auto">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ThemeToggle />
-          </motion.div>
-        </div>
+  
       </div>
     </header>
   );
