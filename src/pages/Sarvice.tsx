@@ -163,54 +163,51 @@ const ServicesPage = () => {
   return (
     <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} font-sans`}>
       <Navbar />
-      
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-yellow-50 via-white to-gray-100">
-        <div className="absolute inset-0">
-          <motion.div 
-            className="absolute bottom-0 w-full h-[300px]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.9 }}
-            transition={{ duration: 2, ease: "easeInOut" }}
-          >
-            <svg 
-              className="w-full h-full"
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 1440 320"
-              preserveAspectRatio="none"
-            >
-              <path fill="#f9f7f3" fillOpacity="0.9" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,186.7C672,181,768,203,864,202.7C960,203,1056,181,1152,176C1248,171,1344,181,1392,186.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-            </svg>
-          </motion.div>
-        </div>
-        
-        <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
-          <motion.h1
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-            className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight"
-          > 
-            Accelerate Growth with AI<span className="text-yellow-500">✨</span><br />Sales & Marketing Automation
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-            className="text-lg md:text-xl mb-8 text-gray-700 max-w-2xl mx-auto mt-6"
-          >
-            Leading brands grow cost-efficiently with Zixflow. Manage entire customer journeys with next-generation CRM and interactions over Email, SMS, and WhatsApp.
-          </motion.p>
-          
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mt-10 mx-auto max-w-4xl">
-            <img
-              src="/image.png"
-              alt="Services Banner"
-              className="w-full h-auto rounded-lg"
-            />
-          </div>
-        </div>
-      </section>
+<section className="relative h-[50vh] sm:h-[67vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-yellow-50 via-white to-gray-100">  <div className="absolute inset-0">
+    <motion.div 
+      className="absolute bottom-0 w-full h-[300px]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.9 }}
+      transition={{ duration: 2, ease: "easeInOut" }}
+    >
+      <svg 
+        className="w-full h-full"
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+      >
+        <path fill="#f9f7f3" fillOpacity="0.9" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,186.7C672,181,768,203,864,202.7C960,203,1056,181,1152,176C1248,171,1344,181,1392,186.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+      </svg>
+    </motion.div>
+  </div>
+  
+  <div className="relative z-10 text-center max-w-5xl mx-auto px-6 pt-4">
+    <motion.h1
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+      className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight"
+    > 
+      Accelerate Growth with AI<span className="text-yellow-500">✨</span><br />Sales & Marketing Automation
+    </motion.h1>
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+      className="text-lg md:text-xl mb-8 text-gray-700 max-w-2xl mx-auto mt-6"
+    >
+      Leading brands grow cost-efficiently with Zixflow. Manage entire customer journeys with next-generation CRM and interactions over Email, SMS, and WhatsApp.
+    </motion.p>
+    
+    <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mt-10 mx-auto max-w-4xl">
+      <img
+        src="/image.png"
+        alt="Services Banner"
+        className="w-full h-auto rounded-lg"
+      />
+    </div>
+  </div>
+</section>
     {/* Data Migration Services Section */}
 <section className="py-20 bg-gray-50">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
