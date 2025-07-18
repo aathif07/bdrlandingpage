@@ -51,7 +51,8 @@ const ServicesPage = () => {
         "Minimal business disruption"
       ],
       link: "/data-migration",
-      image: imageUrls.dataMigration
+      image: imageUrls.dataMigration,
+      color: "bg-blue-500"
     },
     {
       id: 'fintech',
@@ -65,7 +66,8 @@ const ServicesPage = () => {
         "API banking integration"
       ],
       link: "/fintech",
-      image: imageUrls.fintech
+      image: imageUrls.fintech,
+      color: "bg-green-500"
     },
     {
       id: 'methane',
@@ -79,7 +81,8 @@ const ServicesPage = () => {
         "Reduction strategy implementation"
       ],
       link: "/methane-mitigation",
-      image: imageUrls.methane
+      image: imageUrls.methane,
+      color: "bg-teal-500"
     }
   ];
 
@@ -87,25 +90,29 @@ const ServicesPage = () => {
     {
       title: "Consultation & Planning",
       description: "Tailored strategy based on your business needs.",
-      icon: <FiCloud className="text-2xl text-white" />
+      icon: <FiCloud className="text-2xl text-white" />,
+      color: "bg-blue-500"
     },
     {
       id: 'execution-migration',
       title: "Execution & Migration",
       description: "Smooth implementation with minimal disruption.",
-      icon: <FaServer className="text-2xl text-white" />
+      icon: <FaServer className="text-2xl text-white" />,
+      color: "bg-yellow-500"
     },
     {
       id: 'optimization-support',
       title: "Optimization & Support",
       description: "Continuous monitoring for optimal performance.",
-      icon: <FiBarChart2 className="text-2xl text-white" />
+      icon: <FiBarChart2 className="text-2xl text-white" />,
+      color: "bg-green-500"
     },
     {
       id: 'compliance-security',
       title: "Compliance & Security",
       description: "Robust protection and regulatory compliance.",
-      icon: <FiLock className="text-2xl text-white" />
+      icon: <FiLock className="text-2xl text-white" />,
+      color: "bg-purple-500"
     }
   ];
 
@@ -155,214 +162,263 @@ const ServicesPage = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
-  const rippleVariants = {
-    initial: { scale: 0, opacity: 0.3 },
-    animate: { scale: 2, opacity: 0, transition: { duration: 0.8 } }
-  };
-
   return (
-    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} font-sans`}>
+    <div className={`min-h-[90vh]flex flex-col ' text-white' `}>
       <Navbar />
-<section className="relative h-[50vh] sm:h-[67vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-yellow-50 via-white to-gray-100">  <div className="absolute inset-0">
-    <motion.div 
-      className="absolute bottom-0 w-full h-[300px]"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 0.9 }}
-      transition={{ duration: 2, ease: "easeInOut" }}
+      
+      {/* Added padding-top to create space below navbar */}
+    <section className="relative h-[80] flex items-center justify-center overflow-hidden bg-gradient-to-b from-blue-50 via-white to-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-900 pt-24">
+        <div className="absolute inset-0">
+          <motion.div 
+            className="absolute bottom-0 w-full h-[300px]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.9 }}
+            transition={{ duration: 2, ease: "easeInOut" }}
+          >
+            <svg 
+              className="w-full h-full"
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 1440 320"
+              preserveAspectRatio="none"
+            >
+              <path fill={theme === 'dark' ? '#111827' : '#f9f7f3'} fillOpacity="0.9" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,186.7C672,181,768,203,864,202.7C960,203,1056,181,1152,176C1248,171,1344,181,1392,186.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+            </svg>
+          </motion.div>
+        </div>
+        
+        <div className="relative z-10 text-center max-w-6xl mx- px-22 pt-12">
+          <motion.h1
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+            className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight"
+          > 
+            Empower Your Business with Our Services<span className="text-blue-500">✨</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+            className="text-lg md:text-xl mb-8 text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mt-6"
+          >
+            Transform your operations with our expert services and solutions.
+          </motion.p>
+          
+          {/* Increased banner size and added top margin */}
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 mt-12 mx-auto max-w-5xl">
+            <img
+              src="/Data Migration.png"
+              alt="Services Banner"
+              className="w-full h-auto max-h-[400px] object-cover rounded-lg"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className={`py-20 px-6 ${theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-800' : 'bg-gradient-to-b from-gray-50 to-gray-200'}`}>
+  <div className="max-w-7xl mx-auto text-center">
+    <motion.h2
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 mb-8"
     >
-      <svg 
-        className="w-full h-full"
-        xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-      >
-        <path fill="#f9f7f3" fillOpacity="0.9" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,186.7C672,181,768,203,864,202.7C960,203,1056,181,1152,176C1248,171,1344,181,1392,186.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-      </svg>
-    </motion.div>
-  </div>
-  
-  <div className="relative z-10 text-center max-w-5xl mx-auto px-6 pt-4">
-    <motion.h1
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-      className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight"
-    > 
-      Accelerate Growth with AI<span className="text-yellow-500">✨</span><br />Sales & Marketing Automation
-    </motion.h1>
+      About Us
+    </motion.h2>
+
     <motion.p
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-      className="text-lg md:text-xl mb-8 text-gray-700 max-w-2xl mx-auto mt-6"
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
+      className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-200 max-w-4xl mx-auto px-4"
     >
-      Leading brands grow cost-efficiently with Zixflow. Manage entire customer journeys with next-generation CRM and interactions over Email, SMS, and WhatsApp.
+      We are a technology-first innovation partner committed to building efficient, scalable, and secure digital solutions for modern businesses. With expertise in data migration, AI-powered analytics, fintech infrastructure, and sustainable environmental technologies, we empower organizations to stay ahead in a rapidly evolving digital landscape.
     </motion.p>
-    
-    <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mt-10 mx-auto max-w-4xl">
-      <img
-        src="/image.png"
-        alt="Services Banner"
-        className="w-full h-auto rounded-lg"
-      />
-    </div>
-  </div>
-</section>
-    {/* Data Migration Services Section */}
-<section className="py-20 bg-gray-50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-          Data Migration Services
-        </h2>
-        <p className="text-xl text-gray-600 mb-8">
-          Secure, compliant data transfer with risk assessment and advanced protection strategies tailored to your industry.
-        </p>
-        <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
-          Learn More
-        </button>
-      </div>
-      
-      <div className="relative">
-        <div className="bg-blue-100 rounded-2xl p-8">
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <div className="bg-gray-900 rounded-t-lg p-4 mb-4">
-              <h3 className="text-white font-semibold">Key Features</h3>
-            </div>
-            <div className="mb-6">
-              <img 
-                src="\Data Migration.png" 
-                alt="Data Migration"
-                className="w-full h-auto rounded-lg"
-              />
-            </div>
-            <div className="space-y-4">
-              {[
-                { name: "Risk Assessment", progress: 90, color: "bg-blue-500" },
-                { name: "Regulatory Compliance", progress: 85, color: "bg-green-500" },
-                { name: "Security Protocols", progress: 95, color: "bg-purple-500" }
-              ].map((item, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="font-medium text-gray-900">{item.name}</span>
-                    <span className="text-sm text-gray-500">{item.progress}%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className={`h-2 rounded-full ${item.color}`}
-                      style={{ width: `${item.progress}%` }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-{/* Methane Mitigation Section */}
-<section className="py-20 bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div className="relative">
-        <div className="bg-green-100 rounded-2xl p-8">
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <div className="bg-gray-900 rounded-t-lg p-4 mb-4">
-              <h3 className="text-white font-semibold">Technology Stack</h3>
-            </div>
-            <div className="mb-6">
-              <img 
-                src="\Methane Mitigation.png"  // Replace with your image path
-                alt="Methane Mitigation"
-                className="w-full h-auto rounded-lg"
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { metric: "Satellite Detection", value: "Real-time", color: "bg-teal-500" },
-                { metric: "AI Analytics", value: "90% Accuracy", color: "bg-orange-500" },
-                { metric: "IoT Sensors", value: "24/7 Monitoring", color: "bg-indigo-500" },
-                { metric: "Regulatory Support", value: "Compliance", color: "bg-yellow-500" }
-              ].map((item, index) => (
-                <div key={index} className="text-center p-2 bg-gray-50 rounded-lg">
-                  <p className="font-bold text-gray-900">{item.metric}</p>
-                  <p className="text-sm text-gray-600">{item.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div>
-        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-          Methane Mitigation Solutions
-        </h2>
-        <p className="text-xl text-gray-600 mb-8">
-          Detect and reduce methane emissions using satellite tech, IoT sensors, and AI-driven analytics for industries like oil/gas and agriculture.
+    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.03 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className="bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-gray-200/50 dark:border-gray-700/50 text-left hover:shadow-xl transition-shadow duration-300"
+      >
+        <h3 className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 mb-3">Vision</h3>
+        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+          To revolutionize digital transitions by providing intelligent, secure, and future-ready technology services that drive impact.
         </p>
-        <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
-          Learn More
-        </button>
-      </div>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.03 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className="bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-gray-200/50 dark:border-gray-700/50 text-left hover:shadow-xl transition-shadow duration-300"
+      >
+        <h3 className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 mb-3">Mission</h3>
+        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+          To deliver next-gen software solutions using real-time data, automation, and AI to enable sustainable and scalable business models.
+        </p>
+      </motion.div>
     </div>
   </div>
 </section>
-
-{/* Fintech Solutions Section */}
-<section className="py-20 bg-gray-50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-          Fintech Solutions
-        </h2>
-        <p className="text-xl text-gray-600 mb-8">
-          AI-powered tools for fraud detection, risk assessment, and regulatory compliance (e.g., CFPB Rule 1071) to transform financial operations.
-        </p>
-        <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
-          Learn More
-        </button>
-      </div>
-      
-      <div className="relative">
-        <div className="bg-purple-100 rounded-2xl p-8">
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <div className="bg-gray-900 rounded-t-lg p-4 mb-4">
-              <h3 className="text-white font-semibold">Impact Metrics</h3>
+      {/* Data Migration Services Section */}
+      <section className={`py-20 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                Data Migration Services
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+                Secure, compliant data transfer with risk assessment and advanced protection strategies tailored to your industry.
+              </p>
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg">
+                Learn More <FiArrowRight className="inline ml-2" />
+              </button>
             </div>
-            <div className="mb-6">
-              <img 
-                src="\Fintech.png"  // Replace with your image path
-                alt="Fintech Analytics"
-                className="w-full h-auto rounded-lg"
-              />
-            </div>
-            <div className="space-y-4">
-              {[
-                { name: "Fraud Detection", value: "67% Reduction", color: "bg-red-500" },
-                { name: "Customer Retention", value: "3.2x Higher", color: "bg-blue-500" },
-                { name: "Compliance Efficiency", value: "$100K Fines Avoided", color: "bg-green-500" }
-              ].map((item, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <div className={`w-3 h-3 rounded-full ${item.color}`}></div>
-                  <div>
-                    <p className="font-medium text-gray-900">{item.name}</p>
-                    <p className="text-sm text-gray-600">{item.value}</p>
+            
+            <div className="relative">
+              <div className="bg-blue-100 dark:bg-blue-900/30 rounded-2xl p-8">
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                  <div className="bg-blue-600 rounded-t-lg p-4 mb-4">
+                    <h3 className="text-white font-semibold">Key Features</h3>
+                  </div>
+                  <div className="mb-6">
+                    <img 
+                      src="/Data Migration.png" 
+                      alt="Data Migration"
+                      className="w-full h-auto rounded-lg"
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      { name: "Risk Assessment", progress: 90, color: "bg-blue-500" },
+                      { name: "Regulatory Compliance", progress: 85, color: "bg-green-500" },
+                      { name: "Security Protocols", progress: 95, color: "bg-purple-500" }
+                    ].map((item, index) => (
+                      <div key={index} className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <span className="font-medium text-gray-900 dark:text-white">{item.name}</span>
+                          <span className="text-sm text-gray-500 dark:text-gray-400">{item.progress}%</span>
+                        </div>
+                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                          <div 
+                            className={`h-2 rounded-full ${item.color}`}
+                            style={{ width: `${item.progress}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
+
+      {/* Methane Mitigation Section */}
+      <section className={`py-20 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="bg-green-100 dark:bg-teal-900/30 rounded-2xl p-8">
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                  <div className="bg-green-600 rounded-t-lg p-4 mb-4">
+                    <h3 className="text-white font-semibold">Technology Stack</h3>
+                  </div>
+                  <div className="mb-6">
+                    <img 
+                      src="/Methane Mitigation.png"
+                      alt="Methane Mitigation"
+                      className="w-full h-auto rounded-lg"
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { metric: "Satellite Detection", value: "Real-time", color: "bg-teal-500" },
+                      { metric: "AI Analytics", value: "90% Accuracy", color: "bg-orange-500" },
+                      { metric: "IoT Sensors", value: "24/7 Monitoring", color: "bg-indigo-500" },
+                      { metric: "Regulatory Support", value: "Compliance", color: "bg-yellow-500" }
+                    ].map((item, index) => (
+                      <div key={index} className="text-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <p className="font-bold text-gray-900 dark:text-white">{item.metric}</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{item.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                Methane Mitigation Solutions
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+                Detect and reduce methane emissions using satellite tech, IoT sensors, and AI-driven analytics for industries like oil/gas and agriculture.
+              </p>
+              <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg">
+                Learn More <FiArrowRight className="inline ml-2" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fintech Solutions Section */}
+      <section className={`py-20 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                Fintech Solutions
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+                AI-powered tools for fraud detection, risk assessment, and regulatory compliance to transform financial operations.
+              </p>
+              <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg">
+                Learn More <FiArrowRight className="inline ml-2" />
+              </button>
+            </div>
+            
+            <div className="relative">
+              <div className="bg-purple-100 dark:bg-purple-900/30 rounded-2xl p-8">
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                  <div className="bg-purple-600 rounded-t-lg p-4 mb-4">
+                    <h3 className="text-white font-semibold">Impact Metrics</h3>
+                  </div>
+                  <div className="mb-6">
+                    <img 
+                      src="/Fintech.png"
+                      alt="Fintech Analytics"
+                      className="w-full h-auto rounded-lg"
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      { name: "Fraud Detection", value: "67% Reduction", color: "bg-red-500" },
+                      { name: "Customer Retention", value: "3.2x Higher", color: "bg-blue-500" },
+                      { name: "Compliance Efficiency", value: "$100K Fines Avoided", color: "bg-green-500" }
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center space-x-4">
+                        <div className={`w-3 h-3 rounded-full ${item.color}`}></div>
+                        <div>
+                          <p className="font-medium text-gray-900 dark:text-white">{item.name}</p>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">{item.value}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Process Timeline */}
       <section className={`py-20 px-6 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="max-w-5xl mx-auto">
@@ -371,14 +427,14 @@ const ServicesPage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-center mb-16"
+            className="text-3xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white"
           >
             Our Process Flow
           </motion.h2>
           
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-yellow-400 opacity-30 transform -translate-x-1/2"></div>
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-400 opacity-30 transform -translate-x-1/2"></div>
             
             <div className="space-y-12">
               {processSteps.map((step, index) => (
@@ -394,17 +450,17 @@ const ServicesPage = () => {
                     className="relative z-10 flex-shrink-0"
                     whileHover={{ scale: 1.1 }}
                   >
-                    <div className="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-xl font-bold text-gray-900 shadow-md">
+                    <div className={`w-12 h-12 rounded-full ${step.color} flex items-center justify-center text-xl font-bold text-white shadow-md`}>
                       {index + 1}
                     </div>
                   </motion.div>
                   
                   <div className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg border border-gray-200 dark:border-gray-700 flex-1`}>
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="p-3 bg-yellow-400 rounded-lg">
+                      <div className={`p-3 ${step.color} rounded-lg text-white`}>
                         {step.icon}
                       </div>
-                      <h3 className="text-xl font-bold">{step.title}</h3>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">{step.title}</h3>
                     </div>
                     <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
                       {step.description}
@@ -415,67 +471,73 @@ const ServicesPage = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Brochure Downloads */}
-      <section className={`py-20 px-6 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-center mb-16"
-          >
-            Explore Our Solutions
-          </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "Data Migration Solutions", icon: <FiDatabase className="text-2xl" />, file: 'data-migration.pdf', image: imageUrls.dataMigration },
-              { title: "Mainframe Modernization", icon: <FaServer className="text-2xl" />, file: 'mainframe-modernization.pdf', image: imageUrls.fintech },
-              { title: "AI/ML for Government", icon: <FiGlobe className="text-2xl" />, file: 'ai-ml-government.pdf', image: imageUrls.methane },
-            ].map((brochure, index) => (
-              <motion.div
-                key={index}
-                variants={sectionVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className={`rounded-2xl overflow-hidden ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} shadow-lg border border-gray-200 dark:border-gray-600`}
-                whileHover={{ y: -5 }}
-              >
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={brochure.image}
-                    alt={brochure.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                
-                <div className="p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-yellow-400 rounded-lg text-white">
-                      {brochure.icon}
-                    </div>
-                    <h3 className="text-lg font-bold">{brochure.title}</h3>
-                  </div>
-                  
-                  <motion.button
-                    onClick={() => downloadBrochure(`/brochures/${brochure.file}`, brochure.file)}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-yellow-400 text-gray-900 rounded-lg font-medium hover:bg-yellow-500 transition-all"
-                  >
-                    <FiDownload /> Download Brochure
-                  </motion.button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      </section>    
+<section className="py-20 px-6 bg-gray-100">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 text-gray-900">
+      Explore Our Solutions
+    </h2>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Data Migration Card */}
+      <div className="bg-blue-100 rounded-2xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+        <img 
+          src="/Data_Migration.png" 
+          alt="Data Migration" 
+          className="w-full h-40 object-cover rounded-lg mb-4"
+        />
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-bold text-gray-800">Data Migration</h3>
         </div>
-      </section>
+        <a 
+          href="/pdfs/Data_Migration_Brochure.pdf" 
+          download 
+          className="w-full max-w-xs py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-xl font-semibold text-lg shadow-md hover:from-blue-700 hover:to-blue-900 hover:shadow-lg transition-all duration-200 text-center"
+        >
+          Download Brochure
+        </a>
+      </div>
 
+      {/* Fintech Solutions Card */}
+      <div className="bg-green-100 rounded-2xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+        <img 
+          src="/Fintech_Solutions.png" 
+          alt="Fintech Solutions" 
+          className="w-full h-40 object-cover rounded-lg mb-4"
+        />
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-bold text-gray-800">Fintech Solutions</h3>
+        </div>
+        <a 
+          href="/pdfs/Fintech_Solutions_Brochure.pdf" 
+          download 
+          className="w-full max-w-xs py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-xl font-semibold text-lg shadow-md hover:from-blue-700 hover:to-blue-900 hover:shadow-lg transition-all duration-200 text-center"
+        >
+          Download Brochure
+        </a>
+      </div>
+
+      {/* Methane Mitigation Card */}
+      <div className="bg-orange-100 rounded-2xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+        <img 
+          src="/Methane_Mitigation.png" 
+          alt="Methane Mitigation" 
+          className="w-full h-40 object-cover rounded-lg mb-4"
+        />
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-bold text-gray-800">Methane Mitigation</h3>
+        </div>
+        <a 
+          href="/pdfs/Methane_Mitigation_Brochure.pdf" 
+          download 
+          className="w-full max-w-xs py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-xl font-semibold text-lg shadow-md hover:from-blue-700 hover:to-blue-900 hover:shadow-lg transition-all duration-200 text-center"
+        >
+          Download Brochure
+        </a>
+      </div>
+    </div>
+  </div>
+   </section>
       {/* Contact Form */}
       <section className={`py-20 px-6 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="max-w-3xl mx-auto">
@@ -484,7 +546,7 @@ const ServicesPage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-center mb-12"
+            className="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-900 dark:text-white"
           >
             Connect With Us
           </motion.h2>
@@ -508,12 +570,12 @@ const ServicesPage = () => {
                       required
                       className={`w-full px-4 py-3 rounded-lg border ${
                         theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'
-                      } focus:outline-none focus:ring-2 focus:ring-yellow-400 peer`}
+                      } focus:outline-none focus:ring-2 focus:ring-blue-500 peer`}
                       placeholder=" "
                     />
                     <label className={`absolute left-4 top-3 px-1 transition-all duration-200 pointer-events-none ${
-                      formData[field] ? 'text-sm -translate-y-6 bg-white dark:bg-gray-800 text-yellow-500' : 
-                      'peer-focus:text-sm peer-focus:-translate-y-6 peer-focus:text-yellow-500 peer-focus:bg-white dark:peer-focus:bg-gray-800'
+                      formData[field] ? 'text-sm -translate-y-6 bg-white dark:bg-gray-800 text-blue-500' : 
+                      'peer-focus:text-sm peer-focus:-translate-y-6 peer-focus:text-blue-500 peer-focus:bg-white dark:peer-focus:bg-gray-800'
                     } ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
                       {field.charAt(0).toUpperCase() + field.slice(1)}
                     </label>
@@ -528,15 +590,15 @@ const ServicesPage = () => {
                   onChange={handleChange}
                   className={`w-full px-4 py-3 rounded-lg appearance-none ${
                     theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'
-                  } border focus:outline-none focus:ring-2 focus:ring-yellow-400`}
+                  } border focus:outline-none focus:ring-2 focus:ring-blue-500`}
                   required
                 >
-                  <option value="Data Migration">Data Migration</option>
-                  <option value="Fintech Solutions">Fintech Solutions</option>
-                  <option value="Methane Mitigation">Methane Mitigation</option>
+                  {services.map((service) => (
+                    <option key={service.id} value={service.title}>{service.title}</option>
+                  ))}
                 </select>
                 <label className={`absolute left-4 -top-3 px-1 text-sm ${
-                  theme === 'dark' ? 'text-yellow-400 bg-gray-800' : 'text-yellow-500 bg-white'
+                  theme === 'dark' ? 'text-blue-400 bg-gray-800' : 'text-blue-500 bg-white'
                 }`}>
                   Service Interest
                 </label>
@@ -551,7 +613,7 @@ const ServicesPage = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={isSubmitting}
-                className="w-full py-3 bg-yellow-400 text-gray-900 rounded-lg font-medium hover:bg-yellow-500 transition-colors disabled:opacity-70"
+                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors disabled:opacity-70 shadow-md"
               >
                 {isSubmitting ? 'Sending...' : 'Request Consultation'}
               </motion.button>
