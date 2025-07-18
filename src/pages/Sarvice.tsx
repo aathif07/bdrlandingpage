@@ -7,7 +7,7 @@ import Footer from '../components/layout/Footer';
 import CardSwap from '@/components/blog/CardSwap';
 import { 
   FiArrowRight, 
-  FiCheck, 
+  FiCheck,    
   FiDownload, 
   FiBarChart2, 
   FiDatabase,
@@ -165,10 +165,10 @@ const ServicesPage = () => {
     <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} font-sans`}>
       <Navbar />
       {/* Enhanced Hero Section with Improved Banner and Background */}  
-  <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-yellow-50 via-white to-gray-100">
+  <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-yellow-50 via-white to-gray-100 ">
     <div className="absolute inset-0">
     <motion.div 
-      className="absolute bottom-0 w-full h-[250px]"
+      className="absolute bottom-0 w-full h-[300px]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 0.9 }}
       transition={{ duration: 2, ease: "easeInOut" }}
@@ -188,8 +188,8 @@ const ServicesPage = () => {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-      className="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight"
-    >
+      className="text-5xl md:text-11xl font-extrabold text-gray-900 tracking-tight"
+    > 
       Accelerate Growth with AI<span className="text-yellow-500">✨</span><br />Sales & Marketing Automation
     </motion.h1>
     <motion.p
