@@ -9,10 +9,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme } = useTheme();
   
-  // Use theme-aware logo
-  const logoSrc = theme === 'dark' 
-    ? '/BigDataRhinologo2.png' 
-    : '/BigDataRhinologo.png';
+  // Always use the light mode logo
+  const logoSrc = '/BigDataRhinologo.png';
 
   // Scroll effect
   useEffect(() => {
@@ -23,7 +21,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top 5 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-5 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'py-7 bg-white shadow dark:bg-gray-800' : 'py-12 bg-transparent'
       }`}
     >
@@ -38,8 +36,6 @@ const Navbar = () => {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           />
         </div>
-
-  
       </div>
     </header>
   );
