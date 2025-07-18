@@ -4,7 +4,6 @@ import { useTheme } from '../context/ThemeContext';
 import { useApolloTracking } from '../hooks/useApolloTracking';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
-import CardSwap from '@/components/blog/CardSwap';
 import { 
   FiArrowRight, 
   FiCheck,    
@@ -164,200 +163,281 @@ const ServicesPage = () => {
   return (
     <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} font-sans`}>
       <Navbar />
-      {/* Enhanced Hero Section with Improved Banner and Background */}  
-  <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-yellow-50 via-white to-gray-100 ">
-    <div className="absolute inset-0">
-    <motion.div 
-      className="absolute bottom-0 w-full h-[300px]"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 0.9 }}
-      transition={{ duration: 2, ease: "easeInOut" }}
-    >
-      <svg 
-        className="w-full h-full"
-        xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-      >
-        <path fill="#f9f7f3" fillOpacity="0.9" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,186.7C672,181,768,203,864,202.7C960,203,1056,181,1152,176C1248,171,1344,181,1392,186.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-      </svg>
-    </motion.div>
-  </div>
-  <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
-    <motion.h1
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-      className="text-5xl md:text-11xl font-extrabold text-gray-900 tracking-tight"
-    > 
-      Accelerate Growth with AI<span className="text-yellow-500">✨</span><br />Sales & Marketing Automation
-    </motion.h1>
-    <motion.p
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-      className="text-lg md:text-xl mb-8 text-gray-700 max-w-2xl mx-auto"
-    >
-      Leading brands grow cost-efficiently with Zixflow. Manage entire customer journeys with next-generation CRM and interactions over Email, SMS, and WhatsApp.
-    </motion.p>
-    {/* Added Banner Centered in the Body */}
-   <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mt-10 flex justify-center items-center">
-    <img
-    src="\image.png"
-    alt="Banner"
-    className="max-w-full h-auto rounded-lg"
-  />
-</div>
-  </div>
-   </section>
-   
-      {/* Services Section with Ripple Effect */}
-<section className={`py-24 px-6 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
-  <div className="max-w-7xl mx-auto">
-    <motion.h2
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="text-3xl md:text-5xl font-bold text-center mb-16 tracking-tight"
-    >
-      Our Core Services
-    </motion.h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-      {services.map((service, index) => (
-        <motion.div
-          key={service.id}
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          whileHover={{ scale: 1.05, boxShadow: "0 25px 35px rgba(0,0,0,0.15)" }}
-          className={`relative p-10 rounded-3xl overflow-hidden ${
-            theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'
-          } border border-gray-200 dark:border-gray-600 shadow-2xl cursor-pointer transition-all duration-300`}
-          onMouseEnter={() => setActiveService(index)}
-          onMouseLeave={() => setActiveService(null)}
-        >
-          {activeService === index && (
-            <motion.div
-              variants={rippleVariants}
-              initial="initial"
-              animate="animate"
-              className="absolute inset-0 bg-yellow-300 rounded-full pointer-events-none"
-              style={{ transformOrigin: 'center' }}
-            />
-          )}
-          <div className="relative z-10 flex items-center gap-6 mb-8">
-            <motion.div
-              className="p-5 bg-yellow-300 rounded-2xl"
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.6 }}
-            >
-              {service.icon}
-            </motion.div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{service.title}</h3>
-          </div>
-          <p className={`mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} leading-relaxed text-lg`}>
-            {service.description}
-          </p>
-          <ul className="space-y-4 mb-8">
-            {service.highlights.map((highlight, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-center gap-4"
-              >
-                <FiCheck className="text-yellow-400 text-xl flex-shrink-0" />
-                <span className="text-base">{highlight}</span>
-              </motion.li>
-            ))}
-          </ul>
-          <Link
-            to={service.link}
-            className="inline-flex items-center gap-3 text-yellow-400 hover:text-yellow-500 font-semibold text-lg transition-colors"
+      
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-yellow-50 via-white to-gray-100">
+        <div className="absolute inset-0">
+          <motion.div 
+            className="absolute bottom-0 w-full h-[300px]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.9 }}
+            transition={{ duration: 2, ease: "easeInOut" }}
           >
-            Discover More <FiArrowRight className="text-xl" />
-          </Link>
-        </motion.div>
-      ))}
+            <svg 
+              className="w-full h-full"
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 1440 320"
+              preserveAspectRatio="none"
+            >
+              <path fill="#f9f7f3" fillOpacity="0.9" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,186.7C672,181,768,203,864,202.7C960,203,1056,181,1152,176C1248,171,1344,181,1392,186.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+            </svg>
+          </motion.div>
+        </div>
+        
+        <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
+          <motion.h1
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+            className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight"
+          > 
+            Accelerate Growth with AI<span className="text-yellow-500">✨</span><br />Sales & Marketing Automation
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+            className="text-lg md:text-xl mb-8 text-gray-700 max-w-2xl mx-auto mt-6"
+          >
+            Leading brands grow cost-efficiently with Zixflow. Manage entire customer journeys with next-generation CRM and interactions over Email, SMS, and WhatsApp.
+          </motion.p>
+          
+          <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mt-10 mx-auto max-w-4xl">
+            <img
+              src="/image.png"
+              alt="Services Banner"
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
+        </div>
+      </section>
+    {/* Data Migration Services Section */}
+<section className="py-20 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+          Data Migration Services
+        </h2>
+        <p className="text-xl text-gray-600 mb-8">
+          Secure, compliant data transfer with risk assessment and advanced protection strategies tailored to your industry.
+        </p>
+        <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
+          Learn More
+        </button>
+      </div>
+      
+      <div className="relative">
+        <div className="bg-blue-100 rounded-2xl p-8">
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="bg-gray-900 rounded-t-lg p-4 mb-4">
+              <h3 className="text-white font-semibold">Key Features</h3>
+            </div>
+            <div className="mb-6">
+              <img 
+                src="\Data Migration.png" 
+                alt="Data Migration"
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
+            <div className="space-y-4">
+              {[
+                { name: "Risk Assessment", progress: 90, color: "bg-blue-500" },
+                { name: "Regulatory Compliance", progress: 85, color: "bg-green-500" },
+                { name: "Security Protocols", progress: 95, color: "bg-purple-500" }
+              ].map((item, index) => (
+                <div key={index} className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium text-gray-900">{item.name}</span>
+                    <span className="text-sm text-gray-500">{item.progress}%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div 
+                      className={`h-2 rounded-full ${item.color}`}
+                      style={{ width: `${item.progress}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-      {/* Process Timeline with Flow Animation */}
-      <section className={`py-24 px-6 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
-        <div className="max-w-7xl mx-auto">
+{/* Methane Mitigation Section */}
+<section className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative">
+        <div className="bg-green-100 rounded-2xl p-8">
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="bg-gray-900 rounded-t-lg p-4 mb-4">
+              <h3 className="text-white font-semibold">Technology Stack</h3>
+            </div>
+            <div className="mb-6">
+              <img 
+                src="\Methane Mitigation.png"  // Replace with your image path
+                alt="Methane Mitigation"
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { metric: "Satellite Detection", value: "Real-time", color: "bg-teal-500" },
+                { metric: "AI Analytics", value: "90% Accuracy", color: "bg-orange-500" },
+                { metric: "IoT Sensors", value: "24/7 Monitoring", color: "bg-indigo-500" },
+                { metric: "Regulatory Support", value: "Compliance", color: "bg-yellow-500" }
+              ].map((item, index) => (
+                <div key={index} className="text-center p-2 bg-gray-50 rounded-lg">
+                  <p className="font-bold text-gray-900">{item.metric}</p>
+                  <p className="text-sm text-gray-600">{item.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+          Methane Mitigation Solutions
+        </h2>
+        <p className="text-xl text-gray-600 mb-8">
+          Detect and reduce methane emissions using satellite tech, IoT sensors, and AI-driven analytics for industries like oil/gas and agriculture.
+        </p>
+        <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
+          Learn More
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Fintech Solutions Section */}
+<section className="py-20 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+          Fintech Solutions
+        </h2>
+        <p className="text-xl text-gray-600 mb-8">
+          AI-powered tools for fraud detection, risk assessment, and regulatory compliance (e.g., CFPB Rule 1071) to transform financial operations.
+        </p>
+        <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
+          Learn More
+        </button>
+      </div>
+      
+      <div className="relative">
+        <div className="bg-purple-100 rounded-2xl p-8">
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="bg-gray-900 rounded-t-lg p-4 mb-4">
+              <h3 className="text-white font-semibold">Impact Metrics</h3>
+            </div>
+            <div className="mb-6">
+              <img 
+                src="\Fintech.png"  // Replace with your image path
+                alt="Fintech Analytics"
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
+            <div className="space-y-4">
+              {[
+                { name: "Fraud Detection", value: "67% Reduction", color: "bg-red-500" },
+                { name: "Customer Retention", value: "3.2x Higher", color: "bg-blue-500" },
+                { name: "Compliance Efficiency", value: "$100K Fines Avoided", color: "bg-green-500" }
+              ].map((item, index) => (
+                <div key={index} className="flex items-center space-x-4">
+                  <div className={`w-3 h-3 rounded-full ${item.color}`}></div>
+                  <div>
+                    <p className="font-medium text-gray-900">{item.name}</p>
+                    <p className="text-sm text-gray-600">{item.value}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      {/* Process Timeline */}
+      <section className={`py-20 px-6 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+        <div className="max-w-5xl mx-auto">
           <motion.h2
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900 dark:text-white"
+            className="text-3xl md:text-5xl font-bold text-center mb-16"
           >
             Our Process Flow
           </motion.h2>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ staggerChildren: 0.2 }}
-            className="space-y-14 relative"
-          >
-            <div className="absolute left-6 top-0 w-1 bg-yellow-400 h-full transform -translate-x-1/2 opacity-40"></div>
-            {processSteps.map((step, index) => (
-              <motion.div
-                key={step.id || index}
-                variants={sectionVariants}
-                className="flex items-start gap-8 relative"
-              >
+          
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-yellow-400 opacity-30 transform -translate-x-1/2"></div>
+            
+            <div className="space-y-12">
+              {processSteps.map((step, index) => (
                 <motion.div
-                  className="relative flex-shrink-0 z-10"
-                  whileHover={{ scale: 1.2 }}
-                  transition={{ duration: 0.3 }}
+                  key={step.id || index}
+                  variants={sectionVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                  className="flex items-start gap-6 relative"
                 >
-                  <div className="w-14 h-14 rounded-full bg-yellow-400 flex items-center justify-center text-2xl font-bold text-gray-900 shadow-lg">
-                    {index + 1}
+                  <motion.div
+                    className="relative z-10 flex-shrink-0"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <div className="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-xl font-bold text-gray-900 shadow-md">
+                      {index + 1}
+                    </div>
+                  </motion.div>
+                  
+                  <div className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg border border-gray-200 dark:border-gray-700 flex-1`}>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="p-3 bg-yellow-400 rounded-lg">
+                        {step.icon}
+                      </div>
+                      <h3 className="text-xl font-bold">{step.title}</h3>
+                    </div>
+                    <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
+                      {step.description}
+                    </p>
                   </div>
                 </motion.div>
-                <div className={`p-8 rounded-2xl ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} shadow-xl flex-1 border border-gray-200 dark:border-gray-600`}>
-                  <div className="flex items-center gap-5 mb-6">
-                    <motion.div
-                      className="p-4 bg-yellow-400 rounded-xl"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      {step.icon}
-                    </motion.div>
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">{step.title}</h3>
-                  </div>
-                  <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>{step.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
-      
 
-      {/* Brochure Downloads with Curve Design */}
-      <section className={`py-24 px-6 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+      {/* Brochure Downloads */}
+      <section className={`py-20 px-6 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <motion.h2
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900 dark:text-white"
+            className="text-3xl md:text-5xl font-bold text-center mb-16"
           >
             Explore Our Solutions
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Data Migration Solutions", icon: <FiDatabase className="text-2xl text-white" />, file: 'data-migration.pdf', image: imageUrls.dataMigration },
-              { title: "Mainframe Modernization", icon: <FaServer className="text-2xl text-white" />, file: 'mainframe-modernization.pdf', image: imageUrls.fintech },
-              { title: "AI/ML for Government", icon: <FiGlobe className="text-2xl text-white" />, file: 'ai-ml-government.pdf', image: imageUrls.methane },
+              { title: "Data Migration Solutions", icon: <FiDatabase className="text-2xl" />, file: 'data-migration.pdf', image: imageUrls.dataMigration },
+              { title: "Mainframe Modernization", icon: <FaServer className="text-2xl" />, file: 'mainframe-modernization.pdf', image: imageUrls.fintech },
+              { title: "AI/ML for Government", icon: <FiGlobe className="text-2xl" />, file: 'ai-ml-government.pdf', image: imageUrls.methane },
             ].map((brochure, index) => (
               <motion.div
                 key={index}
@@ -365,160 +445,124 @@ const ServicesPage = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className={`relative group p-8 rounded-3xl ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} shadow-2xl border border-gray-200 dark:border-gray-600 overflow-hidden`}
-                whileHover={{ y: -10 }}
+                className={`rounded-2xl overflow-hidden ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} shadow-lg border border-gray-200 dark:border-gray-600`}
+                whileHover={{ y: -5 }}
               >
-                <div className="relative w-full h-56 rounded-2xl overflow-hidden mb-6">
+                <div className="h-48 overflow-hidden">
                   <img
                     src={brochure.image}
                     alt={brochure.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
-                <div className="flex items-center gap-4 mb-6">
-                  <motion.div
-                    className="p-3 bg-yellow-400 rounded-xl"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
+                
+                <div className="p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-yellow-400 rounded-lg text-white">
+                      {brochure.icon}
+                    </div>
+                    <h3 className="text-lg font-bold">{brochure.title}</h3>
+                  </div>
+                  
+                  <motion.button
+                    onClick={() => downloadBrochure(`/brochures/${brochure.file}`, brochure.file)}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-yellow-400 text-gray-900 rounded-lg font-medium hover:bg-yellow-500 transition-all"
                   >
-                    {brochure.icon}
-                  </motion.div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">{brochure.title}</h3>
+                    <FiDownload /> Download Brochure
+                  </motion.button>
                 </div>
-                <motion.button
-                  onClick={() => downloadBrochure(`/brochures/${brochure.file}`, brochure.file)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-yellow-400 text-gray-900 rounded-full font-semibold hover:bg-yellow-500 transition-all shadow-md"
-                >
-                  <FiDownload /> Download Brochure
-                </motion.button>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form with Animated Inputs */}
-      <section className={`py-24 px-6 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
-        <div className="max-w-3xl mx-auto relative">
-          <motion.svg
-            className="absolute top-0 left-0 w-full h-full text-yellow-400 opacity-10"
-            viewBox="0 0 1440 320"
-            initial={{ scale: 1.2 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5 }}
-          >
-            <path
-              fill="currentColor"
-              d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            />
-          </motion.svg>
+      {/* Contact Form */}
+      <section className={`py-20 px-6 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+        <div className="max-w-3xl mx-auto">
           <motion.h2
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-center mb-12 tracking-tight text-gray-900 dark:text-white relative z-10"
+            className="text-3xl md:text-5xl font-bold text-center mb-12"
           >
             Connect With Us
           </motion.h2>
+          
           <motion.div
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className={`p-10 rounded-3xl ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} shadow-2xl border border-gray-200 dark:border-gray-600 relative z-10`}
+            className={`p-8 rounded-2xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-xl border border-gray-200 dark:border-gray-700`}
           >
-            <div className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {['name', 'email', 'phone', 'company'].map((field, index) => (
-                  <motion.div
-                    key={field}
-                    className="relative"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
+            <form className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {['name', 'email', 'phone', 'company'].map((field) => (
+                  <div key={field} className="relative">
                     <input
                       type={field === 'email' ? 'email' : field === 'phone' ? 'tel' : 'text'}
                       name={field}
                       value={formData[field]}
                       onChange={handleChange}
-                      placeholder={`Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
-                      className={`w-full p-5 rounded-xl bg-transparent border ${
-                        theme === 'dark' ? 'border-gray-600' : 'border-gray-300'
-                      } focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300 peer text-gray-900 dark:text-white placeholder-transparent`}
                       required
+                      className={`w-full px-4 py-3 rounded-lg border ${
+                        theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'
+                      } focus:outline-none focus:ring-2 focus:ring-yellow-400 peer`}
+                      placeholder=" "
                     />
-                    <label
-                      className={`absolute left-5 top-5 text-gray-500 dark:text-gray-400 transition-all duration-300 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-yellow-400 peer-placeholder-shown:top-5 peer-placeholder-shown:text-base`}
-                    >
+                    <label className={`absolute left-4 top-3 px-1 transition-all duration-200 pointer-events-none ${
+                      formData[field] ? 'text-sm -translate-y-6 bg-white dark:bg-gray-800 text-yellow-500' : 
+                      'peer-focus:text-sm peer-focus:-translate-y-6 peer-focus:text-yellow-500 peer-focus:bg-white dark:peer-focus:bg-gray-800'
+                    } ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
                       {field.charAt(0).toUpperCase() + field.slice(1)}
                     </label>
-                  </motion.div>
+                  </div>
                 ))}
-                <motion.div
-                  className="relative md:col-span-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <select
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className={`w-full p-5 rounded-xl ${
-                      theme === 'dark' ? 'bg-gray-600 text-white' : 'bg-gray-100 text-gray-900'
-                    } border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 appearance-none transition-all duration-300 cursor-pointer`}
-                    required
-                  >
-                    <option value="Data Migration">Data Migration</option>
-                    <option value="Fintech Solutions">Fintech Solutions</option>
-                    <option value="Methane Mitigation">Methane Mitigation</option>
-                    <option value="All Services">All Services</option>
-                  </select>
-                  <label className="absolute left-5 -top-3 text-sm font-medium text-yellow-400">
-                    Service Interest
-                  </label>
-                  <motion.div
-                    className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500"
-                    initial={{ rotate: 0 }}
-                    animate={{ rotate: formData.service ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <FiArrowRight />
-                  </motion.div>
-                </motion.div>
               </div>
+              
+              <div className="relative">
+                <select
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-3 rounded-lg appearance-none ${
+                    theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'
+                  } border focus:outline-none focus:ring-2 focus:ring-yellow-400`}
+                  required
+                >
+                  <option value="Data Migration">Data Migration</option>
+                  <option value="Fintech Solutions">Fintech Solutions</option>
+                  <option value="Methane Mitigation">Methane Mitigation</option>
+                </select>
+                <label className={`absolute left-4 -top-3 px-1 text-sm ${
+                  theme === 'dark' ? 'text-yellow-400 bg-gray-800' : 'text-yellow-500 bg-white'
+                }`}>
+                  Service Interest
+                </label>
+                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <FiArrowRight className="text-gray-500" />
+                </div>
+              </div>
+              
               <motion.button
                 type="button"
                 onClick={handleSubmit}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full px-8 py-4 bg-yellow-400 text-gray-900 rounded-xl font-semibold text-lg hover:bg-yellow-500 transition-all shadow-lg disabled:opacity-50 relative overflow-hidden"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 disabled={isSubmitting}
+                className="w-full py-3 bg-yellow-400 text-gray-900 rounded-lg font-medium hover:bg-yellow-500 transition-colors disabled:opacity-70"
               >
-                <span className="relative z-10">
-                  {isSubmitting ? "Processing..." : "Request Consultation"}
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-yellow-500 opacity-0"
-                  whileHover={{ opacity: 0.3 }}
-                  transition={{ duration: 0.3 }}
-                />
+                {isSubmitting ? 'Sending...' : 'Request Consultation'}
               </motion.button>
-            </div>
+            </form>
           </motion.div>
         </div>
       </section>
 
-    
       <Footer />
     </div>
   );
