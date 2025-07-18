@@ -164,51 +164,9 @@ const ServicesPage = () => {
   return (
     <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} font-sans`}>
       <Navbar />
-
-      {/* Enhanced Hero Section with Improved Banner and Background */}
-      
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-yellow-50 via-white to-gray-100">
-        <div className="absolute inset-0">
-          <motion.div 
-            className="absolute bottom-0 w-full h-[250px]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.9 }}
-            transition={{ duration: 2, ease: "easeInOut" }}
-          >
-            <svg 
-              className="w-full h-full"
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 1440 320"
-              preserveAspectRatio="none"
-            >
-              <path fill="#f9f7f3" fillOpacity="0.9" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,186.7C672,181,768,203,864,202.7C960,203,1056,181,1152,176C1248,171,1344,181,1392,186.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-            </svg>
-          </motion.div>
-        </div>
-        <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
-          <motion.h1
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-            className="text-5xl md:text-7xl font-extrabold mb-6 text-gray-900 tracking-tight"
-          >
-            Accelerate Growth with AI<span className="text-yellow-500">✨</span><br />Sales & Marketing Automation
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-            className="text-lg md:text-xl mb-8 text-gray-700 max-w-2xl mx-auto"
-          >
-            Leading brands grow cost-efficiently with Zixflow. Manage entire customer journeys with next-generation CRM and interactions over Email, SMS, and WhatsApp.
-          </motion.p>
-          <div className="flex justify-center gap-4">
-           
-          </div>
-        </div>
-      </section>
-      
-  <div className="absolute inset-0">
+      {/* Enhanced Hero Section with Improved Banner and Background */}  
+  <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-yellow-50 via-white to-gray-100">
+    <div className="absolute inset-0">
     <motion.div 
       className="absolute bottom-0 w-full h-[250px]"
       initial={{ opacity: 0 }}
@@ -230,7 +188,7 @@ const ServicesPage = () => {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-      className="text-5xl md:text-7xl font-extrabold mb-6 text-gray-900 tracking-tight"
+      className="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight"
     >
       Accelerate Growth with AI<span className="text-yellow-500">✨</span><br />Sales & Marketing Automation
     </motion.h1>
@@ -243,116 +201,90 @@ const ServicesPage = () => {
       Leading brands grow cost-efficiently with Zixflow. Manage entire customer journeys with next-generation CRM and interactions over Email, SMS, and WhatsApp.
     </motion.p>
     {/* Added Banner Centered in the Body */}
-    <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mt-10">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-        className="text-2xl md:text-3xl font-bold text-gray-800 mb-4"
-      >
-        Special Offer: Start Today!
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
-        className="text-md md:text-lg text-gray-600 mb-6"
-      >
-        Get 20% off your first month with Zixflow. Unlock premium features now!
-      </motion.p>
-      <div className="flex justify-center gap-4">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-6 py-3 bg-yellow-500 text-white rounded-lg font-semibold hover:bg-yellow-600 transition-colors"
-        >
-          Get Started
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-        >
-          Learn More
-        </motion.button>
-      </div>
-    </div>
+   <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mt-10 flex justify-center items-center">
+    <img
+    src="\image.png"
+    alt="Banner"
+    className="max-w-full h-auto rounded-lg"
+  />
+</div>
   </div>
+   </section>
    
       {/* Services Section with Ripple Effect */}
-      <section className={`py-24 px-6 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-center mb-16 tracking-tight"
-          >
-            Our Core Services
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.id}
-                variants={sectionVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05, boxShadow: "0 25px 35px rgba(0,0,0,0.15)" }}
-                className={`relative p-10 rounded-3xl overflow-hidden ${
-                  theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'
-                } border border-gray-200 dark:border-gray-600 shadow-2xl cursor-pointer transition-all duration-300`}
-                onMouseEnter={() => setActiveService(index)}
-                onMouseLeave={() => setActiveService(null)}
-              >
-                {activeService === index && (
-                  <motion.div
-                    variants={rippleVariants}
-                    initial="initial"
-                    animate="animate"
-                    className="absolute inset-0 bg-yellow-300 rounded-full pointer-events-none"
-                    style={{ transformOrigin: 'center' }}
-                  />
-                )}
-                <div className="relative z-10 flex items-center gap-6 mb-8">
-                  <motion.div
-                    className="p-5 bg-yellow-300 rounded-2xl"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    {service.icon}
-                  </motion.div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{service.title}</h3>
-                </div>
-                <p className={`mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} leading-relaxed text-lg`}>
-                  {service.description}
-                </p>
-                <ul className="space-y-4 mb-8">
-                  {service.highlights.map((highlight, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-4"
-                    >
-                      <FiCheck className="text-yellow-400 text-xl flex-shrink-0" />
-                      <span className="text-base">{highlight}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-                <Link
-                  to={service.link}
-                  className="inline-flex items-center gap-3 text-yellow-400 hover:text-yellow-500 font-semibold text-lg transition-colors"
-                >
-                  Discover More <FiArrowRight className="text-xl" />
-                </Link>
-              </motion.div>
-            ))}
+<section className={`py-24 px-6 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+  <div className="max-w-7xl mx-auto">
+    <motion.h2
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="text-3xl md:text-5xl font-bold text-center mb-16 tracking-tight"
+    >
+      Our Core Services
+    </motion.h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      {services.map((service, index) => (
+        <motion.div
+          key={service.id}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.05, boxShadow: "0 25px 35px rgba(0,0,0,0.15)" }}
+          className={`relative p-10 rounded-3xl overflow-hidden ${
+            theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'
+          } border border-gray-200 dark:border-gray-600 shadow-2xl cursor-pointer transition-all duration-300`}
+          onMouseEnter={() => setActiveService(index)}
+          onMouseLeave={() => setActiveService(null)}
+        >
+          {activeService === index && (
+            <motion.div
+              variants={rippleVariants}
+              initial="initial"
+              animate="animate"
+              className="absolute inset-0 bg-yellow-300 rounded-full pointer-events-none"
+              style={{ transformOrigin: 'center' }}
+            />
+          )}
+          <div className="relative z-10 flex items-center gap-6 mb-8">
+            <motion.div
+              className="p-5 bg-yellow-300 rounded-2xl"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
+              {service.icon}
+            </motion.div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{service.title}</h3>
           </div>
-        </div>
-      </section>
+          <p className={`mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} leading-relaxed text-lg`}>
+            {service.description}
+          </p>
+          <ul className="space-y-4 mb-8">
+            {service.highlights.map((highlight, i) => (
+              <motion.li
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="flex items-center gap-4"
+              >
+                <FiCheck className="text-yellow-400 text-xl flex-shrink-0" />
+                <span className="text-base">{highlight}</span>
+              </motion.li>
+            ))}
+          </ul>
+          <Link
+            to={service.link}
+            className="inline-flex items-center gap-3 text-yellow-400 hover:text-yellow-500 font-semibold text-lg transition-colors"
+          >
+            Discover More <FiArrowRight className="text-xl" />
+          </Link>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Process Timeline with Flow Animation */}
       <section className={`py-24 px-6 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
@@ -586,114 +518,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* New Promotional Banner Section */}
-      <section className="py-16 bg-gradient-to-r from-gray-100 via-yellow-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div 
-            className="absolute top-0 w-full h-[150px]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.7 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-          >
-            <svg 
-              className="w-full h-full rotate-180"
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 1440 320"
-              preserveAspectRatio="none"
-            >
-              <path fill="#fff3e0" fillOpacity="0.9" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,186.7C672,181,768,203,864,202.7C960,203,1056,181,1152,176C1248,171,1344,181,1392,186.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-            </svg>
-          </motion.div>
-        </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl md:text-5xl font-bold mb-4 text-gray-800 tracking-wide"
-          >
-            Unlock Exclusive Features Today!
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-md md:text-lg mb-6 text-gray-600 max-w-md mx-auto"
-          >
-            Get 30% off your first month with Zixflow’s premium plan. Start optimizing now!
-          </motion.p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 bg-yellow-600 text-white rounded-lg font-semibold hover:bg-yellow-700 transition-all duration-300 shadow-md"
-          >
-            Claim Offer Now
-          </motion.button>
-        </div>
-      </section>
-
-      {/* Updated Bottom Banner Section */}
-      <section className="py-20 bg-gradient-to-b from-yellow-50 via-white to-gray-100 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div 
-            className="absolute bottom-0 w-full h-[200px]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.8 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-          >
-            <svg 
-              className="w-full h-full"
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 1440 320"
-              preserveAspectRatio="none"
-            >
-              <path fill="#f9f7f3" fillOpacity="0.9" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,186.7C672,181,768,203,864,202.7C960,203,1056,181,1152,176C1248,171,1344,181,1392,186.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-            </svg>
-          </motion.div>
-        </div>
-        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-extrabold mb-6 text-gray-900 tracking-wide"
-          >
-            Boost Your Business with AI-Powered<span className="text-yellow-600">✨</span><br />Sales & Marketing Solutions
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-md md:text-lg mb-10 text-gray-700 max-w-xl mx-auto leading-relaxed"
-          >
-            Transform your growth strategy with Zixflow’s cutting-edge CRM and multi-channel engagement tools. Start today!
-          </motion.p>
-          <div className="flex flex-col md:flex-row justify-center gap-6">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-black text-white rounded-xl font-semibold text-lg hover:bg-gray-800 transition-all duration-300 shadow-md"
-            >
-              Get Started Free
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white text-black border border-gray-300 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all duration-300 shadow-md"
-            >
-              Schedule a Demo
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-yellow-600 text-white rounded-xl font-semibold text-lg hover:bg-yellow-700 transition-all duration-300 shadow-md"
-            >
-              View Plans
-            </motion.button>
-          </div>
-        </div>
-      </section>
-
+    
       <Footer />
     </div>
   );
