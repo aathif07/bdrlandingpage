@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext';
 import { useApolloTracking } from '../hooks/useApolloTracking';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
@@ -19,7 +18,7 @@ import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ServicesPage = () => {
-  const { theme } = useTheme();
+  
   useApolloTracking();
   
   const [activeService, setActiveService] = useState(null);
@@ -207,7 +206,7 @@ const ServicesPage = () => {
           {/* Increased banner size and added top margin */}
           <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 mt-12 mx-auto max-w-5xl">
             <img
-              src="/Data Migration.png"
+              src="https://www.ibm.com/content/dam/connectedassets-adobe-cms/worldwide-content/stock-assets/getty/image/photography/43/85/transgender-business_0661.jpg/_jcr_content/renditions/cq5dam.thumbnail.1280.1280.png"
               alt="Services Banner"
               className="w-full h-auto max-h-[400px] object-cover rounded-lg"
             />
@@ -215,7 +214,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      <section className={`py-20 px-6 ${theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-800' : 'bg-gradient-to-b from-gray-50 to-gray-200'}`}>
+    <section className={`py-20 px-6 ${theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-800' : 'bg-gradient-to-b from-gray-50 to-gray-200'}`}>
   <div className="max-w-7xl mx-auto text-center">
     <motion.h2
       initial={{ opacity: 0, y: 30 }}
@@ -223,7 +222,7 @@ const ServicesPage = () => {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 mb-8"
     >
-      About Us
+      Precision Data Solutions for Strategic Decision-Making
     </motion.h2>
 
     <motion.p
@@ -232,10 +231,10 @@ const ServicesPage = () => {
       transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
       className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-200 max-w-4xl mx-auto px-4"
     >
-      We are a technology-first innovation partner committed to building efficient, scalable, and secure digital solutions for modern businesses. With expertise in data migration, AI-powered analytics, fintech infrastructure, and sustainable environmental technologies, we empower organizations to stay ahead in a rapidly evolving digital landscape.
+      Founded in February 2022 by Patrick Parks, a proud Reconnaissance Marine veteran, Big Data Rhino is driven by a mission to bring clarity and actionable insights to complex data challenges. We combine military precision with cutting-edge data science to empower smarter business decisions.
     </motion.p>
 
-    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <div className="mt-12 grid grid-cols-1 gap-6 max-w-4xl mx-auto">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -243,22 +242,18 @@ const ServicesPage = () => {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className="bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-gray-200/50 dark:border-gray-700/50 text-left hover:shadow-xl transition-shadow duration-300"
       >
-        <h3 className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 mb-3">Vision</h3>
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-          To revolutionize digital transitions by providing intelligent, secure, and future-ready technology services that drive impact.
-        </p>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        whileHover={{ scale: 1.03 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-gray-200/50 dark:border-gray-700/50 text-left hover:shadow-xl transition-shadow duration-300"
-      >
-        <h3 className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 mb-3">Mission</h3>
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-          To deliver next-gen software solutions using real-time data, automation, and AI to enable sustainable and scalable business models.
-        </p>
+        <h3 className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 mb-4">Our Mission</h3>
+        <div className="text-gray-600 dark:text-gray-300 space-y-4">
+          <p>
+            At Big Data Rhino, our mission is to harness the power of data and analytics to solve complex business challenges. We identify hidden patterns and opportunities within your data that others might miss.
+          </p>
+          <p>
+            We transform raw, unstructured data into strategic assets through our advanced analytics capabilities. Our solutions help organizations of all sizes make smarter decisions, reduce costs, and uncover new revenue streams.
+          </p>
+          <p>
+            We are committed to providing innovative solutions that transform raw data into actionable insights, enabling organizations to optimize operations, enhance customer experiences, and drive sustainable growth.
+          </p>
+        </div>
       </motion.div>
     </div>
   </div>
@@ -274,16 +269,18 @@ const ServicesPage = () => {
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
                 Secure, compliant data transfer with risk assessment and advanced protection strategies tailored to your industry.
               </p>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg">
-                Learn More <FiArrowRight className="inline ml-2" />
-              </button>
+              <a href="\DataMigration.tsx">
+  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg">
+    Learn More <FiArrowRight className="inline ml-2" />
+  </button>
+</a>
             </div>
             
             <div className="relative">
               <div className="bg-blue-100 dark:bg-blue-900/30 rounded-2xl p-8">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
                   <div className="bg-blue-600 rounded-t-lg p-4 mb-4">
-                    <h3 className="text-white font-semibold">Key Features</h3>
+                    <h3 className="text-white font-semibold">Data Migration</h3>
                   </div>
                   <div className="mb-6">
                     <img 
@@ -327,7 +324,7 @@ const ServicesPage = () => {
               <div className="bg-green-100 dark:bg-teal-900/30 rounded-2xl p-8">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
                   <div className="bg-green-600 rounded-t-lg p-4 mb-4">
-                    <h3 className="text-white font-semibold">Technology Stack</h3>
+                    <h3 className="text-white font-semibold">Methane Mitigation</h3>
                   </div>
                   <div className="mb-6">
                     <img 
@@ -388,7 +385,7 @@ const ServicesPage = () => {
               <div className="bg-purple-100 dark:bg-purple-900/30 rounded-2xl p-8">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
                   <div className="bg-purple-600 rounded-t-lg p-4 mb-4">
-                    <h3 className="text-white font-semibold">Impact Metrics</h3>
+                    <h3 className="text-white font-semibold">Fintech Analytics </h3>
                   </div>
                   <div className="mb-6">
                     <img 
@@ -482,7 +479,7 @@ const ServicesPage = () => {
       {/* Data Migration Card */}
       <div className="bg-blue-100 rounded-2xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
         <img 
-          src="/Data_Migration.png" 
+          src="" 
           alt="Data Migration" 
           className="w-full h-40 object-cover rounded-lg mb-4"
         />
@@ -490,7 +487,7 @@ const ServicesPage = () => {
           <h3 className="text-2xl font-bold text-gray-800">Data Migration</h3>
         </div>
         <a 
-          href="/pdfs/Data_Migration_Brochure.pdf" 
+          href="" 
           download 
           className="w-full max-w-xs py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-xl font-semibold text-lg shadow-md hover:from-blue-700 hover:to-blue-900 hover:shadow-lg transition-all duration-200 text-center"
         >
@@ -587,6 +584,7 @@ const ServicesPage = () => {
                 <select
                   name="service"
                   value={formData.service}
+
                   onChange={handleChange}
                   className={`w-full px-4 py-3 rounded-lg appearance-none ${
                     theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'
