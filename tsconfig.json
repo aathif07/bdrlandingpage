@@ -16,4 +16,14 @@
     "noUnusedLocals": false,
     "strictNullChecks": false
   }
+  {
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es6",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
 }
