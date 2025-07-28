@@ -6,9 +6,41 @@ import Footer from '../components/layout/Footer';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { Engine } from 'tsparticles-engine';
-import { FiZap, FiArrowRight, FiCheck, FiDownload, FiPlay, FiBarChart2, FiShield, FiTrendingDown, FiDatabase, FiGlobe, FiX } from 'react-icons/fi';
+import { 
+  FiZap, 
+  FiArrowRight, 
+  FiCheck, 
+  FiDownload, 
+  FiPlay, 
+  FiBarChart2, 
+  FiShield, 
+  FiTrendingDown, 
+  FiDatabase, 
+  FiGlobe, 
+  FiX 
+} from 'react-icons/fi';
 import { FaSatellite, FaChartLine, FaClipboardCheck } from 'react-icons/fa';
 import { toast } from 'sonner';
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  service: string;
+}
+
+interface ProcessStep {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+interface Achievement {
+  icon: string;
+  title: string;
+  desc: string;
+}
 
 const MethaneMitigation = () => {
   // Initialize Apollo tracking
@@ -17,7 +49,7 @@ const MethaneMitigation = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
@@ -49,7 +81,7 @@ const MethaneMitigation = () => {
     image: imageUrls.mitigation,
   };
 
-  const processSteps = [
+  const processSteps: ProcessStep[] = [
     {
       title: 'Initial Assessment',
       description: 'We conduct a comprehensive analysis of your current methane emissions using advanced detection technologies.',
@@ -112,6 +144,20 @@ const MethaneMitigation = () => {
     await loadFull(engine);
   };
 
+  const achievements = [
+    'Successfully reduced methane emissions for over 50 clients.',
+    'Recognized by the Environmental Protection Agency for innovation in methane monitoring.',
+    'Contributed to a 30% average reduction in methane leaks for our clients.',
+  ];
+
+  const coreValues: Achievement[] = [
+    { icon: '💡', title: 'Innovation', desc: 'Pioneering advanced detection and mitigation technologies.' },
+    { icon: '🛡', title: 'Integrity', desc: 'Committed to transparent and ethical environmental practices.' },
+    { icon: '🏆', title: 'Excellence', desc: 'Delivering measurable and impactful emission reductions.' },
+    { icon: '🤝', title: 'Collaboration', desc: 'Working hand-in-hand with clients for tailored solutions.' },
+    { icon: '🌱', title: 'Sustainability', desc: 'Dedicated to creating long-term environmental benefits.' },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
@@ -129,12 +175,27 @@ const MethaneMitigation = () => {
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 Reduce emissions with cutting-edge detection and capture technologies, ensuring regulatory compliance and environmental stewardship.
               </p>
+              <div className="flex gap-4">
+                <button
+                  onClick={handleOpenPopup}
+                  className="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-lg text-lg transition-colors"
+                >
+                  Request Demo
+                </button>
+                <button
+                  onClick={handleVideoOpen}
+                  className="flex items-center gap-2 px-6 py-3 bg-white hover:bg-gray-100 text-gray-800 font-medium rounded-lg border border-gray-300 text-lg transition-colors"
+                >
+                  <FiPlay className="text-yellow-500" />
+                  Watch Video
+                </button>
+              </div>
             </div>
             <div className="relative">
               <div className="bg-white rounded-2xl shadow-2xl p-6 border border-gray-200">
                 <div className="flex justify-center items-center h-64 bg-gray-50 rounded-lg">
                   <img
-                    src="/methane-mitigation-tech.png"
+                    src={imageUrls.mitigation}
                     alt="Methane mitigation technology"
                     className="max-w-full max-h-full object-contain"
                   />
@@ -186,13 +247,7 @@ const MethaneMitigation = () => {
           <div className="mb-16">
             <h3 className="text-2xl font-bold mb-8 text-center text-gray-900">Core Values</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-              {[
-                { icon: '💡', title: 'Innovation', desc: 'Pioneering advanced detection and mitigation technologies.' },
-                { icon: '🛡️', title: 'Integrity', desc: 'Committed to transparent and ethical environmental practices.' },
-                { icon: '🏆', title: 'Excellence', desc: 'Delivering measurable and impactful emission reductions.' },
-                { icon: '🤝', title: 'Collaboration', desc: 'Working hand-in-hand with clients for tailored solutions.' },
-                { icon: '🌱', title: 'Sustainability', desc: 'Dedicated to creating long-term environmental benefits.' },
-              ].map((value, index) => (
+              {coreValues.map((value, index) => (
                 <div key={index} className="p-6 rounded-2xl shadow-lg bg-white border border-yellow-400">
                   <span
                     className={`text-4xl mb-4 inline-block ${
@@ -211,14 +266,10 @@ const MethaneMitigation = () => {
           <div>
             <h3 className="text-2xl font-bold mb-8 text-center text-gray-900">Our Achievements</h3>
             <div className="space-y-6 max-w-3xl mx-auto">
-              {[
-                'Successfully reduced methane emissions for over 50 clients.',
-                'Recognized by the Environmental Protection Agency for innovation in methane monitoring.',
-                'Contributed to a 30% average reduction in methane leaks for our clients.',
-              ].map((achievement, index) => (
+              {achievements.map((achievement, index) => (
                 <div
                   key={index}
-                  className={`flex items-start gap-4 p-6 rounded-xl bg-white border border-yellow-400`}
+                  className="flex items-start gap-4 p-6 rounded-xl bg-white border border-yellow-400"
                 >
                   <div className="mt-1 flex-shrink-0">
                     <div
@@ -242,7 +293,7 @@ const MethaneMitigation = () => {
       </section>
 
       {/* Methane Mitigation Solutions Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'rgb(255 255 255)' }}>
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-800 tracking-tight">
