@@ -4,8 +4,11 @@ import { useTheme } from '../context/ThemeContext';
 import { useApolloTracking } from '../hooks/useApolloTracking';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 import { 
   FiArrowRight, 
   FiCheck, 
@@ -66,12 +69,12 @@ const Fintech = () => {
     setShowPopup(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSubmitting) return;
     setIsSubmitting(true);
@@ -107,6 +110,7 @@ const Fintech = () => {
   };
 
   return (
+<<<<<<< Updated upstream
     <div className={`min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
       <Navbar />
       
@@ -119,6 +123,19 @@ const Fintech = () => {
                 Innovative <br />
                 Fintech Solutions <br />
                 <span className="text-green-600">for Your Business</span>
+=======
+    <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
+    
+      <Navbar />
+      
+      {/* Hero Banner Section */}
+      <section className={`relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Revolutionize Your Financial Services
+>>>>>>> Stashed changes
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 Empower your financial operations with cutting-edge technology, ensuring efficiency, security, and scalability.
@@ -265,7 +282,11 @@ const Fintech = () => {
 
       
       {/* Introduction Section */}
+<<<<<<< Updated upstream
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
+=======
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
+>>>>>>> Stashed changes
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -296,6 +317,7 @@ const Fintech = () => {
       </section>
 
       {/* How It Works Section */}
+<<<<<<< Updated upstream
 <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-900">
   <div className="max-w-7xl mx-auto">
     <div className="text-center mb-16">
@@ -328,14 +350,91 @@ const Fintech = () => {
         <div key={index} className={`p-6 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} text-gray-800 dark:text-white`}>
           <div className={`w-14 h-14 rounded-full ${item.bgColor} flex items-center justify-center mb-6 text-white font-bold text-2xl`}>
             {item.icon}
+=======
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">How Our Fintech Solutions Work</h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
+              A simple three-step process to transform your financial services
+            </p>
           </div>
-          <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-          <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Assessment & Planning",
+                description: "We analyze your current systems and identify areas for improvement and digital transformation.",
+                icon: "1"
+              },
+              {
+                title: "Solution Implementation",
+                description: "Our team deploys customized fintech solutions tailored to your specific needs.",
+                icon: "2"
+              },
+              {
+                title: "Ongoing Support",
+                description: "We provide continuous support and updates to ensure your systems remain cutting-edge.",
+                icon: "3"
+              }
+            ].map((item, index) => (
+              <div key={index} className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} shadow-lg`}>
+                <div className="w-14 h-14 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mb-6 text-indigo-600 dark:text-indigo-300 text-xl font-bold">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
+
+      {/* Our Solutions Section */}
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Fintech Solutions</h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
+              Comprehensive solutions designed to address every aspect of modern financial services
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Digital Payments",
+                description: "Secure and scalable digital payment solutions for any business",
+                icon: <FiCreditCard className="text-3xl text-indigo-600" />
+              },
+              {
+                title: "Risk Analytics",
+                description: "Advanced analytics for fraud detection and risk assessment",
+                icon: <FiShield className="text-3xl text-indigo-600" />
+              },
+              {
+                title: "Wealth Management",
+                description: "AI-driven investment and wealth management platforms",
+                icon: <FiTrendingUp className="text-3xl text-indigo-600" />
+              },
+              {
+                title: "RegTech",
+                description: "Compliance solutions for financial regulations",
+                icon: <FiCheck className="text-3xl text-indigo-600" />
+              }
+            ].map((item, index) => (
+              <div key={index} className={`p-8 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'}`}>
+                <div className="w-14 h-14 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mb-6">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
+              </div>
+            ))}
+>>>>>>> Stashed changes
+          </div>
+        </div>
+      </section>
 
 {/* Our Solutions Section */}
 <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-950">
@@ -385,7 +484,11 @@ const Fintech = () => {
   </div>
 </section>
       {/* Contact Form Section */}
+<<<<<<< Updated upstream
       <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+=======
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
+>>>>>>> Stashed changes
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
   <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -417,7 +520,11 @@ const Fintech = () => {
                 </div>
               </div>
             </div>
+<<<<<<< Updated upstream
             <div className={`p-8 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+=======
+            <div className={`p-8 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
+>>>>>>> Stashed changes
               <h3 className="text-2xl font-semibold mb-6">Request Information</h3>
               <form className="space-y-4">
                 <input 
@@ -461,12 +568,181 @@ const Fintech = () => {
         </div>
       </section>
 
+<<<<<<< Updated upstream
+=======
+      {/* About Big Data Rhino Section - Theme-based */}
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold">About Big Data Rhino</h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mt-4`}>
+              Precision Data Solutions for Strategic Decision-Making
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                Founded in February 2022 by Patrick Parks, a proud Reconnaissance Marine veteran, Big Data Rhino is driven by a mission to bring clarity and actionable insights to complex data challenges. We combine military precision with cutting-edge data science to empower smarter business decisions.
+              </p>
+              <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                Our Story: Born from military discipline and technological innovation, Big Data Rhino brings strategic thinking and relentless execution to data solutions. From veteran-owned startup to trusted industry partner, we help organizations navigate data complexity with confidence.
+              </p>
+            </div>
+            <div className="relative">
+              <div className={`rounded-xl overflow-hidden shadow-lg ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} border aspect-video`}>
+                <img 
+                  src={imageUrls.workflow} 
+                  alt="Big Data Rhino Team" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Our Approach</h3>
+              <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                <li className="flex items-start">
+                  <FiShield className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+                  <span>Military-grade precision in data handling</span>
+                </li>
+                <li className="flex items-start">
+                  <FiDatabase className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+                  <span>Cutting-edge AI and machine learning</span>
+                </li>
+                <li className="flex items-start">
+                  <FiGlobe className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+                  <span>Industry-specific expertise</span>
+                </li>
+                <li className="flex items-start">
+                  <FiBarChart2 className="text-gray-800 dark:text-gray-300 mr-2 mt-1 flex-shrink-0" />
+                  <span>Actionable business insights</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-bold mb-4">Our Capabilities</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { icon: "🤖", text: "AI Solutions" },
+                  { icon: "🔮", text: "Predictive Analytics" },
+                  { icon: "📊", text: "Data Visualization" },
+                  { icon: "☁️", text: "Cloud Integration" },
+                  { icon: "🔌", text: "API Development" },
+                  { icon: "🛡️", text: "Security Compliance" }
+                ].map((item, index) => (
+                  <div key={index} className={`flex items-center p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
+                    <span className="text-2xl mr-3">{item.icon}</span>
+                    <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-bold mb-4">Industry Impact</h3>
+              <div className="space-y-4">
+                {[
+                  { 
+                    industry: "Energy Sector", 
+                    description: "Optimizing operations and reducing emissions through analytics",
+                    stat: "30% efficiency gains" 
+                  },
+                  { 
+                    industry: "Healthcare", 
+                    description: "Transforming patient outcomes with predictive analytics",
+                    stat: "Improved diagnostics" 
+                  },
+                  { 
+                    industry: "Government", 
+                    description: "Secure, actionable intelligence for public agencies",
+                    stat: "DVBE-certified" 
+                  }
+                ].map((item, index) => (
+                  <div key={index} className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
+                    <h4 className="font-semibold mb-2">{item.industry}</h4>
+                    <p className={`text-sm mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.description}</p>
+                    <p className="text-gray-800 dark:text-gray-300 font-medium">{item.stat}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className={`p-8 rounded-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg mb-16`}>
+            <h3 className="text-xl font-bold mb-4">Our Team Culture</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                  We combine technical excellence with unique perspectives to deliver innovative solutions:
+                </p>
+                <ul className={`space-y-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <li className="flex items-start">
+                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>PhD-level data scientists</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Veterans with military discipline</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Industry domain experts</span>
+                  </li>
+                  <li className="flex items-start">
+                    <FiCheck className="text-green-500 mr-2 mt-1 flex-shrink-0" />
+                    <span>Creative problem-solvers</span>
+                  </li>
+                </ul>
+              </div>
+              <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} italic border-l-4 border-gray-500`}>
+                <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                  "The best solutions emerge when unique perspectives meet deep technical expertise."
+                </p>
+                <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
+                  Our culture emphasizes continuous learning, collaboration, and shared success.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold mb-6 text-center">Our Commitment to Clients</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { icon: "🔍", title: "Transparency", description: "Clear communication throughout" },
+                { icon: "📈", title: "Results", description: "Measurable business outcomes" },
+                { icon: "🛡️", title: "Security", description: "Enterprise-grade protection" },
+                { icon: "🤝", title: "Partnership", description: "Long-term collaboration" }
+              ].map((item, index) => (
+                <div 
+                  key={index} 
+                  className={`p-6 rounded-xl text-center ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-shadow`}
+                >
+                  <div className="text-3xl mb-4">{item.icon}</div>
+                  <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
+                  <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    
+>>>>>>> Stashed changes
       <Footer />
 
       {/* Callback Form Popup */}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 p-4">
+<<<<<<< Updated upstream
           <div className={`relative w-full max-w-lg p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} text-gray-900 max-h-[90vh] overflow-y-auto border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+=======
+          <div className={`relative w-full max-w-lg p-8 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} max-h-[90vh] overflow-y-auto`}>
+>>>>>>> Stashed changes
             <button 
               onClick={handleClosePopup} 
               className="absolute top-3 right-4 text-xl font-bold hover:opacity-70 text-yellow-500 dark:text-yellow-500"

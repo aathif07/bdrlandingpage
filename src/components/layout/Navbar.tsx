@@ -34,6 +34,7 @@ const Navbar = () => {
   }, []);
 
   return (
+<<<<<<< Updated upstream
     <AnimatePresence>
       {isVisible && (
         <motion.header
@@ -60,6 +61,36 @@ const Navbar = () => {
         </motion.header>
       )}
     </AnimatePresence>
+=======
+    <header
+      className={`fixed top-5 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'py-4 bg-white shadow dark:bg-gray-900' : 'py-6 bg-transparent'
+      }`}
+    >
+      <div className="max-w-10xl mx-auto px-11 flex justify-between items-center relative">
+        {/* Logo - Centered and Larger */}
+        <div className="absolute left-1/2 transform -translate-x-1/2">
+          <motion.img 
+            src={logoSrc}
+            className="h-32 w-auto" // Increased height and auto width to maintain aspect ratio
+            alt="Big Data Rhino Logo"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          />
+        </div>
+
+        {/* Theme Toggle - Pushed to right */}
+        <div className="ml-auto">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ThemeToggle />
+          </motion.div>
+        </div>
+      </div>
+    </header>
+>>>>>>> Stashed changes
   );
 };
 
