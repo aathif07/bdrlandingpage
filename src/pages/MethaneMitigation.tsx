@@ -3,24 +3,10 @@ import { Link } from 'react-router-dom';
 import { useApolloTracking } from '../hooks/useApolloTracking';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
-<<<<<<< Updated upstream
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { Engine } from 'tsparticles-engine';
 import { FiZap, FiArrowRight, FiCheck, FiDownload, FiPlay, FiBarChart2, FiShield, FiTrendingDown, FiDatabase, FiGlobe, FiX } from 'react-icons/fi';
-=======
-import { 
-  FiArrowRight, 
-  FiCheck, 
-  FiDownload, 
-  FiPlay, 
-  FiBarChart2, 
-  FiShield, 
-  FiTrendingDown,
-  FiDatabase,
-  FiGlobe
-} from 'react-icons/fi';
->>>>>>> Stashed changes
 import { FaSatellite, FaChartLine, FaClipboardCheck } from 'react-icons/fa';
 import { toast } from 'sonner';
 
@@ -127,12 +113,7 @@ const MethaneMitigation = () => {
   };
 
   return (
-<<<<<<< Updated upstream
     <div className="min-h-screen flex flex-col bg-white">
-=======
-    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'dark' : ''}`}>
-      
->>>>>>> Stashed changes
       <Navbar />
 
       {/* Methane Mitigation Hero Section */}
